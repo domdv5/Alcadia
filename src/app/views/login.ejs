@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/style.css" type="text/css" media="all">
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
+  <link type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png" rel="icon" />
+  <title>Login</title>
+</head>
+<body>
+  <div class='wrapper'>
+    <div class='login'>
+      <div class='appTitle'>
+        BIENVENIDO
+      </div>
+      <div class='arrow-down'></div>
+      <form action='singUp' method="POST">
+        <fieldset>
+          <span>
+            <i class='fa fa-user'></i>
+          </span>
+          <input placeholder='Ingrese cedula' name="cedula">
+        </fieldset>
+        <fieldset>
+          <span>
+            <i class='fa fa-lock'></i>
+          </span>
+          <input placeholder='Ingrese contraseña' type='password' name="pass">
+        </fieldset>
+      <button id='btnLogin' type='submit'>Login</button>
+      <a href='#' id='forgot'>Olvide mi contraseña</a>
+    </form>
+    </div>
+    <div id='externalAuth'>
+      <button id='createAccount' type='button-button'>Crear una cuenta</button>
+
+      <div class='credits'>
+        <a href='https://medellin.gov.co/irj/portal/medellin?NavigationTarget=inicio/ParticipacionCiudadana'
+          target='blank'>Secretaria de Participacion Ciudadana<br> Telecentros & Centros de Desarrollo
+          Social<br>Medellín </a>
+      </div>
+    </div>
+  </div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- esto es lo que tenes que agregar -->
+<% if(typeof alert != "undefined"){%>
+  <script>
+    Swal.fire({
+      title:'<%= title %>',
+      message:'<%= message %>',
+      icon:'<%= icon %>',
+      showConfirmButton:'<%= showConfirmButton %>',
+      timer: '<%= timer %>'
+    }).then(() =>{
+      window.location='/<%= ruta %>'
+    })
+  </script>
+<% } %>
+<!-- esto es lo que tenes que agregar -->
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" ;>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700" ;>
+</body>
+
+</html>

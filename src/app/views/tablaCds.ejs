@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tabla CDS</title>
+</head>
+<body>
+  <div class="container">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID CDS</th>
+          <th>Espacio</th>
+          <th>Comuna</th>
+          <th>Identificador Cds</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Horario</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Nombre Coordinador</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < cds.length;i ++ ) {%> 
+            <tr>
+              <th><%= cds[i].IdCds %></th>
+              <th><%= cds[i].espacio%></th>
+              <th><%= cds[i].Comuna%></th>
+              <th><%= cds[i].IdentificadorCds%></th>
+              <th><%= cds[i].Nombre%></th>
+              <th><%= cds[i].Direccion%></th>
+              <th><%= cds[i].Horario%> </th>
+              <th><%= cds[i].Telefono%> </th>
+              <th><%= cds[i].correo%> </th>
+              <th><%= cds[i].NombreCoordinador%> </th>
+    
+              <th><a class="btn btn-outline-danger" href="/delete/<%= cds[i].IdCds%>"> BORRAR ❌</a></th>
+              <th><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=cds[i].IdCds%>" data-bs-whatever="@fat">EDITAR 🖋</button></th>
+           </tr>
+          </tbody>
+    </table>
+  </div>
+</body>
+</html>

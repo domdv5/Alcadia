@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/resources/css/style3.css" type="text/css" media="all">
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
+  <link type="image/x-icon"
+    href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png"
+    rel="icon" />
+  <title>Actividades</title>
+</head>
+
+<body>
+  <header class="encab">
+    <div><img
+        src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png"
+        alt=""></div>
+    <nav>
+      <ul>
+        <li><a href="/visitors">Registro</a></li>
+        <li><a href="/visitorLogin">Ingreso</a></li>
+        <li><a href="#">Reportes</a></li>
+        <li><a href="#">Configuración</a>
+          <ul>
+            <li><a href="/activities">Actividades</a></li>
+            <li><a href="/registerCds">CDS & telecentros</a></li>
+            <li><a href="/users">Registro usuarios</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>REGISTRO DE ACTIVIDADES</h1>
+    <form action="addActivities" method="POST">
+      <div class=camp>
+        <label form="tipo">Nombre de la actividad</label>
+        <input type="text" placeholder="ingrese nombre de la actividad" required name="nombre">
+      </div>
+      <div class=camp>
+        <label form="tipo">Linea</label>
+        <input type="text" placeholder="ingrese nombre de la linea" required name="linea">
+      </div>
+      <div class=camp>
+        <label form="tipo">Componente</label>
+        <input type="text" placeholder="ingrese nombre de la actividad" required name="componente">
+      </div>
+      <div class=camp>
+        <label form="">Secretaría o entidad organizadora</label>
+        <input type="text" placeholder="Ingrese secretaría" required name="secretaria">
+      </div>
+      <div class=camp>
+        <label form="">Facilitador Organizador</label>
+        <input type="text" placeholder=" Ingrese Facilitador" required name="facilitador">
+      </div>
+      <div class=camp>
+        <label form="">Fecha inicio</label>
+        <input type="text" placeholder="Ingrese fecha de inicio AA-MM-DD" required name="fecha_inicio">
+      </div>
+      <div class=camp>
+        <label form="">Fecha final</label>
+        <input type="text" placeholder="ingrese fecha final AA-MM-DD" required name="fecha_final">
+      </div>
+      <div class=camp>
+        <label form="">Hora apertura</label>
+        <input type="time" placeholder="ingrese hora de inicio" required name="hora_apertura">
+      </div>
+      <div class=camp>
+        <label form="">Hora cierre</label>
+        <input type="time" placeholder="ingrese hora de cierre" required name="hora_cierre">
+      </div>
+      </div>
+      <div class=camp>
+        <label form="">Lugar</label>
+        <input type="text" placeholder="Ingrese el CDS o Telecentro" required name="lugar">
+      </div>
+      <div class=camp>
+        <label form="">Ciudad</label>
+        <input Id="" type="text" placeholder="Ingrese Ciudad" required name="ciudad">
+      </div>
+      <div class=camp>
+        <label form="tipo">Comuna o corregimiento</label>
+        <select name="comuna_corregimiento" id="tipo" class="select" required>
+          <option value="" selected disabled>Selecciona una comuna</option>
+          <option value="1. Popular">1. Popular</option>
+          <option value="2. Santa Cruz">2. Santa Cruz</option>
+          <option value="3. Manrique">3. Manrique</option>
+          <option value="4. Aranjuez">4. Aranjuez</option>
+          <option value="5. Castilla">5. Castilla</option>
+          <option value="6. 12 de Octubre">6. 12 de Octubre</option>
+          <option value="7. Robledo">7. Robledo</option>
+          <option value="8. Villa Hermosa">8. Villa Hermosa</option>
+          <option value="9. Buenos Aires">9. Buenos Aires</option>
+          <option value="10. La Candelaria">10. La Candelaria</option>
+          <option value="11. Laureles Estadio">11. Laureles Estadio</option>
+          <option value="12. La America">12. La America</option>
+          <option value="13. San javier">13. San javier</option>
+          <option value="14. El Poblado">14. El Poblado</option>
+          <option value="15. Guayabal">15. Guayabal</option>
+          <option value="16. Belén">16. Belén</option>
+          <option value="50. San Sebastian de Palmitas">50. San Sebastian de Palmitas</option>
+          <option value="60. San Cristobal">60. San Cristobal</option>
+          <option value="70. Alta Vista">70. Alta Vista</option>
+          <option value="80. San Antonio de Prado">80. San Antonio de Prado</option>
+          <option value="90. Santa Elena">90. Santa Elena</option>
+        </select>
+      </div>
+      <div class=camp>
+        <label form="">Barrio /Vereda /Sector</label>
+        <input name="barrio_vereda" type="text" placeholder="Ingrese Barrio" required>
+      </div>
+      <div class=camp>
+        <label form="">Dirección</label>
+        <input name="direccion" type="text" placeholder="Ingrese Dirección" required>
+      </div>
+
+      <div class=camp>
+        <label form="">Nombre de proyecto de inversión</label>
+        <input name="nombre_proyecto_inversion" type="text" placeholder="Ingrese nombre del proyecto" required>
+      </div>
+      <div class=camp>
+        <label form="">Codigo de proyecto de inversión</label>
+        <input name="codigo_proyecto_inversion" type="text" placeholder="Ingrese Codigo de proyecto" required>
+      </div>
+      <div class=camp>
+        <label form="">Nombre de indicadores PDM & PI </label>
+        <input name="nombre_indicadores" type="text" placeholder="Ingrese Nombre de indicadores" required>
+      </div>
+      <div class=camp>
+        <label form="">Códigos de indicadores PDM Y PI</label>
+        <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" required>
+      </div>
+      <div class=camp>
+        <label form="tipo">Tipo de reunión</label>
+        <select name="tipo_reunion" id="tipo" class="select" required>
+          <option value="" selected disabled>Selecciona el tipo de Reunion</option>
+          <option value="Informativa">Informativa</option>
+          <option value="Seguimiento">Seguimiento</option>
+          <option value="Toma de desiciones">Toma de desiciones</option>
+          <option value="Capacitación">Capacitación</option>
+          <option value="Formación">Formación</option>
+          <option value="otro">Otro</option>
+          <input type="text" placeholder="¿Otro tipo de reunión?, ¿Cúal?">
+        </select>
+      </div>
+      <input type="submit" class="btn-save" value="Guardar">
+    </form>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <% if(typeof alert !="undefined" ){%>
+      <script>
+        Swal.fire({
+          title: '<%= title %>',
+          icon: '<%= icon %>',
+          showConfirmButton: '<%= showConfirmButton %>',
+          timer: '<%= timer %>',
+        }).then(() => {
+            window.location = '/<%= ruta %>'
+        })
+      </script>
+      <% } %>
+
+
+
+
+        <footer>
+          <div class="container_footer">
+            <div class="box_footer">
+              <div class="logo">
+                <img src="https://mercurio.medellin.gov.co/mercurio/imagenes/logoEmpresaA.png" alt="">
+              </div>
+              <div class="terms">
+                <p> Contáctenos
+                  Calle 44 N 52 – 165 Centro Administrativo la Alpujarra – Medellín, Colombia.<br>
+                  ➮ Comunicaciones.planeacion@medellin.gov.co<br>
+                  ➮ Línea única de atención ciudadana: (574) 44 44 144<br>
+                  ➮ Línea gratuita nacional: 01 8000 411 144</p>
+              </div>
+            </div>
+
+
+            <div class="box_footer">
+              <h2>Entérese</h2>
+              <a
+                href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl://557131b191a8cae1e393328c6971a2d0">Telecentros</a>
+              <a
+                href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=contenido/6694-Centros-de-Desarrollo-Social">CDS</a>
+              <a href="https://www.medellin.gov.co/irj/portal/medellin">Alcaldía de Medellín</a>
+            </div>
+            <div class="box_footer">
+              <h2>Redes</h2>
+              <a href="https://es-la.facebook.com/AlcaldiadeMed/"><i class=" fab fa-facebook-square"></i> Facebook</a>
+              <a href="https://twitter.com/AlcaldiadeMed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i
+                  class=" fab fa-twitter-square"></i> Twitter</a>
+              <a href="https://www.instagram.com/alcaldiademed/?hl=es-la"><i class=" fab fa-instagram-square"></i>
+                Instragram</a>
+            </div>
+          </div>
+        </footer>
+
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" ;>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700" ;>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <% if(typeof alert !="undefined" ){%>
+      <script>
+        Swal.fire({
+          title: '<%= title %>',
+          icon: '<%= icon %>',
+          showConfirmButton: '<%= showConfirmButton %>',
+          timer: '<%= timer %>',
+        }).then(() => {
+            window.location = '/<%= ruta %>'
+        })
+      </script>
+      <% } %>
+
+</body>
+
+</html>
