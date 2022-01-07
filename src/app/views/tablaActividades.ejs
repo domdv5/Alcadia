@@ -1,47 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="/resources/css/tabla1.css" type="text/css" media="all">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>tabla de cds</title>	
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png" rel="icon" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
-  <title>Tabla De Actividades</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <style>
+     table.dataTable thead {
+      background: linear-gradient(to right,#0575e6, #00f260);
+      color: white;
+      text-align:left;
+       }  
+    </style>
 </head>
-<body>
-  <header class="encab">
-    <div><img src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png" alt=""></div>
-      <nav>
-      <ul>
-        <li><a href="/visitors">Registro</a></li>
-        <li><a href="/visitorLogin">Ingreso</a></li>
-        <li><a href="#">Reportes</a></li>
-        <li><a href="#">Configuración</a>
-          <ul>
-            <li><a href="/activities">Actividades</a></li>
-            <li><a href="/registerCds">CDS & telecentros</a></li>
-            <li><a href="/users">Registro usuarios</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Salir</a></li>
-      </ul>
-    </nav>
-</header>
 
   
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-    <table id="example"  class=" table table-striped table-ligth table-hover " ">
+
+    <table id="example"  class=" table table-striped table-ligth table-hover ">
       <thead class="text-center">
         <tr>
-          <th>ID</th>
+          
           <th>Nombre</th>
           <th>Linea</th>
           <th>Componente</th>
@@ -68,31 +51,31 @@
         <tbody>
         <% for(let i = 0; i < actividad.length;i ++ ) {%> 
           <tr>
-            <th><%= actividad[i].id %></th>
-            <th><%= actividad[i].nombre %></th>
-            <th><%= actividad[i].linea %></th>
-            <th><%= actividad[i].componente %></th>
-            <th><%= actividad[i].secretaria %></th>
-            <th><%= actividad[i].facilitador %></th>
-            <th><%= actividad[i].fecha_inicio%> </th>
-            <th><%= actividad[i].fecha_final%> </th>
-            <th><%= actividad[i].hora_apertura %> </th>
-            <th><%= actividad[i].hora_cierre%> </th>
-            <th><%= actividad[i].lugar%> </th>
-            <th><%= actividad[i].ciudad%> </th>
-            <th><%= actividad[i].comuna_corregimiento %> </th>
-            <th><%= actividad[i].barrio_vereda%> </th>
-            <th><%= actividad[i].direccion %> </th>
-            <th><%= actividad[i].tipo_reunion%> </th>
-            <th><%= actividad[i].nombre_proyecto_inversion%></th>
-            <th><%= actividad[i].codigo_proyecto_inversion%></th>
-            <th><%= actividad[i].nombre_indicadores%></th>
-            <th><%= actividad[i].codigo_indicadores_pdm_pdi%></th>
+            
+            <td><%= actividad[i].nombre %></td>
+            <td><%= actividad[i].linea %></td>
+            <td><%= actividad[i].componente %></td>
+            <td><%= actividad[i].secretaria %></td>
+            <td><%= actividad[i].facilitador %></td>
+            <td><%= actividad[i].fecha_inicio%> </td>
+            <td><%= actividad[i].fecha_final%> </td>
+            <td><%= actividad[i].hora_apertura %> </td>
+            <td><%= actividad[i].hora_cierre%> </td>
+            <td><%= actividad[i].lugar%> </td>
+            <td><%= actividad[i].ciudad%> </td>
+            <td><%= actividad[i].comuna_corregimiento %> </td>
+            <td><%= actividad[i].barrio_vereda%> </td>
+            <td><%= actividad[i].direccion %> </td>
+            <td><%= actividad[i].tipo_reunion%> </td>
+            <td><%= actividad[i].nombre_proyecto_inversion%></td>
+            <td><%= actividad[i].codigo_proyecto_inversion%></td>
+            <td><%= actividad[i].nombre_indicadores%></td>
+            <td><%= actividad[i].codigo_indicadores_pdm_pdi%></td>
   
-            <th><a class="btn btn-outline-danger" href="/delete/<%= actividad[i].id%>"> ❌</a></th>
-            <th><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=actividad[i].id%>" data-bs-whatever="@fat"> 🖋</button></th>
+            <td><a class="btn btn-outline-danger" href="/delete.activities/<%= actividad[i].id%>"> ❌</a></td>
+            <td><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=actividad[i].id%>" data-bs-whatever="@fat"> 🖋</button></td>
          </tr>
-         </tbody>
+
           <div class="modal fade" id="exampleModal<%= actividad[i].id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -101,7 +84,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form method ="post" action="/edit/<%= actividad[i].id%>">
+                  <form method ="post" action="/edit.activities/<%= actividad[i].id%>">
                     <div class="mb-3">
                       <label for="recipient-name" class="col-form-label">Nombre:</label>
                       <input type="text" class="form-control" id="recipient-name" name="nombre" value="<%= actividad[i].nombre %>">
@@ -222,21 +205,15 @@
               </div>
             </div>
           </div>
-    <% } %>
+          <% } %>
+        </tbody>
     </table>
-</div>
-</div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
-
 <script>
- 
-
-               
-</script
-</body>
-</html>
-
+  $(document).ready(function() {
+      $('#example').DataTable({
+      })
+  } )
+  </script>
+  </body>
+  
+  </html>

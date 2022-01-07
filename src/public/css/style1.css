@@ -536,9 +536,9 @@ nav ul li a{
 }
 footer{
   width: 100%;
-  padding: 50px 0px;
-  background-size:cover;
-  height: 20rem;
+  background-color: #364D5C;
+  padding: 150x 0px;
+  height: 23rem;
   margin-top: 5rem;
 }
 .container_footer{
@@ -547,32 +547,31 @@ footer{
   justify-content: space-between;
   max-width: 1200px;
   margin:auto;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 .box_footer{
   display: flex;
   flex-direction: column;
-  padding-left: -1rem;
+  padding: 40px;
 }
-.box_footer .logo1{
- width: 100px;
- margin-left: 640px;
+.box_footer .logo{
+  width: 4rem;
 }
 .box_footer .terms{
   max-width: 350px;
   margin-top: 100px;
   font-weight: 600;
-  color: rgb(51, 50, 50);
+  color: rgb(255, 255, 255);
   font-size: 18px;
 }
 .box_footer h2{
   margin-bottom: 30px;
-  color: rgb(51, 50, 50);
+  color: rgb(255, 253, 253);
   font-weight: 600;
 }
 .box_footer a{
   margin-top: 10px;
-  color: rgb(51, 50, 50);
+  color: rgb(255, 255, 255);
   font-weight: 600;
 }
 .box_footer a:hover{

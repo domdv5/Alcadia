@@ -3,7 +3,6 @@ const bcryptjs = require('bcryptjs');
 const express = require('express')
 const router = express.Router()
 
-
 router.get('/login', (req, res) => {
   res.render("../views/login.ejs");
 })
@@ -11,18 +10,16 @@ router.get('/login', (req, res) => {
 router.get('/users', (req, res) => {
   res.render("../views/registroUsuario.ejs");
 })
+
 router.get('/activities', (req, res) => {
   res.render("../views/registroActividades.ejs");
-})
-
-
-router.get('/visitors', (req, res) => {
-  res.render("../views/registroVisitantes.ejs");
 })
 router.get('/visitorLogin', (req, res) => {
   res.render("../views/ingresoVisitantes.ejs");
 })
-
+router.get('/visitors', (req, res) => {
+  res.render("../views/registroVisitantes.ejs");
+})
 
 router.get('/activitiesTable', (req, res) => {
   connection.query("SELECT * FROM actividades", (err, result) => {
@@ -35,6 +32,30 @@ router.get('/activitiesTable', (req, res) => {
     }
   })
 })
+
+router.get('/cdsTable', (req, res) => {
+  connection.query("SELECT * FROM cds", (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("../views/tablaCds.ejs", {
+        cds: result
+      })
+    }
+  })
+})
+router.get('/registerTable', (req, res) => {
+  connection.query("SELECT * FROM visitantes", (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("../views/tablaRegistros.ejs", {
+        registro: result
+      })
+    }
+  })
+})
+
 router.get('/registerCds', async (req, res) => {
 
   await connection.query("SELECT * FROM cds", (err, result) => {
@@ -48,7 +69,44 @@ router.get('/registerCds', async (req, res) => {
   })
 })
 
-router.post("/edit/:id", async (req, res) => {
+router.get('/delete.activities/:id', (req, res) => {
+
+  const id = req.params.id
+
+  connection.query("DELETE FROM Actividades WHERE id = ?", [id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/activitiesTable')
+    }
+  })
+})
+
+router.get('/delete.cds/:id', (req, res) => {
+
+  const id = req.params.id
+
+  connection.query("DELETE FROM cds WHERE id = ? ", [id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/cdsTable')
+    }
+  })
+})
+router.get('/delete.registro/:id', (req, res) => {
+
+  const id = req.params.id
+
+  connection.query("DELETE FROM visitantes WHERE id = ? ", [id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/registerTable')
+    }
+  })
+})
+router.post("/edit.activities/:id", async (req, res) => {
 
   const id = req.params.id;
   const data = req.body
@@ -62,30 +120,39 @@ router.post("/edit/:id", async (req, res) => {
   })
 })
 
+router.post("/edit.cds/:id", async (req, res) => {
 
-router.get('/delete/:id', (req, res) => {
+  const id = req.params.id;
+  const data = req.body
 
-  const id = req.params.id
-
-  connection.query("DELETE FROM Actividades WHERE id = ?", [id], (err, result) => {
+  await connection.query("UPDATE cds SET ? WHERE id = ?", [data, id], (err, result) => {
     if (err) {
       res.send(err)
     } else {
-      res.redirect('/activitiesTable')
+      res.redirect('/cdsTable')
+    }
+  })
+})
+router.post("/edit.registro/:id", async (req, res) => {
+
+  const id = req.params.id;
+  const data = req.body
+
+  await connection.query("UPDATE visitantes SET ? WHERE id = ?", [data, id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/registerTable')
     }
   })
 })
 
-
-
-
 router.post('/addUsers', async (req, res) => {
 
-  const { tipoDocumento, cedula, nombre, correo, pass, telefono, rol } = req.body
+  const {cedula, nombre, correo, pass, telefono, rol } = req.body
   let passwordHaash = await bcryptjs.hash(pass, 8);
 
   const newUser = {
-    tipoDocumento,
     cedula,
     nombre,
     correo,
@@ -115,8 +182,6 @@ router.post('/addUsers', async (req, res) => {
     }
   })
 })
-
-
 
 router.post('/addActivities', async (req, res) => {
 
@@ -169,6 +234,7 @@ router.post('/addVisitors', async (req, res) => {
         ruta: 'visitors'
       })
     }
+
   })
 })
 
@@ -216,7 +282,6 @@ router.post('/visitorsEntry', async (req, res) => {
   })
 
 })
-
 
 router.post('/singUp', async (req, res) => {
 

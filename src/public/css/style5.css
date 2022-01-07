@@ -300,10 +300,10 @@ margin: 1.7rem 4;
 }
 footer{
   width: 100%;
-  padding: 50px 0px;
-  background-size:cover;
-  height: 20rem;
-  margin-top: 35rem;
+  background-color: #364D5C;
+  padding: 150x 0px;
+  height: 23rem;
+  margin-top: 40rem;
 }
 .container_footer{
   display: flex;
@@ -325,17 +325,17 @@ footer{
   max-width: 350px;
   margin-top: 100px;
   font-weight: 600;
-  color: rgb(51, 50, 50);
+  color: rgb(255, 255, 255);
   font-size: 18px;
 }
 .box_footer h2{
   margin-bottom: 30px;
-  color: rgb(51, 50, 50);
+  color: rgb(255, 253, 253);
   font-weight: 600;
 }
 .box_footer a{
   margin-top: 10px;
-  color: rgb(51, 50, 50);
+  color: rgb(255, 255, 255);
   font-weight: 600;
 }
 .box_footer a:hover{
