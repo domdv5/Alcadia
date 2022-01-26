@@ -1,3 +1,7 @@
+
+
+
+
 html {
   height: 100%;
 }
@@ -11,6 +15,14 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+} 
+
+.invalid-feedback {
+  display:none;
+  width: 95%;
+  margin-top:0.25em;
+  font-size: .875em;
+  color: #dc3545;
 }
 
 .wrapper {

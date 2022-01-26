@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
   <title>Registro visitantes</title>
 </head>
 <body>
+  
 
   <header class="encab">
     <div><img src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png" alt=""></div>
@@ -30,7 +32,8 @@
       </ul>
     </nav>
 </header>
-  <main>
+
+<main>
  <h1>REGISTRO DE VISITANTES</h1>
  <form method="POST" action="addVisitors" >
  <div class= camp>
@@ -62,10 +65,18 @@
     <label form="">Ocupación</label>
     <input type="text" name="ocupacion" placeholder="Empleo/Cargo actual"required>
   </div>
+
+
   <div class= camp>
     <label form="">Fecha de Nacimiento</label>
-    <input type="text" name="fecha_nacimiento" placeholder="AAAA-MM-DD" required>
+    <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator()" required>
   </div>
+
+  <div class= camp>
+    <label form="">Edad</label>
+    <input type="number" name="edad" id="age" value="" aria-disabled="true" readonly >
+  </div>
+  
 
   <div class= camp>
     <label form="tipo">Enfoque diferencial</label>
@@ -132,25 +143,13 @@
       <div><input type="radio" name="sexo" value="Hombre" required autocomplete>Hombre</div>
       <div><input type="radio" name="sexo" value="Mujer" required autocomplete>Mujer</div>
     </div>
-  </div>
-    <input type="submit" class="btn-save" value ="Registrar">
+    <input type="submit"
+     class="btn-save" value ="Registrar">
 </form>
-<a href="/registerTable" class="btn-save1">Tabla 📋</a>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-  <% if(typeof alert != "undefined"){%>
-  <script>
-    Swal.fire({
-      title:'<%= title %>',
-      icon:'<%= icon %>',
-      showConfirmButton:'<%= showConfirmButton %>',
-      timer: '<%= timer %>'
-    }).then(() =>{
-      window.location='/<%= ruta %>'
-    })
-  </script>
-<% } %>
 </main>
+
+<a href="/registerTable" class="btn-save1">Tabla 📋</a>
+
 
 <footer>
   <div class="container_footer">
@@ -183,6 +182,22 @@
   </div>
 </footer>
 
+<script src="/resources/js/edad.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+  <% if(typeof alert != "undefined"){%>
+  <script>
+    Swal.fire({
+      title:'<%= title %>',
+      icon:'<%= icon %>',
+      showConfirmButton:'<%= showConfirmButton %>',
+      timer: '<%= timer %>'
+    }).then(() =>{
+      window.location='/<%= ruta %>'
+    })
+  </script>
+<% } %>
 
 
 

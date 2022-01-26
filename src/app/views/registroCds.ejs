@@ -34,7 +34,7 @@
   <form action="addCds" method="POST">
     <div class= camp>
       <label form="tipo">Seleciona el tipo de espacio para el desarrollo</label>
-      <select name ="espacio" id="espacio" class="select-css" required >
+      <select name ="espacio" id="espacio" class="select-css"  >
         <option value ="" selected disabled>Selecciona un espacio</option>
         <option value ="CENTRO DE DESARROLO SOCIAL">CENTRO DE DESARROLO SOCIAL</option>
         <option value="TELECENTRO">TELECENTRO</option>
@@ -42,7 +42,7 @@
       </div>
     <div class= camp>
       <label form="tipo">Comuna o corregimiento</label>
-      <select name ="comuna" id="tipo" class="select-css" required >
+      <select name ="comuna" id="tipo" class="select-css"  >
         <option value ="" selected disabled>Selecciona una comuna</option>
         <option value ="1. Popular" >1. Popular</option>
         <option value="2. Santa Cruz"  >2. Santa Cruz</option>
@@ -67,20 +67,21 @@
         <option value ="90. Santa Elena" >90. Santa Elena</option>
       </select>
     </div>
-    <label for="">Identificador CDS</label>
-    <input type="text" name="identificadorCds" required>
+ 
       <label for="">Nombre</label>
-      <input type="text" name="nombre" required>
+      <input type="text" name="nombre" >
       <label for="">Dirección</label>
-      <input type="text" name="direccion" required>
+      <input type="text" name="direccion" >
         <label for="">Horario</label>
-        <input type="text" name= "horario" required>
+        <input type="text" name= "horario" >
         <label for="">Correo</label>
-        <input type="text" name= "correo" required>
+        <input type="text" name= "correo" >
         <label for="">Teléfono</label>
-        <input type="text" name= "telefono" required>
+        <input type="text" name= "telefono" >
         <label for="">Nombre Coordinador</label>
-        <input type="text" name= "nombreCoordinador" required>
+        <input type="text" name= "nombreCoordinador" >
+        <label for=""></label>
+        <input type="text" name= "concatenar" hidden >
 
     <div style ="display: unline;">
       <input type="submit" class="btn-save" value ="Guardar">

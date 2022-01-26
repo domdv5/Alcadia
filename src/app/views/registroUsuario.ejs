@@ -31,15 +31,24 @@
 </header>
   <div class="register-form">
   <h1>REGISTRO DE USUARIOS</h1>
+
   <form action="addUsers" method="POST">
+
     <label for="">Nombre CDS o TELECENTRO</label>
-    <input type="text" name="nombre" required>
+    <select  name="nombre_cds_telecentro" id="tipo"  class="select" required>
+      <option value ="" selected disabled>Selecciona una cds o telecentro</option>
+      <% for(let i = 0; i < data.length; i++) { %> 
+        <option value ="<%= data[i].concatenar %>" ><%= data[i].concatenar %> </option>
+        <%  } %> 
+      </select>
 
       <label for="">Código</label>
-      <input type="text" name="cedula" required>
+      <input type="text" name="codigo" pattern="[0-9]{4}" title="la contrasena debe ser numerica y debe contener 4 digitos" required>
+
       <label for="">Correo</label>
       <input type="text" name="correo" required>
         <label for="">Teléfono</label>
+
         <input type="text" name= "telefono" required>
 
     <label for="rol">Rol</label>

@@ -60,11 +60,11 @@
       </div>
       <div class=camp>
         <label form="">Fecha inicio</label>
-        <input type="text" placeholder="AAAA-MM-DD" required name="fecha_inicio">
+        <input type="date" placeholder="" required name="fecha_inicio">
       </div>
       <div class=camp>
         <label form="">Fecha final</label>
-        <input type="text" placeholder="AAAA-MM-DD" required name="fecha_final">
+        <input type="date" placeholder="" required name="fecha_final">
       </div>
       <div class=camp>
         <label form="">Hora apertura</label>
@@ -74,20 +74,29 @@
         <label form="">Hora cierre</label>
         <input type="time" placeholder="ingrese hora de cierre" required name="hora_cierre">
       </div>
-      </div>
-      <div class=camp>
-        <label form="">Lugar</label>
-        <input type="text" placeholder="Ingrese el CDS o Telecentro" required name="lugar">
-      </div>
-      <div class=camp>
+
+        <div class=camp>
+          <label form="tipo">Lugar</label>
+          <select name="lugar" id="tipo" class="select" required>
+            <option value="" selected disabled>Seleccione un cds o telecentro</option>
+            <% for (let i = 0; i < cds.length; i++) { %>
+            <option value="<%= cds[i].espacio %>"><%= cds[i].espacio %></option>
+            
+        </div>
+        <% } %> 
+        </select
+   
+
+
+     <div class=camp>
         <label form="">Ciudad</label>
         <input Id="" type="text" placeholder="Ingrese Ciudad" required name="ciudad">
       </div>
+
       <div class=camp>
         <label form="tipo">Comuna o corregimiento</label>
         <select name="comuna_corregimiento" id="tipo" class="select" required>
           <option value="" selected disabled>Selecciona una comuna</option>
-          <option value="1. Popular">1. Popular</option>
           <option value="2. Santa Cruz">2. Santa Cruz</option>
           <option value="3. Manrique">3. Manrique</option>
           <option value="4. Aranjuez">4. Aranjuez</option>
@@ -131,6 +140,12 @@
         <label form="">Nombre de indicadores PDM & PI </label>
         <input name="nombre_indicadores" type="text" placeholder="Ingrese Nombre de indicadores" required>
       </div>
+
+      <div class=camp>
+        <label form="">Nombre plan de desarrollo</label>
+        <input type="text" placeholder="Nombre plan de desarrollo" required name="nombres_plan_desarrollo">
+      </div>
+
       <div class=camp>
         <label form="">Códigos de indicadores PDM Y PI</label>
         <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" required>
@@ -153,7 +168,7 @@
     <a href="/activitiesTable" class="btn-save1">Tabla 📋</a>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <% if(typeof alert !="undefined" ){%>
+    <% if(typeof alert !=="undefined" ){%>
       <script>
         Swal.fire({
           title: '<%= title %>',

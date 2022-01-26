@@ -1,28 +1,75 @@
 const connection = require("../../config/db");
 const bcryptjs = require('bcryptjs');
-const express = require('express')
+const express = require('express');
 const router = express.Router()
 
 router.get('/login', (req, res) => {
   res.render("../views/login.ejs");
 })
 
+router.get('/prove', (req, res) => {
+  res.render("../views/prueba.ejs");
+})
+
 router.get('/users', (req, res) => {
-  res.render("../views/registroUsuario.ejs");
+  connection.query("SELECT * from cds;", (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.render("../views/registroUsuario.ejs", {
+        data: result,
+      })
+    }
+  })
 })
 
 router.get('/activities', (req, res) => {
-  res.render("../views/registroActividades.ejs");
+  connection.query("SELECT * FROM cds", (err, result) => {
+
+    if (err) {
+      res.send(err)
+    } else {
+      res.render("../views/registroActividades.ejs", {
+        cds: result
+      })
+    }
+  })
 })
-router.get('/visitorLogin', (req, res) => {
-  res.render("../views/ingresoVisitantes.ejs");
+
+
+
+
+
+
+router.get('/visitorLogin', async (req, res) => {
+
+  const dato = req.session.codigo
+
+
+  await connection.query(`SELECT actividades.nombre, usuarios.codigo , usuarios.nombre_cds_telecentro
+  FROM actividades,usuarios 
+  WHERE usuarios.codigo = ?` , [dato], (err, result) => {
+
+    const nombre = result[0].nombre_cds_telecentro
+
+    if (err) {
+      res.send(err)
+    } else {
+      res.render("../views/ingresoVisitantes.ejs", {
+        nombre,
+        rows: result,
+      })
+    }
+  })
 })
+
 router.get('/visitors', (req, res) => {
   res.render("../views/registroVisitantes.ejs");
 })
 
 router.get('/activitiesTable', (req, res) => {
   connection.query("SELECT * FROM actividades", (err, result) => {
+    console.log(result);
     if (err) {
       res.send(err);
     } else {
@@ -149,12 +196,15 @@ router.post("/edit.registro/:id", async (req, res) => {
 
 router.post('/addUsers', async (req, res) => {
 
-  const {cedula, nombre, correo, pass, telefono, rol } = req.body
+  const data = req.body
+  console.log(data);
+
+  const { nombre_cds_telecentro, codigo, correo, pass, telefono, rol } = req.body
   let passwordHaash = await bcryptjs.hash(pass, 8);
 
   const newUser = {
-    cedula,
-    nombre,
+    nombre_cds_telecentro,
+    codigo,
     correo,
     pass: passwordHaash,
     telefono,
@@ -163,6 +213,7 @@ router.post('/addUsers', async (req, res) => {
   await connection.query("INSERT INTO Usuarios SET ? ", [newUser], (error, rows) => {
     if (rows === undefined) {
       res.render('../views/registroUsuario.ejs', {
+        data: rows,
         alert: true,
         title: "Identificacion duplicada",
         icon: 'error',
@@ -172,6 +223,7 @@ router.post('/addUsers', async (req, res) => {
       })
     } else {
       res.render('../views/registroUsuario.ejs', {
+        data: rows,
         alert: true,
         title: 'Registro Satisfactorio',
         icon: 'success',
@@ -189,14 +241,16 @@ router.post('/addActivities', async (req, res) => {
 
   await connection.query('INSERT INTO actividades SET ?', [data], (err, result) => {
 
+
     if (result) {
       res.render('../views/registroActividades.ejs', {
         alert: true,
+        cds: result,
         title: "Registro Guardado",
         icon: 'success',
         showConfirmButton: false,
         timer: 2500,
-        ruta: 'activitiesTable'
+        ruta: 'activities '
       })
     } else {
       res.render('../views/registroActividades.ejs', {
@@ -213,8 +267,8 @@ router.post('/addActivities', async (req, res) => {
 
 router.post('/addVisitors', async (req, res) => {
   const data = req.body
-  console.log(data);
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
+    console.log(result);
     if (result === undefined) {
       res.render('../views/registroVisitantes.ejs', {
         alert: true,
@@ -239,11 +293,26 @@ router.post('/addVisitors', async (req, res) => {
 })
 
 router.post('/addCds', async (req, res) => {
-  const data = req.body
-  console.log(data);
-  await connection.query('INSERT INTO cds SET ?', [data], (err, result) => {
+  const { espacio, comuna, nombre, direccion, horario, correo, telefono, nombreCoordinador, concatenar } = req.body
+
+  const nombreCompleto = espacio.concat(" " + nombre)
+
+  const newCds = {
+    espacio,
+    comuna,
+    nombre,
+    direccion,
+    horario,
+    correo,
+    telefono,
+    nombreCoordinador,
+    concatenar : nombreCompleto
+  }
+
+  await connection.query('INSERT INTO cds SET ?', [newCds], (err, result) => {
     if (result === undefined) {
       res.render('../views/registroCds.ejs', {
+        nombreCompleto,
         alert: true,
         title: "intente de nuevo",
         icon: 'error',
@@ -268,10 +337,12 @@ router.post('/visitorsEntry', async (req, res) => {
 
   const data = req.body
 
-  await connection.query('INSERT INTO ingreso_visitantes SET ?', [data], (err, rows) => {
-    if (rows) {
+  await connection.query('INSERT INTO ingreso_visitantes SET ?', [data], (err, result) => {
+    if (result) {
       res.render('../views/ingresoVisitantes.ejs', {
         alert: true,
+        nombre: result,
+        rows: result,
         title: "Ingreso Exitoso",
         icon: 'success',
         showConfirmButton: false,
@@ -285,10 +356,13 @@ router.post('/visitorsEntry', async (req, res) => {
 
 router.post('/singUp', async (req, res) => {
 
-  const { cedula, pass } = req.body
+  const { codigo, pass } = req.body
 
-  if (cedula && pass) {
-    await connection.query('SELECT * FROM usuarios WHERE cedula = ?', [cedula], (err, result) => {
+  if (codigo && pass) {
+    await connection.query('SELECT * FROM usuarios WHERE codigo = ?', [codigo], (err, result) => {
+
+      req.session.codigo = result[0].codigo
+
       if (result.length === 0 || !(bcryptjs.compareSync(pass, result[0].pass))) {
         res.render('../views/login.ejs', {
           alert: true,
@@ -300,6 +374,7 @@ router.post('/singUp', async (req, res) => {
           ruta: 'login'
         })
       } else {
+
         res.render('../views/login.ejs', {
           alert: true,
           title: 'Inicio de sesion satisfactorio',
@@ -313,5 +388,19 @@ router.post('/singUp', async (req, res) => {
     })
   }
 })
+
+router.post('/idValidation', async (req, res) => {
+
+  const { numero_documento } = req.body
+
+  await connection.query('SELECT * FROM visitantes WHERE numero_documento = ? ', [numero_documento], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      res.json({ code: 200 })
+    }
+  })
+})
+
 
 module.exports = router

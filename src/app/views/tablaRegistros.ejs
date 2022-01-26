@@ -39,25 +39,26 @@
         </tr>
         </thead>
         <tbody>
+          
           <% for(let i = 0; i < registro.length; i ++ ) {%> 
             <tr>
-              <td> <%registro[i].id%> </td>
-              <td> <%registro[i].tipo_documento %> </td>
-              <td> <%registro[i].nombre_completo %> </td>
-              <td> <%registro[i].secretaria_entidad %> </td>
-              <td> <%registro[i].ocupacion %> </td>
-              <td> <%registro[i].fecha_nacimiento %> </td>
-              <td> <%registro[i].enfoque_diferencial %> </td>
-              <td> <%registro[i].degradacion_territorial %> </td>
-              <td> <%registro[i].correo_electronico%> </td>
-              <td> <%registro[i].organizacion%> </td>
-              <td> <%registro[i].telefono_celular%> </td>
-              <td> <%registro[i].sexo%> </td>
-              <td><a class="btn btn-outline-danger" href="/delete.registro/<%=registro[i].id%>"> ❌</a></td>
-              <td><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=registro[i].id %>" data-bs-whatever="@fat"> 🖋</button></td>
+              <td> <%=registro[i].numero_documento%> </td>
+              <td> <%=registro[i].tipo_documento %> </td>
+              <td> <%=registro[i].nombre_completo %> </td>
+              <td> <%=registro[i].secretaria_entidad %> </td>
+              <td> <%=registro[i].ocupacion %> </td>
+              <td> <%=registro[i].fecha_nacimiento %> </td>
+              <td> <%=registro[i].enfoque_diferencial %> </td>
+              <td> <%=registro[i].degradacion_territorial %> </td>
+              <td> <%=registro[i].correo_electronico%> </td>
+              <td> <%=registro[i].organizacion%> </td>
+              <td> <%=registro[i].telefono_celular%> </td>
+              <td> <%=registro[i].sexo%> </td>
+              <td><a class="btn btn-outline-danger" href="/delete.registro/<%=registro[i].numero_documento%>"> ❌</a></td>
+              <td><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=registro[i].numero_documento %>" data-bs-whatever="@fat"> 🖋</button></td>
             </tr>
 
-            <div class="modal fade" id="exampleModal<%=registro[i].id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal<%=registro[i].numero_documento%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -65,10 +66,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form method ="post" action="/edit.registro/<%= registro[i].id %>">
+                    <form method ="post" action="/edit.registro/<%= registro[i].numero_documento%>">
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">	Tipo de documento</label>
-                        <select name ="	tipo_documento" id="tipo" class="select"  value="<%=registro[i].	tipo_documento %>">
+                        <select name ="	tipo_documento" id="tipo" class="select"  value="<%=registro[i].tipo_documento %>">
                           <option value ="" selected disabled>Selecciona tipo de documento</option>
                           <option value ="cedula de ciudadania" >Cédula de Ciudadanía (CC)</option>
                           <option value="cedula de extranjeria"  >Cédula de extrangería (CE)</option>
@@ -79,9 +80,8 @@
                           <option value ="numero de identificacion personal" >Numero de Identificación Personal (NIP)</option>
                         </select>
                         </div>
-                        <div class="mb-3">
                           <label for="recipient-name" class="col-form-label">Nùmero de documento</label>
-                          <input type="text" class="form-control" id="recipient-name" name="id" value="<%= registro[i].id %>">
+                          <input type="text" class="form-control" id="recipient-name" name="id" value="<%= registro[i].numero_documento%>">
                         </div>
                         <div class="mb-3">
                           <label for="recipient-name" class="col-form-label">Nombre Completo</label>
