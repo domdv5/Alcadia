@@ -80,7 +80,7 @@
           <select name="lugar" id="tipo" class="select" required>
             <option value="" selected disabled>Seleccione un cds o telecentro</option>
             <% for (let i = 0; i < cds.length; i++) { %>
-            <option value="<%= cds[i].espacio %>"><%= cds[i].espacio %></option>
+            <option value="<%= cds[i].concatenar %>"><%= cds[i].concatenar %></option>
             
         </div>
         <% } %> 
