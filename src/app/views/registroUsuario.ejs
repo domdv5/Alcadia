@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/resources/css/style1.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/resources/css/registroUsuarios.css" type="text/css" media="all">
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
   <link type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png" rel="icon" />
@@ -17,7 +17,6 @@
       <ul>
         <li><a href="/visitors">Registro</a></li>
         <li><a href="/visitorLogin">Ingreso</a></li>
-        <li><a href="#">Reportes</a></li>
         <li><a href="#">Configuración</a>
           <ul>
             <li><a href="/activities">Actividades</a></li>
@@ -35,8 +34,8 @@
   <form action="addUsers" method="POST">
 
     <label for="">Nombre CDS o TELECENTRO</label>
-    <select  name="nombre_cds_telecentro" id="tipo"  class="select" required>
-      <option value ="" selected disabled>Selecciona una cds o telecentro</option>
+    <select  name="nombre_cds_telecentro" id="tipo"  class="select-css" required>
+      <option value ="" selected disabled>Selecciona un cds o telecentro</option>
       <% for(let i = 0; i < data.length; i++) { %> 
         <option value ="<%= data[i].concatenar %>" ><%= data[i].concatenar %> </option>
         <%  } %> 
@@ -47,9 +46,9 @@
 
       <label for="">Correo</label>
       <input type="text" name="correo" required>
-        <label for="">Teléfono</label>
 
-        <input type="text" name= "telefono" required>
+      <label for="">Teléfono</label>
+      <input type="number" name= "telefono" required>
 
     <label for="rol">Rol</label>
     <select name ="rol" id="rol" class="select-css"  required>
@@ -67,6 +66,8 @@
     </div>
   </form>
 </div>
+
+<a href="/usersTable" class="btn-save1">Tabla 📋</a>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 

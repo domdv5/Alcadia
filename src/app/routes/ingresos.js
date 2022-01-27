@@ -6,11 +6,9 @@ const router = express.Router()
 router.get('/login', (req, res) => {
   res.render("../views/login.ejs");
 })
-
 router.get('/prove', (req, res) => {
   res.render("../views/prueba.ejs");
 })
-
 router.get('/users', (req, res) => {
   connection.query("SELECT * from cds;", (err, result) => {
     if (err) {
@@ -22,7 +20,6 @@ router.get('/users', (req, res) => {
     }
   })
 })
-
 router.get('/activities', (req, res) => {
   connection.query("SELECT * FROM cds", (err, result) => {
 
@@ -35,12 +32,6 @@ router.get('/activities', (req, res) => {
     }
   })
 })
-
-
-
-
-
-
 router.get('/visitorLogin', async (req, res) => {
 
   const dato = req.session.codigo
@@ -51,7 +42,6 @@ router.get('/visitorLogin', async (req, res) => {
   WHERE usuarios.codigo = ?` , [dato], (err, result) => {
 
     const nombre = result[0].nombre_cds_telecentro
-
     if (err) {
       res.send(err)
     } else {
@@ -62,11 +52,9 @@ router.get('/visitorLogin', async (req, res) => {
     }
   })
 })
-
 router.get('/visitors', (req, res) => {
   res.render("../views/registroVisitantes.ejs");
 })
-
 router.get('/activitiesTable', (req, res) => {
   connection.query("SELECT * FROM actividades", (err, result) => {
     console.log(result);
@@ -79,7 +67,6 @@ router.get('/activitiesTable', (req, res) => {
     }
   })
 })
-
 router.get('/cdsTable', (req, res) => {
   connection.query("SELECT * FROM cds", (err, result) => {
     if (err) {
@@ -87,6 +74,46 @@ router.get('/cdsTable', (req, res) => {
     } else {
       res.render("../views/tablaCds.ejs", {
         cds: result
+      })
+    }
+  })
+})
+router.get('/usersTable', (req, res) => {
+  connection.query("SELECT * FROM usuarios", (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("../views/tablaUsuarios.ejs", {
+        data: result
+      })
+    }
+  })
+  
+})
+router.get('/visitorTable', (req, res) => {
+  
+  /* const dato = req.session.codigo
+
+  await connection.query(`SELECT actividades.nombre, usuarios.codigo , usuarios.nombre_cds_telecentro
+  FROM actividades,usuarios 
+  WHERE usuarios.codigo = ?`, [dato], (err, result) => {
+
+    const nombre = result[0].nombre_cds_telecentro;
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("../views/ingresoVisitantes.ejs", {
+        nombre,
+        rows: result,
+      });
+    }
+  }) */
+  connection.query("SELECT * FROM ingreso_visitantes", (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("../views/tablaVisitantes.ejs", {
+        visitor: result
       })
     }
   })
@@ -102,7 +129,6 @@ router.get('/registerTable', (req, res) => {
     }
   })
 })
-
 router.get('/registerCds', async (req, res) => {
 
   await connection.query("SELECT * FROM cds", (err, result) => {
@@ -115,7 +141,6 @@ router.get('/registerCds', async (req, res) => {
     }
   })
 })
-
 router.get('/delete.activities/:id', (req, res) => {
 
   const id = req.params.id
@@ -128,7 +153,6 @@ router.get('/delete.activities/:id', (req, res) => {
     }
   })
 })
-
 router.get('/delete.cds/:id', (req, res) => {
 
   const id = req.params.id
@@ -153,6 +177,30 @@ router.get('/delete.registro/:id', (req, res) => {
     }
   })
 })
+router.get('/delete.data/:id', (req, res) => {
+
+  const id = req.params.id
+
+  connection.query("DELETE FROM usuarios WHERE id_usuarios = ? ", [id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/visitorTable')
+    }
+  })
+})
+router.get('/delete.visitante/:id', (req, res) => {
+
+  const id = req.params.id
+
+  connection.query("DELETE FROM ingreso_visitantes WHERE id_visitantes = ? ", [id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/usersTable')
+    }
+  })
+})
 router.post("/edit.activities/:id", async (req, res) => {
 
   const id = req.params.id;
@@ -166,7 +214,6 @@ router.post("/edit.activities/:id", async (req, res) => {
     }
   })
 })
-
 router.post("/edit.cds/:id", async (req, res) => {
 
   const id = req.params.id;
@@ -177,6 +224,19 @@ router.post("/edit.cds/:id", async (req, res) => {
       res.send(err)
     } else {
       res.redirect('/cdsTable')
+    }
+  })
+})
+router.post("/edit.users/:id", async (req, res) => {
+
+  const id = req.params.id;
+  const data = req.body
+
+  await connection.query("UPDATE usuarios SET ? WHERE id_usuarios = ?", [data, id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/usersTable')
     }
   })
 })
@@ -193,7 +253,6 @@ router.post("/edit.registro/:id", async (req, res) => {
     }
   })
 })
-
 router.post('/addUsers', async (req, res) => {
 
   const data = req.body
@@ -234,7 +293,6 @@ router.post('/addUsers', async (req, res) => {
     }
   })
 })
-
 router.post('/addActivities', async (req, res) => {
 
   const data = req.body
@@ -264,7 +322,6 @@ router.post('/addActivities', async (req, res) => {
     }
   })
 })
-
 router.post('/addVisitors', async (req, res) => {
   const data = req.body
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
@@ -291,7 +348,6 @@ router.post('/addVisitors', async (req, res) => {
 
   })
 })
-
 router.post('/addCds', async (req, res) => {
   const { espacio, comuna, nombre, direccion, horario, correo, telefono, nombreCoordinador, concatenar } = req.body
 
@@ -332,7 +388,6 @@ router.post('/addCds', async (req, res) => {
     }
   })
 })
-
 router.post('/visitorsEntry', async (req, res) => {
 
   const data = req.body
@@ -353,7 +408,6 @@ router.post('/visitorsEntry', async (req, res) => {
   })
 
 })
-
 router.post('/singUp', async (req, res) => {
 
   const { codigo, pass } = req.body
@@ -388,7 +442,6 @@ router.post('/singUp', async (req, res) => {
     })
   }
 })
-
 router.post('/idValidation', async (req, res) => {
 
   const { numero_documento } = req.body
@@ -401,6 +454,5 @@ router.post('/idValidation', async (req, res) => {
     }
   })
 })
-
 
 module.exports = router

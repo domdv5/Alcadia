@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/resources/css/style3.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/resources/css/registroActividades.css" type="text/css" media="all">
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
   <link type="image/x-icon"
@@ -23,7 +23,6 @@
       <ul>
         <li><a href="/visitors">Registro</a></li>
         <li><a href="/visitorLogin">Ingreso</a></li>
-        <li><a href="#">Reportes</a></li>
         <li><a href="#">Configuración</a>
           <ul>
             <li><a href="/activities">Actividades</a></li>
@@ -74,19 +73,6 @@
         <label form="">Hora cierre</label>
         <input type="time" placeholder="ingrese hora de cierre" required name="hora_cierre">
       </div>
-
-        <div class=camp>
-          <label form="tipo">Lugar</label>
-          <select name="lugar" id="tipo" class="select" required>
-            <option value="" selected disabled>Seleccione un cds o telecentro</option>
-            <% for (let i = 0; i < cds.length; i++) { %>
-            <option value="<%= cds[i].concatenar %>"><%= cds[i].concatenar %></option>
-            
-        </div>
-        <% } %> 
-        </select
-   
-
 
      <div class=camp>
         <label form="">Ciudad</label>
@@ -140,6 +126,16 @@
         <label form="">Nombre de indicadores PDM & PI </label>
         <input name="nombre_indicadores" type="text" placeholder="Ingrese Nombre de indicadores" required>
       </div>
+      <div class=camp>
+        <label form="tipo">Lugar</label>
+        <select name="lugar" id="tipo" class="select" required>
+          <option value="" selected disabled>Seleccione un cds o telecentro</option>
+          <% for (let i = 0; i < cds.length; i++) { %>
+            <option value="<%= cds[i].concatenar %>"><%= cds[i].concatenar %></option>
+            <% } %>  
+    </select>
+  </div>
+ 
 
       <div class=camp>
         <label form="">Nombre plan de desarrollo</label>
@@ -150,6 +146,7 @@
         <label form="">Códigos de indicadores PDM Y PI</label>
         <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" required>
       </div>
+
       <div class=camp>
         <label form="tipo">Tipo de reunión</label>
         <select name="tipo_reunion" id="tipo" class="select" required>
@@ -160,9 +157,9 @@
           <option value="Capacitación">Capacitación</option>
           <option value="Formación">Formación</option>
           <option value="otro">Otro</option>
-          <input type="text" placeholder="¿Otro tipo de reunión?, ¿Cúal?">
         </select>
       </div>
+      
       <input type="submit" class="btn-save" value="Guardar">
     </form>
     <a href="/activitiesTable" class="btn-save1">Tabla 📋</a>
