@@ -5,7 +5,7 @@ const session = require('express-session');
 const app = express();
 
 
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 3000);
 app.set('view engine','ejs',);
 app.set('views',path.join(__dirname,'../app/views'));
 
@@ -20,7 +20,6 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
-
 
 
 

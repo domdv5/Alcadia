@@ -4,28 +4,37 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 	<title>tabla de cds</title>	
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/resources/css/tablas.css" type="text/css" media="all">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
   <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <style>
-     table.dataTable thead {
-      background: linear-gradient(to right,#0575e6, #00f260);
-      color: white;
-      text-align:left;
-       }  
-    </style>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+  <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.5/js/buttons.html5.styles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.5/js/buttons.html5.styles.templates.min.js"></script>
+  <link type="image/x-icon"
+    href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png"
+    rel="icon" />
+
 </head>
 <body>
-      <table id="cds"  class=" table table-striped table-ligth table-hover ">
+  <a href="/registerCds" class="btn btn-success"> ◀️ Volver al formulario</a>
+      <table id="example"  class=" table table-striped table-ligth table-hover ">
         <thead class="text-center">
+
         <tr>
           <th>Espacio</th>
-          <th>Comuna</th>
-          <th>Identificador Cds</th>
           <th>Nombre</th>
+          <th>Comuna</th>
+          <th>Nombre Completo</th>
           <th>Dirección</th>
           <th>Horario</th>
           <th>Teléfono</th>
@@ -40,20 +49,20 @@
           <% for(let i = 0; i < cds.length;i ++ ) {%> 
             <tr>
               <td><%= cds[i].espacio%></td>
-              <td><%= cds[i].Comuna%></td>
-              <td><%= cds[i].IdentificadorCds%></td>
               <td><%= cds[i].Nombre%></td>
+              <td><%= cds[i].Comuna%></td>
+              <td><%= cds[i].concatenar%></td>
               <td><%= cds[i].Direccion%></td>
               <td><%= cds[i].Horario%> </td>
               <td><%= cds[i].Telefono%> </td>
               <td><%= cds[i].correo%> </td>
               <td><%= cds[i].NombreCoordinador%> </td>
 
-              <td><a class="btn btn-outline-danger" href="/delete.cds/<%= cds[i].id%>"> ❌</a></td>
-              <td><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=cds[i].id%>" data-bs-whatever="@fat"> 🖋</button></td>
+              <td><a class="btn btn-outline-danger" href="/delete.cds/<%= cds[i].IdCds%>"> ❌</a></td>
+              <td><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=cds[i].IdCds%>" data-bs-whatever="@fat"> 🖋</button></td>
             </tr>
 
-            <div class="modal fade" id="exampleModal<%= cds[i].id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal<%= cds[i].IdCds%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -61,7 +70,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form method ="post" action="/edit.cds/<%= cds[i].id%>">
+                    <form method ="post" action="/edit.cds/<%= cds[i].IdCds%>">
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">Espacio</label>
                         <select name ="espacio" id="tipo" class="select"  value="<%=cds[i].espacio %>">
@@ -97,10 +106,7 @@
                             <option value ="90. Santa Elena" >90. Santa Elena</option>
                           </select>
                         </div>
-                      <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Identificador CDS</label>
-                        <input type="text" class="form-control" id="recipient-name" name="IdentificadorCds" value="<%= cds[i].IdentificadorCds %>">
-                      </div>
+              
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">Nombre</label>
                         <input class="form-control" id="message-text" name="Nombre" value="<%= cds[i].Nombre%>">
@@ -127,8 +133,8 @@
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">❎</button>
-                    <input type="submit" class="btn btn-primary" value ="👌">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-primary" value ="Editar">
                   </div>
                 </form>
               </div>
@@ -138,13 +144,61 @@
             <% } %>
         </tbody>
     </table> 
-<script>
-$(document).ready(function() {
-    $('#cds').DataTable({
-        "serverSide": false,
-    })
-} )
-</script>
+    <script>
+      $(document).ready(function() {
+         table = $('#example').DataTable({
+    
+        });
+    
+        //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+        $('#example thead tr').clone(true).appendTo( '#example thead' );
+    
+        $('#example thead tr:eq(1) th').each( function (i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
+     
+            $( 'input', this ).on( 'keyup change', function () {
+                if ( table.column(i).search() !== this.value ) {
+                    table
+                        .column(i)
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+       
+        } );  
+    
+        table.destroy();
+    
+    $(document).ready(function() {
+    $('#example').DataTable({
+      orderCellsTop: true,
+      destroy: true,
+       fixedHeader: true,
+            "language": {
+              "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+              },
+                "dom": 'Bfrtlip',
+                  "buttons":{
+                    "dom":{
+                     "button":{
+                       "className": 'btn'
+                              }
+                            },
+                  "buttons":[{
+                     "extend":"excel",
+                       "text": '<i class="fas fa-file-excel"></i>',
+                         "className": 'btn btn-outline-success mb-1',
+                              "titleAttr": 'Exportar a Excel',
+                              "excelStyles":{
+                                "template": 'green_medium'
+                              }
+                            }]
+                          }                                              
+          })          
+        });
+      }); 
+      </script>
 </body>
 
 </html>

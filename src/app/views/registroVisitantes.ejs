@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/resources/css/style2.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/resources/css/registroVisitantes.css" type="text/css" media="all">
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
   <link type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png" rel="icon" />
@@ -20,7 +20,6 @@
       <ul>
         <li><a href="/visitors">Registro</a></li>
         <li><a href="/visitorLogin">Ingreso</a></li>
-        <li><a href="#">Reportes</a></li>
         <li><a href="#">Configuración</a>
           <ul>
             <li><a href="/activities">Actividades</a></li>
@@ -28,7 +27,7 @@
             <li><a href="/users">Registro usuarios</a></li>
           </ul>
         </li>
-        <li><a href="#">Salir</a></li>
+        <li><a href="/logout">Salir</a></li>
       </ul>
     </nav>
 </header>
@@ -61,6 +60,7 @@
     <label form="">Secretaría o Entidad</label>
     <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" required>
   </div>
+
   <div class= camp>
     <label form="">Ocupación</label>
     <input type="text" name="ocupacion" placeholder="Empleo/Cargo actual"required>
@@ -143,6 +143,14 @@
       <div><input type="radio" name="sexo" value="Hombre" required autocomplete>Hombre</div>
       <div><input type="radio" name="sexo" value="Mujer" required autocomplete>Mujer</div>
     </div>
+
+    <div class=camp>
+      <label form="">Lugar </label>
+      <select class="form-select" name="IdCds">
+     <option selected value="<%= id_cds %> "> <%= name %>  </option>
+    </div>
+
+
     <input type="submit"
      class="btn-save" value ="Registrar">
 </form>

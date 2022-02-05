@@ -1,0 +1,16 @@
+table{
+  position: relative;
+}
+table.dataTable thead {
+ background: linear-gradient(to right,#3e4246, #8d9aa0);
+ color: white;
+ text-align:left;
+  }  
+.btn-success{
+position:relative;
+top:30px;
+left: 43%;
+height: 3rem;
+
+text-align: center;
+}
