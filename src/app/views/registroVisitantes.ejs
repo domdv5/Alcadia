@@ -20,6 +20,7 @@
       <ul>
         <li><a href="/visitors">Registro</a></li>
         <li><a href="/visitorLogin">Ingreso</a></li>
+        
         <li><a href="#">Configuración</a>
           <ul>
             <li><a href="/activities">Actividades</a></li>
@@ -61,11 +62,14 @@
     <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" required>
   </div>
 
-  <div class= camp>
+
+
+   <div class= camp>
     <label form="">Ocupación</label>
     <input type="text" name="ocupacion" placeholder="Empleo/Cargo actual"required>
   </div>
 
+  
 
   <div class= camp>
     <label form="">Fecha de Nacimiento</label>
@@ -92,6 +96,14 @@
       <option value ="Poblacion victima">Población victima</option>
     </select>
   </div>
+  
+  <div class= camp>
+    <label form="">Lugar </label>
+    <select class="form-select" name="IdCds">
+   <option selected value="<%= id_cds %> "> <%= name %>  </option>
+    </select>
+  </div>
+
   <div class= camp>
     <label form="tipo">Degradación territorial</label>
     <select name ="degradacion_territorial" id="tipo" class="select" required>
@@ -123,6 +135,7 @@
     <label form="">Correo Electrónico</label>
     <input type="email" name="correo_electronico" placeholder="Ingrese Correo Electrónico" required>
   </div>
+  
   <div class= camp>
     <label form="tipo">Organización</label>
     <select name ="organizacion" id="tipo" class="select" required>
@@ -138,17 +151,15 @@
       <label form="">Teléfono o Celular</label>
       <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"required>
     </div>
+
+
     <div class="sexo"  required>
       <label form="" >Seleciona el Sexo</label>
-      <div><input type="radio" name="sexo" value="Hombre" required autocomplete>Hombre</div>
-      <div><input type="radio" name="sexo" value="Mujer" required autocomplete>Mujer</div>
+      <div><input type="radio" name="sexo" value="Masculino" required autocomplete>Masculino</div>
+      <div><input type="radio" name="sexo" value="Femenino" required autocomplete>Femenino</div>
     </div>
 
-    <div class=camp>
-      <label form="">Lugar </label>
-      <select class="form-select" name="IdCds">
-     <option selected value="<%= id_cds %> "> <%= name %>  </option>
-    </div>
+
 
 
     <input type="submit"
