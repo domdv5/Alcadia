@@ -32,7 +32,6 @@
       <table id="example"  class=" table table-striped table-ligth table-hover ">
         <thead class="text-center">
         <tr>
-          <th>ID Visitante</th>
           <th>Cédula</th>
           <th>Fecha</th>
           <th>Hora</th>
@@ -45,11 +44,10 @@
           
           <% for(let i = 0; i < visitor.length; i ++ ) {%> 
             <tr>
-              <td> <%=visitor[i].id_visitantes%> </td>
               <td> <%=visitor[i].cedula %> </td>
               <td> <%=visitor[i].fecha %> </td>
               <td> <%=visitor[i].hora %> </td>
-              <td> <%=visitor[i].nombre_cds_telecentro%> </td>
+              <td> <%=visitor[i].concatenar%> </td>
               <td> <%=visitor[i].actividad %> </td>
 
               <td>
@@ -87,15 +85,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form method ="post" action="/edit.registro/<%= visitor[i].id_visitantes%>">
+                    <form method ="post" action="/edit.ingreso/<%= visitor[i].id_visitantes%>">
                         <div class="mb-3">
                           <label for="recipient-name" class="col-form-label">Nùmero de documento</label>
                           <input type="number" class="form-control" id="recipient-name" name="cedula" value="<%= visitor[i].cedula%>">
                         </div>
+
                         <div class="mb-3">
-                          <label for="recipient-name" class="col-form-label">Fecha y hora</label>
-                          <input type="datetime-local" class="form-control" id="recipient-name" name="hora" value="<%= visitor[i].hora%>">
+                          <label for="recipient-name" class="col-form-label">Fecha</label>
+                          <input type="date" class="form-control" id="recipient-name" name="fecha" value="<%= visitor[i].fecha%>">
                         </div>
+
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Hora</label>
+                          <input type="time" class="form-control" id="recipient-name" name="hora" value="<%= visitor[i].hora%>">
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="message-text" class="col-form-label">Tipo de reunión</label>
+                          <select name ="actividad" id="tipo" class="select" value="<%= visitor[i].actividad %>">
+                            <option value ="<%= visitor[i].actividad %>" selected disabled><%= visitor[i].actividad %></option>
+                            <% for(let i = 0; i < visitor.length; i++) { %>
+                              <option value ="<%= visitor[i].id_actividades %> " ><%= visitor[i].actividad  %> </option>
+                              <% } %>  
+                            </select>
+                          </div>
+                     
 
                        <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar</button>
