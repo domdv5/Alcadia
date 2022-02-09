@@ -53,7 +53,7 @@ router.get('/activities', (req, res) => {
   }
 })
 
-  router.get('/visitorLogin', async (req, res) => {
+router.get('/visitorLogin', async (req, res) => {
 
   const dato = req.session.codigo
   const id = req.session.id_cds
@@ -73,6 +73,7 @@ router.get('/activities', (req, res) => {
         res.send(err)
       } else {
         res.render("../views/ingresoVisitantes.ejs", {
+          id,
           nombre,
           rows: result,
         })
@@ -173,10 +174,13 @@ router.get('/usersTable', (req, res) => {
 
 router.get('/visitorTable', async (req, res) => {
 
-
+  const id = req.session.id_cds
 
   if (req.session.login) {
-     connection.query("SELECT * FROM ingreso_visitantes", (err, result) => {
+    connection.query(`SELECT ingreso_visitantes.*, cds.concatenar FROM ingreso_visitantes
+    INNER JOIN cds on ingreso_visitantes.IdCds = cds.IdCds WHERE ingreso_visitantes.IdCds = ?`, [id], (err, result) => {
+
+
       if (err) {
         res.send(err);
       } else {
@@ -184,7 +188,7 @@ router.get('/visitorTable', async (req, res) => {
           visitor: result
         })
       }
-    }) 
+    })
   } else {
     res.render('../views/login.ejs')
   }
@@ -297,7 +301,7 @@ router.post("/edit.activities/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body
 
- 
+
 
   await connection.query("UPDATE Actividades SET ? WHERE id_actividades = ?", [data, id], (err, result) => {
     if (err) {
@@ -344,15 +348,26 @@ router.post("/edit.registro/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body
 
-
-
-
+  console.log(data);
 
   await connection.query("UPDATE visitantes SET ? WHERE numero_documento = ?", [data, id], (err, result) => {
     if (err) {
       res.send(err)
     } else {
       res.redirect('/registerTable')
+    }
+  })
+})
+
+router.post("/edit.ingreso/:id", async (req, res) => {
+  const id = req.params.id;
+  const data = req.body
+
+  await connection.query("UPDATE ingreso_visitantes set ? WHERE id_visitantes = ?", [data, id], (err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.redirect('/visitorTable')
     }
   })
 })
@@ -412,7 +427,7 @@ router.post('/addActivities', async (req, res) => {
         cds: result,
         nombre: result,
         id: result,
-        id_cds : result,
+        id_cds: result,
         name: result,
         title: "Registro Guardado",
         icon: 'success',
@@ -509,12 +524,16 @@ router.post('/addCds', async (req, res) => {
 router.post('/visitorsEntry', async (req, res) => {
 
   const data = req.body
+  const id =  req.session.id_cds 
+
+  console.log(id);
 
 
   await connection.query('INSERT INTO ingreso_visitantes SET ?', [data], (err, result) => {
     if (result) {
       res.render('../views/ingresoVisitantes.ejs', {
         alert: true,
+        id:result,
         nombre: result,
         rows: result,
         title: "Ingreso Exitoso",
@@ -536,7 +555,7 @@ router.post('/singUp', async (req, res) => {
     await connection.query(`SELECT usuarios.*, cds.concatenar FROM usuarios
     INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.codigo = ?`, [codigo], (err, result) => {
 
- 
+
 
 
       req.session.nombre = result[0].concatenar
@@ -577,7 +596,10 @@ router.post('/singUp', async (req, res) => {
 
 router.post('/idValidation', async (req, res) => {
 
-  const { numero_documento } = req.body
+  const date = { numero_documento } = req.body
+
+
+
 
   await connection.query('SELECT * FROM visitantes WHERE numero_documento = ? ', [numero_documento], (err, result) => {
     if (result.length === 0) {

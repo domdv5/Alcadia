@@ -70,13 +70,13 @@ margin: 0.5rem 0;
   font-size: 1.1rem;
   height: 2.2rem;
   padding-left: 0.5rem;
-
+  width: 90%;
   border: 2px solid cornflowerblue;
   border-radius: 5px;
 }
 .camp select{
   font-size: 1.1rem;
-  width: 12;
+  width: 90%;
   height: 2.6rem;
   padding-left: 0.5rem;
   border: 2px solid cornflowerblue;
@@ -280,10 +280,10 @@ footer{
 }
 .btn-save1{
   width: 10%;
-  height: 2rem;
+  height: 4.5rem;
   padding: 15px;
-margin-left: 43%;
-text-align: center;
+  margin-left: 43%;
+  text-align: center;
   background-color:  #364D5C;
   border: 0;
   cursor: pointer;

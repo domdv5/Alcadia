@@ -64,36 +64,53 @@
           </span>
           <input type="date" name="fecha" >
         </fieldset>
-        <fieldset>
 
+        
+
+        <fieldset>
           <span>
             <i class="fa fa-clock-o"></i>
           </span>
           <input type="time" name="hora">
         </fieldset>
-        
-          <fieldset>
-            <span>
-              <i class="fa fa-book fa-home "></i>
-            </span>
-            <input  name="nombre_cds_telecentro"  aria-disabled="true" readonly value="<%= nombre %> ">
-          </fieldset>
-          <input id='btnLogin' type='submit'>
-            <fieldset>
+
+
+        <div class="mb-3">
+        <fieldset>
           <span>
             <i class="fa fa-book fa-fw"></i>
             </span>
-          <div class= camp>
+      
+          <div class="camp">
             <label  placeholder="actividad"form="tipo" ></label>
             <select name ="actividad" id="tipo" class="select" required >
               <option value ="" selected disabled>Selecciona una actividad</option>
               <% for(let i = 0; i < rows.length; i++) { %> 
-              <option value ="<%= rows[i].nombre %>"  ><%= rows[i].nombre %> </option>
+              <option value ="<%= rows[i].nombre %>"><%= rows[i].nombre %></option>
               <%  } %> 
             </select>
           </div>
           </fieldset>
+        </div>
+        
+        <div class="my-4">
+        <fieldset>
+          <span>
+            <i class="fa fa-clock-o"></i>
+          </span>
+        <div class=camp>
+          <select class="select" name="IdCds">
+         <option  value="<%= id %>"> <%= nombre %> </option>
+         </select>
+        </div>
+      </fieldset>
+    </div>
+    
 
+
+     
+        <input id='btnLogin' type='submit' value="Ingresar">
+        
   
       </form>
       

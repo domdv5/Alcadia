@@ -49,7 +49,7 @@
               <td> <%=visitor[i].cedula %> </td>
               <td> <%=visitor[i].fecha %> </td>
               <td> <%=visitor[i].hora %> </td>
-              <td> <%=visitor[i].nombre_cds_telecentro%> </td>
+              <td> <%=visitor[i].concatenar%> </td>
               <td> <%=visitor[i].actividad %> </td>
 
               <td><a class="btn btn-outline-danger" title="Eliminar" href="/delete.visitante/<%=visitor[i].id_visitantes%>"> ❌</a>
@@ -64,14 +64,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form method ="post" action="/edit.registro/<%= visitor[i].id_visitantes%>">
+                    <form method ="post" action="/edit.ingreso/<%= visitor[i].id_visitantes%>">
                         <div>
                           <label for="recipient-name" class="col-form-label">Nùmero de documento</label>
                           <input type="number" class="form-control" id="recipient-name" name="cedula" value="<%= visitor[i].cedula%>">
                         </div>
+
                         <div class="mb-3">
-                          <label for="recipient-name" class="col-form-label">Fecha y hora</label>
-                          <input type="datetime-local" class="form-control" id="recipient-name" name="hora" value="<%= visitor[i].hora%>">
+                          <label for="recipient-name" class="col-form-label">Fecha</label>
+                          <input type="date" class="form-control" id="recipient-name" name="fecha" value="<%= visitor[i].fecha%>">
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Hora</label>
+                          <input type="time" class="form-control" id="recipient-name" name="hora" value="<%= visitor[i].hora%>">
                         </div>
 
                        <div class="modal-footer">

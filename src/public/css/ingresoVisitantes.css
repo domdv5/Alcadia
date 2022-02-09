@@ -1,7 +1,4 @@
 
-
-
-
 html {
   height: 100%;
 }
@@ -123,7 +120,6 @@ body {
   position: absolute;
   left: 50%;
   margin-left: -10.5rem;
-  margin-top: 5.5rem;
   width: 21rem;
   height: 3rem;
   background-color: #42C474;
@@ -208,17 +204,7 @@ button#createAccount {
 button#createAccount:hover {
   background-color: #228fd8;
 }
-.credits {
-  display: block;
-  padding-top: 2em;
-  text-align: center;
-  text-decoration: none;
-}
 
-.credits a {
-  color: #364D5C;
-  text-decoration: none;
-}
 *{
   margin: 0;
   padding: 0;
@@ -299,17 +285,20 @@ margin: 1.7rem 4;
   font-weight:3rem;
   width: 3.5rem;
   margin-top: 0.2rem;
-  color:rgb(56, 56, 56)
+  color:rgb(56, 56, 56);
+  
 }
 
 .camp select{
   font-size: 1rem;
   width: auto;
-  height: 3.5rem;
+  height: 3.7rem;
   padding-left: 0rem;
-  margin-top: -3px;
-
+  margin-top: -4.7px;
 }
+
+
+
 footer{
   width: 100%;
   background-color: #364D5C;
