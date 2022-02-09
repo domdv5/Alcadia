@@ -237,11 +237,27 @@ router.get('/delete.activities/:id', (req, res) => {
 
   const id = req.params.id
 
-  connection.query("DELETE FROM Actividades WHERE id = ?", [id], (err, result) => {
-    if (err) {
-      res.send(err)
+  connection.query("DELETE FROM Actividades WHERE id_actividades = ?", [id], (err, result) => {
+
+    if (result) {
+      res.render('../views/tablaActividades.ejs', {
+        actividad: result,
+        alert: true,
+        title: "REGISTRO ELIMINADO",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'activitiesTable'
+      })
     } else {
-      res.redirect('/activitiesTable')
+      res.render('../views/tablaActividades.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'activitiesTable'
+      })
     }
   })
 })
@@ -249,11 +265,26 @@ router.get('/delete.cds/:id', (req, res) => {
 
   const id = req.params.id
 
-  connection.query("DELETE FROM cds WHERE id = ? ", [id], (err, result) => {
-    if (err) {
-      res.send(err)
+  connection.query("DELETE FROM cds WHERE IdCds = ? ", [id], (err, result) => {
+    if (result) {
+      res.render('../views/tablaCds.ejs', {
+        alert: true,
+        cds: result,
+        title: "REGISTRO ELIMINADO",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'cdsTable'
+      })
     } else {
-      res.redirect('/cdsTable')
+      res.render('../views/tablaCds.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'cdsTable'
+      })
     }
   })
 })
@@ -262,56 +293,112 @@ router.get('/delete.registro/:id', (req, res) => {
   const id = req.params.id
 
   connection.query("DELETE FROM visitantes WHERE numero_documento = ? ", [id], (err, result) => {
-    if (err) {
-      res.send(err)
+    
+    if (result) {
+      res.render('../views/tablaRegistros.ejs', {
+        alert: true,
+        registro: result,
+        title: "REGISTRO ELIMINADO",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'registerTable'
+      })
     } else {
-      res.redirect('/registerTable')
+      res.render('../views/tablaRegistros.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'registerTable'
+      })
     }
   })
 })
-
 router.get('/delete.data/:id', (req, res) => {
 
   const id = req.params.id
 
   connection.query("DELETE FROM usuarios WHERE id_usuarios = ? ", [id], (err, result) => {
-    if (err) {
-      res.send(err)
+    if (result) {
+      res.render('../views/tablaUsuarios.ejs', {
+        alert: true,
+        data: result,
+        title: "REGISTRO ELIMINADO",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'usersTable'
+      })
     } else {
-      res.redirect('/visitorTable')
+      res.render('../views/tablaUsuarios.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'usersTable'
+      })
     }
   })
 })
-
 router.get('/delete.visitante/:id', (req, res) => {
 
   const id = req.params.id
 
   connection.query("DELETE FROM ingreso_visitantes WHERE id_visitantes = ? ", [id], (err, result) => {
-    if (err) {
-      res.send(err)
+    if (result) {
+      res.render('../views/tablaVisitantes.ejs', {
+        alert: true,
+        visitor: result,
+        title: "REGISTRO ELIMINADO",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'visitorTable'
+      })
     } else {
-      res.redirect('/usersTable')
+      res.render('../views/tablaVisitantes.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'visitorTable'
+      })
     }
   })
 })
-
 router.post("/edit.activities/:id", async (req, res) => {
 
   const id = req.params.id;
   const data = req.body
 
-
-
   await connection.query("UPDATE Actividades SET ? WHERE id_actividades = ?", [data, id], (err, result) => {
-    if (err) {
-      res.send(err)
+    if (result) {
+      res.render('../views/tablaActividades.ejs', {
+        alert: true,
+        actividad: result,
+        data: result,
+        title: "ACTUALIZACIÓN EXITOSA",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'activitiesTable'
+      })
     } else {
-      res.redirect('/activitiesTable')
+      res.render('../views/tablaActividades.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'activitiesTable'
+      })
     }
   })
 })
-
 router.post("/edit.cds/:id", async (req, res) => {
 
   const id = req.params.id;
@@ -319,14 +406,28 @@ router.post("/edit.cds/:id", async (req, res) => {
 
 
   await connection.query("UPDATE cds SET ? WHERE IdCds = ?", [data, id], (err, result) => {
-    if (err) {
-      res.send(err)
+    if (result) {
+      res.render('../views/tablaCds.ejs', {
+        alert: true,
+        cds: result,
+        title: "ACTUALIZACIÓN EXITOSA",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'cdsTable'
+      })
     } else {
-      res.redirect('/cdsTable')
+      res.render('../views/tablaCds.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'cdsTable'
+      })
     }
   })
 })
-
 router.post("/edit.users/:id", async (req, res) => {
 
   const id = req.params.id;
@@ -335,39 +436,60 @@ router.post("/edit.users/:id", async (req, res) => {
 
 
   await connection.query("UPDATE usuarios SET ? WHERE id_usuarios = ?", [data, id], (err, result) => {
-    if (err) {
-      res.send(err)
+    if (result) {
+      res.render('../views/tablaUsuarios.ejs', {
+        alert: true,
+        data: result,
+        title: "ACTUALIZACIÓN EXITOSA",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'usersTable'
+      })
     } else {
-      res.redirect('/usersTable')
+      res.render('../views/tablaUsuarios.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'usersTable'
+      })
     }
   })
 })
-
 router.post("/edit.registro/:id", async (req, res) => {
 
   const id = req.params.id;
   const data = req.body
 
-  console.log(data);
-
   await connection.query("UPDATE visitantes SET ? WHERE numero_documento = ?", [data, id], (err, result) => {
-    if (err) {
-      res.send(err)
+    if (result === undefined) {
+      res.render('../views/tablaVisitantes.ejs', {
+        alert: true,
+        visitor: result,
+        registro: result,
+        id_cds: result,
+        name: result,
+        title: "Identificacion duplicada",
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'visitors'
+      })
     } else {
-      res.redirect('/registerTable')
-    }
-  })
-})
-
-router.post("/edit.ingreso/:id", async (req, res) => {
-  const id = req.params.id;
-  const data = req.body
-
-  await connection.query("UPDATE ingreso_visitantes set ? WHERE id_visitantes = ?", [data, id], (err, result) => {
-    if (err) {
-      res.send(err)
-    } else {
-      res.redirect('/visitorTable')
+      res.render('../views/tablaVisitantes.ejs', {
+        alert: true,
+        visitor: result,
+        registro: result,
+        id_cds: result,
+        name: result,
+        title: 'ACTUALIZACIÓN EXITOSA',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'visitors'
+      })
     }
   })
 })
