@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router()
 
 router.get('/login', (req, res) => {
-  res.render("../views/login.ejs");
+  res.render("../views/login.ejs")
 })
 
 router.get('/prove', (req, res) => {
