@@ -463,8 +463,6 @@ router.post("/edit.users/:id", async (req, res) => {
     }
   })
 })
-
-
 router.post("/edit.registro/:id", async (req, res) => {
 
   const id = req.params.id;
@@ -501,8 +499,6 @@ router.post("/edit.registro/:id", async (req, res) => {
   })
 })
 
-
-
 /* esta es la nueva ruta */
 router.post('/edit.ingreso/:id' , async (req,res)=>{
 
@@ -510,19 +506,31 @@ router.post('/edit.ingreso/:id' , async (req,res)=>{
   const data = req.body
 
 
-  await connection.query("UPDATE ingreso_visitantes SET ? WHERE cedula = ?", [data, id], (err, result) =>{
-    if (err) {
-      console.log(err);
-    }else{
+  await connection.query("UPDATE ingreso_visitantes SET ? WHERE id_visitantes  = ?", [data, id], (err, result) =>{
+    if (result) {
       res.render('../views/tablaVisitantes.ejs', {
-        visitor: result
+        alert: true,
+        visitor: result,
+        cds: result,
+        title: "ACTUALIZACIÓN EXITOSA",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'visitorTable'
+      })
+    } else {
+      res.render('../views/tablaVisitantes.ejs', {
+        alert: true,
+        title: 'Error',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: 'visitorTable'
       })
     }
   })
-}) 
+})
 /* esta es la nueva ruta */
-
-
 
 router.post('/addUsers', async (req, res) => {
 
