@@ -23,7 +23,30 @@
   <link type="image/x-icon"
     href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png"
     rel="icon" />
-
+  <script>
+     function GetTypes(){
+          var select = document.getElementById("tipo");
+         $.ajax({
+           url: location.origin + "/GetVisitorTypes",
+           type: "POST",
+           success: data => {
+             var option = document.createElement("option");
+             option.value="";
+             option.text = "Seleccione";
+             select.innerHTML = "";
+             select.appendChild(option);
+             //Object.keys(objeto).length
+             for (let i = 0; i < data.length; i++) {
+              var opt = document.createElement("option");
+              opt.value = data[i].id_actividades;
+              opt.text = data[i].nombre;
+              select.appendChild(opt);
+               
+             }
+           }
+         });
+        }
+  </script>
 </head>
 <body>
   <h2>TABLA <span class="text-muted">INGRESO DE VISITANTES</span> </h2>
@@ -74,7 +97,7 @@
                     </div>
                   </div>
                 </div>
-              <button type="button" title="Editar" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=visitor[i].id_visitantes %>" data-bs-whatever="@fat"> 🖋</button></td>
+              <button type="button" title="Editar" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=visitor[i].id_visitantes %>" data-bs-whatever="@fat" onclick="GetTypes()"> 🖋</button></td>
             </tr>
 
             <div class="modal fade" id="exampleModal<%=visitor[i].id_visitantes%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -104,10 +127,11 @@
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label">Tipo de reunión</label>
                           <select name ="actividad" id="tipo" class="select" value="<%= visitor[i].actividad %>">
-                            <option value ="<%= visitor[i].actividad %>" selected disabled><%= visitor[i].actividad %></option>
+                            <option value="">Seleccione</option>
+                           <!-- <option value ="<%= visitor[i].actividad %>" selected disabled><%= visitor[i].actividad %></option>
                             <% for(let i = 0; i < visitor.length; i++) { %>
                               <option value ="<%= visitor[i].id_actividades %> " ><%= visitor[i].actividad  %> </option>
-                              <% } %>  
+                              <% } %>  -->
                             </select>
                           </div>
                      
@@ -131,7 +155,7 @@
           destroy: true,
            fixedHeader: true 
         });
-    
+       
         //Creamos una fila en el head de la tabla y lo clonamos para cada columna
         $('#example thead tr').clone(true).appendTo( '#example thead' );
     
