@@ -19,18 +19,20 @@ main{
  padding-block: 3%;
 }
 h1 {
-  padding-top: 200x;
-  color: #EEEEEE;
-  width: 50%;
+  padding-top: 4px;
+  color: #ffffff;
+  width: 40%;
   font-size: 2rem;
   margin-left: auto;
   margin-right: auto;
   height: 3rem;
+  font-style: unset;
   background-color: #364D5C;
   text-align: center;
   border: none;
   float: center;
   box-sizing: border-box;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .wrapper {
   position: absolute;
@@ -49,8 +51,6 @@ form {
   margin: 0 auto;
   padding: 0px 20px 60px 20px;
   margin-top: 35px;
-  font-size: 15px;
-
   margin-left: auto;
   margin-right: auto;
 
@@ -107,80 +107,14 @@ margin: 3px 3 ;
 .btn-save:focus{
   box-shadow:0 0 0 3px #3a5f77;
 }
-*{
-  margin: 0;
-  padding: 0;
-}
-.encab{
-  background: #364D5C;
-  height: 100px;
-
-}
-img{
-  width: 170px;
-  border-radius: 5%;
-  position:absolute;
-  margin-left: 60px; 
-}
-.encab nav{
-  display: flex;
-  justify-content: space-around;
-  float: right; 
-  padding-top: 30px;
-  margin-right: 20px;
-}
-.encab nav ul{
-  list-style: none;
-  display:flex;
-  justify-content: space-between;
-  
-}
-a{
-  text-decoration: none;
-  font-family: rale;
-  font-size: 20px;
-  color: white;
-  padding: 12px;
-  display: block;
-}
-a:hover{
-  background: rgb(155, 176, 245);
-}
-.encab nav ul li ul{
-  display: flex;
-  flex-direction:column;
-}
-.encab nav ul li ul{
-  position: absolute;
-  background: #364D5C;
-}
-.encab nav ul li ul li{
-  width: 173px;
-  position: relative;
-
-}
-.encab nav ul li ul{
-  display: none;
-}
-.encab nav ul li:hover > ul{
-  display: block;
-}
-nav ul li a{
-  color: white;
-  font-size: 15px;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding-left: 15px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-family: rale;
-}
 
 footer{
   width: 100%;
   background-color: #364D5C;
-  padding: 50x 0px;
-  height: 23rem;
+  padding: 0px 0px 0px;
+  height: 25rem;
+  margin: auto;
+  margin: auto;
   margin-top: 5rem;
 }
 .container_footer{
@@ -225,7 +159,7 @@ footer{
 
 .btn-save1{
   width: 10%;
-  height: 2rem;
+  height: 4rem;
   padding: 15px;
 margin-left: 43%;
 text-align: center;
@@ -245,4 +179,58 @@ text-align: center;
 }
 .btn-save1:focus{
   box-shadow:0 0 0 3px #3a5f77;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+.img1{
+  width: 170px;
+  border-radius: 5%;
+  position:absolute;
+  margin-left: 60px; 
+}
+.a1:hover{
+  background: rgb(155, 176, 245);
+}
+img{
+  margin-left: 40px ;
+}
+strong{
+  color:#364D5C;;
+  margin-left: 0%;
+  font-size: 20px;
+  margin-top: auto;
+}
+a{
+  text-decoration: none;
+  font-family: rale;
+  font-size: 20px;
+  color: white;
+  padding: 12px;
+  display: block;
+}
+ul li ul{
+  display: flex;
+  flex-direction:column;
+}
+ul li ul{
+  position: absolute;
+  background: #364D5C;
+}
+ul li ul li{
+  width: 175px;
+  background-color:#fdfdfd ;
+  position: revert;
+}
+ul li ul li a{
+text-align: center;
+ font-size: medium;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+ul li ul{
+  display: none;
+}
+ul li:hover > ul{
+  display: block;
 }
