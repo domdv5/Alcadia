@@ -477,7 +477,7 @@ router.post("/edit.registro/:id", async (req, res) => {
 
   await connection.query("UPDATE visitantes SET ? WHERE numero_documento = ?", [data, id], (err, result) => {
     if (result === undefined) {
-      res.render('../views/tablaVisitantes.ejs', {
+      res.render('../views/tablaRegistros.ejs', {
         alert: true,
         visitor: result,
         registro: result,
@@ -490,7 +490,7 @@ router.post("/edit.registro/:id", async (req, res) => {
         ruta: 'registerTable'
       })
     } else {
-      res.render('../views/tablaVisitantes.ejs', {
+      res.render('../views/tablaRegistros.ejs', {
         alert: true,
         visitor: result,
         registro: result,
