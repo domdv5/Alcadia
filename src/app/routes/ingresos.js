@@ -506,7 +506,6 @@ router.post("/edit.registro/:id", async (req, res) => {
   })
 })
 
-/* esta es la nueva ruta */
 router.post('/edit.ingreso/:id' , async (req,res)=>{
 
   const id = req.params.id;
@@ -537,7 +536,7 @@ router.post('/edit.ingreso/:id' , async (req,res)=>{
     }
   })
 })
-/* esta es la nueva ruta */
+
 
 router.post('/addUsers', async (req, res) => {
 
