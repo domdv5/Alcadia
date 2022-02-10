@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router()
 
 router.get('/login', (req, res) => {
-  res.render("../views/login.ejs");
+  res.render("../views/login.ejs")
 })
 
 router.get('/prove', (req, res) => {
@@ -35,6 +35,8 @@ router.get('/activities', (req, res) => {
   if (req.session.login) {
     connection.query("SELECT * FROM cds WHERE IdCds = ? ", [id], (err, result) => {
 
+      
+
       const id_cds = result[0].IdCds
       const name = result[0].concatenar
 
@@ -48,6 +50,7 @@ router.get('/activities', (req, res) => {
         })
       }
     })
+
   } else {
     res.render('../views/login.ejs')
   }
@@ -64,6 +67,8 @@ router.get('/visitorLogin', async (req, res) => {
   WHERE usuarios.codigo = ? AND actividades.IdCds = ? AND cds.IdCds = ?` , [dato, id, id], (err, result) => {
 
       const nombre = result[0].concatenar
+
+
 
 
 
@@ -118,6 +123,8 @@ router.get('/activitiesTable', (req, res) => {
   if (req.session.login) {
     connection.query(`SELECT actividades.*, cds.* FROM actividades
     INNER JOIN cds ON cds.IdCds = actividades.IdCds WHERE actividades.IdCds = ?`, [id], (err, result) => {
+
+
 
       if (err) {
         res.send(err);
@@ -176,8 +183,8 @@ router.get('/visitorTable', async (req, res) => {
 
   if (req.session.login) {
     connection.query(`SELECT ingreso_visitantes.*, cds.concatenar FROM ingreso_visitantes
-    INNER JOIN cds on ingreso_visitantes.IdCds = cds.IdCds WHERE ingreso_visitantes.IdCds = ?`, [id], (err, result) => {
-
+    INNER JOIN cds on ingreso_visitantes.IdCds = cds.IdCds
+    WHERE ingreso_visitantes.IdCds = ? `, [id], (err, result) => {
 
       if (err) {
         res.send(err);
@@ -456,6 +463,8 @@ router.post("/edit.users/:id", async (req, res) => {
     }
   })
 })
+
+
 router.post("/edit.registro/:id", async (req, res) => {
 
   const id = req.params.id;
@@ -473,7 +482,7 @@ router.post("/edit.registro/:id", async (req, res) => {
         icon: 'error',
         showConfirmButton: false,
         timer: 2500,
-        ruta: 'visitors'
+        ruta: 'registerTable'
       })
     } else {
       res.render('../views/tablaVisitantes.ejs', {
@@ -486,11 +495,34 @@ router.post("/edit.registro/:id", async (req, res) => {
         icon: 'success',
         showConfirmButton: false,
         timer: 2500,
-        ruta: 'visitors'
+        ruta: 'registerTable'
       })
     }
   })
 })
+
+
+
+/* esta es la nueva ruta */
+router.post('/edit.ingreso/:id' , async (req,res)=>{
+
+  const id = req.params.id;
+  const data = req.body
+
+
+  await connection.query("UPDATE ingreso_visitantes SET ? WHERE cedula = ?", [data, id], (err, result) =>{
+    if (err) {
+      console.log(err);
+    }else{
+      res.render('../views/tablaVisitantes.ejs', {
+        visitor: result
+      })
+    }
+  })
+}) 
+/* esta es la nueva ruta */
+
+
 
 router.post('/addUsers', async (req, res) => {
 
@@ -646,7 +678,7 @@ router.post('/visitorsEntry', async (req, res) => {
   const data = req.body
   const id =  req.session.id_cds 
 
-  console.log(id);
+
 
 
   await connection.query('INSERT INTO ingreso_visitantes SET ?', [data], (err, result) => {
@@ -682,7 +714,6 @@ router.post('/singUp', async (req, res) => {
       req.session.codigo = result[0].codigo
       req.session.id_cds = result[0].IdCds
       req.session.key = result[0].administrador
-
 
 
 

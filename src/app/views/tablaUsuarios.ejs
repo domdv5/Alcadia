@@ -91,7 +91,7 @@
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">	CDS o Telecentro</label>
                         <select  name="nombre_cds_telecentro" id="tipo"  class="select-css">
-                          <option value ="<%= data[i].id_usuarios%>" selected disabled><%= data[i].id_usuarios%></option>
+                          <option value ="<%= data[i].id_usuarios%>" selected disabled><%= data[i].concatenar%></option>
                           <% for(let i = 0; i < data.length; i++) { %> 
                             <option value ="<%= data[i].concatenar %>" ><%= data[i].concatenar %> </option>
                             <%  } %> 
