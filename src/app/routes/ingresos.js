@@ -198,7 +198,14 @@ router.get('/visitorTable', async (req, res) => {
     res.render('../views/login.ejs')
   }
 })
+router.post("/GetVisitorTypes", async (req, res) => {
+  const id = req.session.id_cds
 
+  connection.query(`SELECT * FROM actividades WHERE IdCds = ?`, [id], (err, result) => {
+   // console.log(result)
+    res.json(result)
+  });
+});
 router.get('/registerTable', (req, res) => {
 
   const id = req.session.id_cds
