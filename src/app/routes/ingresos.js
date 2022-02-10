@@ -58,8 +58,6 @@ router.get('/visitorLogin', async (req, res) => {
   const dato = req.session.codigo
   const id = req.session.id_cds
 
-
-
   if (req.session.login) {
     await connection.query(`SELECT actividades.nombre, actividades.IdCds, usuarios.codigo , usuarios.IdCds , cds.concatenar
   FROM actividades,usuarios,cds

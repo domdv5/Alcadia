@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/resources/css/ingresoVisitantes.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/resources/js/nav" type="text/css" media="all">
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
@@ -23,23 +24,38 @@
 </head>
 
 <body>
-  <header class="encab">
-    <div><img src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png" alt=""></div>
-      <nav>
-      <ul>
-        <li><a href="/visitors">Registro</a></li>
-        <li><a href="/visitorLogin">Ingreso</a></li>
-        <li><a href="#">Configuración</a>
-          <ul>
-            <li><a href="/activities">Actividades</a></li>
-            <li><a href="/registerCds">CDS & telecentros</a></li>
-            <li><a href="/users">Registro usuarios</a></li>
+ 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong><%= nombre %></strong>
+     
+      </a>
+      <ul class="nav nav-tabs">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"  href="/visitors">Visitante</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" href="/visitorLogin">Ingreso</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/activities">Actividades</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Usuarios</a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/registerCds">1. Crear CDS</a></li>
+            <li><a class="dropdown-item" href="/users">2. Crear Usuario</a></li>
           </ul>
         </li>
-        <li><a href="/logout">Salir</a></li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/logout">Salir</a>
+        </li>
       </ul>
-    </nav>
-</header>
+    </div>
+  </nav>
+        
+
 
   <div class='wrapper'>
     <div class='login'>
@@ -116,7 +132,7 @@
       
     </div>
   </div>
-  <a href="/visitorTable" class="btn-save1">Tabla 📋</a>
+  <a  href="/visitorTable" class="btn-save1">Tabla 📋</a>
 
   
 
@@ -125,7 +141,7 @@
     <div class="container_footer">
       <div class="box_footer">
         <div class="logo">
-          <img src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png" alt="">
+          <img class="img1" src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png" alt="">
         </div>
         <div class="terms">
           <p> Contáctenos
@@ -139,15 +155,15 @@
   
       <div class="box_footer">
         <h2>Entérese</h2>
-        <a href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl://557131b191a8cae1e393328c6971a2d0">Telecentros</a>
-        <a href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=contenido/6694-Centros-de-Desarrollo-Social">CDS</a>
-        <a href="https://www.medellin.gov.co/irj/portal/medellin">Alcaldía de Medellín</a>
+        <a class="a1" href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl://557131b191a8cae1e393328c6971a2d0">Telecentros</a>
+        <a class="a1" href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=contenido/6694-Centros-de-Desarrollo-Social">CDS</a>
+        <a class="a1" href="https://www.medellin.gov.co/irj/portal/medellin">Alcaldía de Medellín</a>
       </div>
       <div class="box_footer">
         <h2>Redes</h2>
-        <a href="https://es-la.facebook.com/AlcaldiadeMed/"><i class=" fab fa-facebook-square"></i> Facebook</a>
-        <a href="https://twitter.com/AlcaldiadeMed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class=" fab fa-twitter-square"></i> Twitter</a>
-        <a href="https://www.instagram.com/alcaldiademed/?hl=es-la"><i class=" fab fa-instagram-square"></i> Instragram</a>
+        <a class="a1" href="https://es-la.facebook.com/AlcaldiadeMed/"><i class=" fab fa-facebook-square"></i> Facebook</a>
+        <a class="a1" href="https://twitter.com/AlcaldiadeMed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class=" fab fa-twitter-square"></i> Twitter</a>
+        <a class="a1" href="https://www.instagram.com/alcaldiademed/?hl=es-la"><i class=" fab fa-instagram-square"></i> Instragram</a>
       </div>
     </div>
   </footer>
