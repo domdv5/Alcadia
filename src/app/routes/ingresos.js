@@ -7,9 +7,7 @@ router.get('/login', (req, res) => {
   res.render("../views/login.ejs")
 })
 
-router.get('/prove', (req, res) => {
-  res.render("../views/prueba.ejs");
-})
+
 
 router.get('/users', (req, res) => {
   if (req.session.login) {
@@ -35,7 +33,7 @@ router.get('/activities', (req, res) => {
   if (req.session.login) {
     connection.query("SELECT * FROM cds WHERE IdCds = ? ", [id], (err, result) => {
 
-      
+
 
       const id_cds = result[0].IdCds
       const name = result[0].concatenar
@@ -61,24 +59,29 @@ router.get('/visitorLogin', async (req, res) => {
   const dato = req.session.codigo
   const id = req.session.id_cds
 
+  
+
   if (req.session.login) {
-    await connection.query(`SELECT actividades.nombre, actividades.IdCds, usuarios.codigo , usuarios.IdCds , cds.concatenar
-  FROM actividades,usuarios,cds
-  WHERE usuarios.codigo = ? AND actividades.IdCds = ? AND cds.IdCds = ?` , [dato, id, id], (err, result) => {
+      await connection.query(`SELECT  actividades.id_actividades,  usuarios.cedula , usuarios.IdCds , 
+      cds.concatenar, CONCAT(actividades.nombre, ' ' , actividades.fecha_inicio) 
+      AS fullActivitie
+      FROM actividades,usuarios,cds
+      WHERE usuarios.cedula = ? AND actividades.IdCds = ? AND cds.IdCds = ?` , [dato, id, id], (err, result) => {
 
+    
+
+
+  
       const nombre = result[0].concatenar
-
-
-
-
+  
 
       if (err) {
-        res.send(err)
+      console.log(err);
       } else {
         res.render("../views/ingresoVisitantes.ejs", {
           id,
           nombre,
-          rows: result,
+          rows: result
         })
       }
     })
@@ -182,9 +185,13 @@ router.get('/visitorTable', async (req, res) => {
   const id = req.session.id_cds
 
   if (req.session.login) {
-    connection.query(`SELECT ingreso_visitantes.*, cds.concatenar FROM ingreso_visitantes
-    INNER JOIN cds on ingreso_visitantes.IdCds = cds.IdCds
-    WHERE ingreso_visitantes.IdCds = ? `, [id], (err, result) => {
+    connection.query(`SELECT  actividades.nombre ,ingreso_visitantes.id_visitantes, visitantes.*, cedula, fecha, hora, concatenar
+    FROM ingreso_visitantes 
+      JOIN visitantes ON visitantes.numero_documento = ingreso_visitantes.cedula
+      JOIN cds ON  ingreso_visitantes.IdCds=cds.IdCds
+      JOIN actividades ON ingreso_visitantes.id_actividades = actividades.id_actividades 
+      WHERE cds.IdCds = ? `,[id], (err, result) => {
+
 
       if (err) {
         res.send(err);
@@ -194,15 +201,19 @@ router.get('/visitorTable', async (req, res) => {
         })
       }
     })
+
   } else {
     res.render('../views/login.ejs')
   }
 })
+
+
+
 router.post("/GetVisitorTypes", async (req, res) => {
   const id = req.session.id_cds
 
   connection.query(`SELECT * FROM actividades WHERE IdCds = ?`, [id], (err, result) => {
-   // console.log(result)
+    // console.log(result)
     res.json(result)
   });
 });
@@ -305,7 +316,7 @@ router.get('/delete.registro/:id', (req, res) => {
   const id = req.params.id
 
   connection.query("DELETE FROM visitantes WHERE numero_documento = ? ", [id], (err, result) => {
-    
+
     if (result) {
       res.render('../views/tablaRegistros.ejs', {
         alert: true,
@@ -355,9 +366,12 @@ router.get('/delete.data/:id', (req, res) => {
     }
   })
 })
+
+
 router.get('/delete.visitante/:id', (req, res) => {
 
   const id = req.params.id
+
 
   connection.query("DELETE FROM ingreso_visitantes WHERE id_visitantes = ? ", [id], (err, result) => {
     if (result) {
@@ -506,13 +520,16 @@ router.post("/edit.registro/:id", async (req, res) => {
   })
 })
 
-router.post('/edit.ingreso/:id' , async (req,res)=>{
+router.post('/edit.ingreso/:id', async (req, res) => {
 
   const id = req.params.id;
   const data = req.body
 
+  console.log(id);
+  console.log(data);
 
-  await connection.query("UPDATE ingreso_visitantes SET ? WHERE id_visitantes  = ?", [data, id], (err, result) =>{
+
+  await connection.query("UPDATE ingreso_visitantes SET ? WHERE id_visitantes  = ?", [data, id], (err, result) => {
     if (result) {
       res.render('../views/tablaVisitantes.ejs', {
         alert: true,
@@ -540,12 +557,12 @@ router.post('/edit.ingreso/:id' , async (req,res)=>{
 
 router.post('/addUsers', async (req, res) => {
 
-  const { IdCds, codigo, correo, pass, telefono, rol } = req.body
+  const { IdCds, cedula, correo, pass, telefono, rol } = req.body
   let passwordHaash = await bcryptjs.hash(pass, 8);
 
   const newUser = {
     IdCds,
-    codigo,
+    cedula,
     correo,
     pass: passwordHaash,
     telefono,
@@ -617,8 +634,11 @@ router.post('/addActivities', async (req, res) => {
 router.post('/addVisitors', async (req, res) => {
   const data = req.body
 
+  console.log(data);
+
 
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
+
     if (result === undefined) {
       res.render('../views/registroVisitantes.ejs', {
         alert: true,
@@ -690,7 +710,8 @@ router.post('/addCds', async (req, res) => {
 router.post('/visitorsEntry', async (req, res) => {
 
   const data = req.body
-  const id =  req.session.id_cds 
+  const id = req.session.id_cds
+
 
 
 
@@ -699,7 +720,7 @@ router.post('/visitorsEntry', async (req, res) => {
     if (result) {
       res.render('../views/ingresoVisitantes.ejs', {
         alert: true,
-        id:result,
+        id: result,
         nombre: result,
         rows: result,
         title: "Ingreso Exitoso",
@@ -719,13 +740,11 @@ router.post('/singUp', async (req, res) => {
 
   if (codigo && pass) {
     await connection.query(`SELECT usuarios.*, cds.concatenar FROM usuarios
-    INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.codigo = ?`, [codigo], (err, result) => {
-
-
+    INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.cedula = ?`, [codigo], (err, result) => {
 
 
       req.session.nombre = result[0].concatenar
-      req.session.codigo = result[0].codigo
+      req.session.codigo = result[0].cedula
       req.session.id_cds = result[0].IdCds
       req.session.key = result[0].administrador
 
@@ -764,8 +783,6 @@ router.post('/idValidation', async (req, res) => {
   const date = { numero_documento } = req.body
 
 
-
-
   await connection.query('SELECT * FROM visitantes WHERE numero_documento = ? ', [numero_documento], (err, result) => {
     if (result.length === 0) {
       res.json({ code: 400 })
@@ -773,6 +790,23 @@ router.post('/idValidation', async (req, res) => {
       res.json({ code: 200 })
     }
   })
+})
+
+router.post('/getData', (req, res) => {
+
+  const { numero_documento } = req.body
+
+  connection.query('SELECT * FROM visitantes WHERE numero_documento = ?', [numero_documento], (err, result) => {
+
+
+   
+    if(result.length === 0){
+      res.json({code:400})
+    } else {
+      res.jsonp({data:result})
+    }
+  })
+
 })
 
 router.get('/logout', (req, res) => {

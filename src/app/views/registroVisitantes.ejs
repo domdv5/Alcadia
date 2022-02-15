@@ -96,7 +96,7 @@
 
   <div class= "camp">
     <label form="">Fecha de Nacimiento</label>
-    <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator()" required>
+    <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator()" onload="getTime()" required>
   </div>
 
   <div class= "camp">
@@ -127,6 +127,8 @@
    <option selected value="<%= id_cds %> "> <%= name %>  </option>
     </select>
   </div>
+
+
 
   <div class= "camp">
     <label form="tipo">Degradación territorial</label>

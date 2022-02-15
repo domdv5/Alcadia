@@ -339,3 +339,27 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+SELECT cedula, nombre_completo, fecha, hora, concatenar 
+FROM visitantes 
+  JOIN ingreso_visitantes ON visitantes.numero_documento  = ingreso_visitantes.cedula
+    JOIN cds ON  ingreso_visitantes.IdCds=cds.IdCds;
+
+
+SELECT  * 
+FROM visitantes 
+  JOIN ingreso_visitantes ON visitantes.numero_documento  = ingreso_visitantes.cedula
+    JOIN cds ON  ingreso_visitantes.IdCds=cds.IdCds;
+    
+
+SELECT *
+FROM ingreso_visitantes 
+  JOIN visitantes ON visitantes.numero_documento = ingreso_visitantes.cedula
+  JOIN cds ON  ingreso_visitantes.IdCds=cds.IdCds;
+  JOIN actividades ON actividades.IdCds = cds.IdCds;
+
+  SELECT * FROM actividades 
+  JOIN cds ON actividades.IdCds = cds.IdCds;

@@ -16,7 +16,6 @@ const validacion = () => {
     }).then(data => {
         const { code } = data.data
 
-        console.log(code);
 
         if(code === 200){
             document.getElementById('identification').setAttribute('class', 'form-control is-valid')
@@ -48,8 +47,7 @@ const idValidation = () => {
     }).then(data => {
         const { code } = data.data
 
-        console.log(code);
-
+        
         if(code === 400){
             document.getElementById('validationServer01').setAttribute('class', 'form-control is-valid')
             document.getElementById('login').removeAttribute('disabled')
@@ -60,8 +58,5 @@ const idValidation = () => {
         }
     })
 }
-
-
-
 
 
