@@ -34,8 +34,6 @@
         <tr>
           
           <th>Nombre</th>
-          <th>Linea</th>
-          <th>Componente</th>
           <th>Secretaria</th>
           <th>facilitador</th>
           <th>Fecha inicio</th>
@@ -52,15 +50,16 @@
           <th>Código Proyecto de Inversion</th>
           <th>nombre PDM y PI </th>
           <th>Codigo PDM y PI</th>
+          <th>Linea</th>
+          <th>Componente</th>
           <th>Acciones</th>
+
         </tr>
         </thead>
         <tbody>
         <% for(let i = 0; i < actividad.length;i ++ ) {%> 
           <tr>
             <td><%= actividad[i].nombre %></td>
-            <td><%= actividad[i].linea %></td>
-            <td><%= actividad[i].componente %></td>
             <td><%= actividad[i].secretaria %></td>
             <td><%= actividad[i].facilitador %></td>
             <td><%= actividad[i].fecha_inicio%> </td>
@@ -75,8 +74,11 @@
             <td><%= actividad[i].tipo_reunion%> </td>
             <td><%= actividad[i].nombre_proyecto_inversion%></td>
             <td><%= actividad[i].codigo_proyecto_inversion%></td>
-            <td><%= actividad[i].nombre_indicadores%></td>
+            <td><%= actividad[i].nombres_plan_desarrollo%></td>
             <td><%= actividad[i].codigo_indicadores_pdm_pdi%></td>
+            <td><%= actividad[i].linea %></td>
+            <td><%= actividad[i].componente %></td>
+
             <td>
             <button type="button" data-bs-toggle="modal" data-bs-target="#modalEliminar<%=actividad[i].id_actividades%>" class="btn btn-outline-danger m-1" title="Eliminar Usuario" >❌</button>
 
@@ -93,6 +95,10 @@
                     <label for="recipient-name" class="col-form-label">Nombre</label>
                     <input readonly value="<%= actividad[i].nombre %>">
                     </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Fecha inicial</label>
+                      <input readonly value="<%= actividad[i].fecha_inicio%>">
+                      </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -118,15 +124,7 @@
                       <label for="recipient-name" class="col-form-label">Nombre</label>
                       <input type="text" class="form-control" id="recipient-name" name="nombre" value="<%= actividad[i].nombre %>">
                     </div>
-                    <div class="mb-3">
-                      <label for="message-text" class="col-form-label">Linea</label>
-                      <input class="form-control" id="message-text" name="linea" value="<%= actividad[i].linea %>"></input>
-                    </div>
-  
-                  <div class="mb-3">
-                    <label for="message-text" class="col-form-label">Componente</label>
-                    <input class="form-control" id="message-text" name="componente" value="<%= actividad[i].componente%>"></input>
-                  </div>
+
   
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Secretaría</label>
@@ -206,21 +204,29 @@
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Nombre Proyecto Inversión</label>
-                  <input class="form-control" id="message-text" name="nombre_proyecto_inversion" value="<%=actividad[i].nombre_proyecto_inversion %>"></input>
+                  <input class="form-control" id="message-text" name="nombre_proyecto_inversion" value="<%=actividad[i].nombre_proyecto_inversion%>"></input>
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Codigo Proyecto Inversión</label>
-                  <input class="form-control" id="message-text" name="codigo_proyecto_inversion" value="<%=actividad[i].codigo_proyecto_inversion %>"></input>
+                  <input class="form-control" id="message-text" name="codigo_proyecto_inversion" value="<%=actividad[i].codigo_proyecto_inversion%>"></input>
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Nombre Indicadores</label>
-                  <input class="form-control" id="message-text" name="nombre_indicadores" value="<%=actividad[i].nombre_indicadores %>"></input>
+                  <input class="form-control" id="message-text" name="nombres_plan_desarrollo" value="<%=actividad[i].nombres_plan_desarrollo%>"></input>
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Codigos Indicadores PDM y PI</label>
                   <input class="form-control" id="message-text" name="codigo_indicadores_pdm_pdi" value="<%=actividad[i].codigo_indicadores_pdm_pdi %>"></input>
                 </div>
-  
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Linea</label>
+                  <input class="form-control" id="message-text" name="linea" value="<%= actividad[i].linea %>"></input>
+                </div>
+
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Componente</label>
+                <input class="form-control" id="message-text" name="componente" value="<%= actividad[i].componente%>"></input>
+              </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar</button>
                   <input type="submit" class="btn btn-primary" value ="Aceptar">

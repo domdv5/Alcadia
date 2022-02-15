@@ -62,14 +62,6 @@
         <input type="text" placeholder="ingrese nombre de la actividad" required name="nombre">
       </div>
       <div class=camp>
-        <label form="tipo">Linea</label>
-        <input type="text" placeholder="ingrese nombre de la linea" required name="linea">
-      </div>
-      <div class=camp>
-        <label form="tipo">Componente</label>
-        <input type="text" placeholder="ingrese nombre de la actividad" required name="componente">
-      </div>
-      <div class=camp>
         <label form="">Secretaría o entidad organizadora</label>
         <input type="text" placeholder="Ingrese secretaría" required name="secretaria">
       </div>
@@ -92,14 +84,17 @@
       <div class=camp>
         <label form="">Hora cierre</label>
         <input type="time" placeholder="ingrese hora de cierre" required name="hora_cierre">
+      </div> 
+      <div class=camp>
+        <label form="">Lugar </label>
+        <select class="form-select" name="IdCds">
+       <option selected value="<%= id_cds %> "> <%= name %>  </option>
+       </select>
       </div>
-
-      
      <div class=camp>
         <label form="">Ciudad</label>
         <input Id="" type="text" placeholder="Ingrese Ciudad" required name="ciudad">
       </div>
-
       <div class=camp>
         <label form="tipo">Comuna o corregimiento</label>
         <select name="comuna_corregimiento" id="tipo" class="select" required>
@@ -135,46 +130,43 @@
         <input name="direccion" type="text" placeholder="Ingrese Dirección" required>
       </div>
 
+
+
       <div class=camp>
         <label form="">Nombre de proyecto de inversión</label>
-        <input name="nombre_proyecto_inversion" type="text" placeholder="Ingrese nombre del proyecto" required>
+        <input name="nombre_proyecto_inversion" type="text" placeholder="Ingrese nombre del proyecto" >
       </div>
       <div class=camp>
         <label form="">Codigo de proyecto de inversión</label>
-        <input name="codigo_proyecto_inversion" type="text" placeholder="Ingrese Codigo de proyecto" required>
+        <input name="codigo_proyecto_inversion" type="text" placeholder="Ingrese Codigo de proyecto" >
       </div>
       <div class=camp>
         <label form="">Nombre de indicadores PDM & PI </label>
-        <input name="nombre_indicadores" type="text" placeholder="Ingrese Nombre de indicadores" required>
+        <input name="nombres_plan_desarrollo" type="text" placeholder="Ingrese Nombre de indicadores" >
       </div>
-      
-      <div class=camp>
-        <label form="">Lugar </label>
-        <select class="form-select" name="IdCds">
-       <option selected value="<%= id_cds %> "> <%= name %>  </option>
-       </select>
-      </div>
-
-      <div class=camp>
-        <label form="">Nombre plan de desarrollo</label>
-        <input type="text" placeholder="Nombre plan de desarrollo" required name="nombres_plan_desarrollo">
-      </div>
-
       <div class=camp>
         <label form="">Códigos de indicadores PDM Y PI</label>
-        <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" required>
+        <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" >
       </div>
-
       <div class=camp>
+        <label form="tipo">Linea</label>
+        <input type="text" placeholder="ingrese nombre de la linea"  name="linea">
+      </div>
+      <div class=camp>
+        <label form="tipo">Componente</label>
+        <input type="text" placeholder="ingrese nombre de la actividad"  name="componente">
+      </div>
+            <div class=camp>
         <label form="tipo">Tipo de reunión</label>
-        <select name="tipo_reunion" id="tipo" class="select" required>
+        <select name="tipo_reunion" id="myselect" onchange="mostrar_control()" class="select" required>
           <option value="" selected disabled>Selecciona el tipo de Reunion</option>
           <option value="Informativa">Informativa</option>
           <option value="Seguimiento">Seguimiento</option>
           <option value="Toma de desiciones">Toma de desiciones</option>
           <option value="Capacitación">Capacitación</option>
           <option value="Formación">Formación</option>
-          <option value="otro">Otro</option>
+          <option id="Nuevo" >Otro</option>
+          <input  id="Texto" type="text" style="visibility: hidden" placeholder="Ingresa el tipo de reunion">
         </select>
       </div>
   
@@ -249,7 +241,17 @@
         })
       </script>
       <% } %>
-
+      <script>
+        function mostrar_control(){
+            var select = document.getElementById("myselect");
+            var inputText = document.getElementById("Texto");
+            if(select.options[select.selectedIndex].id == "Nuevo"){
+                inputText.style.visibility = "visible";
+            }else{
+                inputText.style.visibility = "hidden";
+            }
+        }
+    </script>
 </body>
 
 </html>
