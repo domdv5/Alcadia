@@ -77,7 +77,6 @@ margin: 3px 3 ;
 }
 .camp select{
   font-size: 1.1rem;
-  width: 12;
   height: 2.6rem;
   padding-left: 0.5rem;
   border: 2px solid cornflowerblue;
@@ -90,6 +89,7 @@ margin: 3px 3 ;
   width: 30%;
   height: 4rem;
   padding: 15px;
+  margin-left: 35%;
   background-color:  #364D5C;
   border: 0;
   cursor: pointer;
@@ -159,7 +159,7 @@ footer{
   width: 10%;
   height: 4rem;
   padding: 15px;
-margin-left: 43%;
+margin-left: 45%;
 text-align: center;
   background-color:  #364D5C;
   border: 0;
@@ -233,32 +233,9 @@ ul li:hover > ul{
   display: block;
 }
 
-.sexo{
-  display: flex;
-  flex-direction: flex;
-  justify-content: space-around;
-  width: 20rem;
-  margin: 0.7rem;
-  height: 2em;
-  }
-  .Sexo label{
-    font-size: 1rem;
-    font-weight:1rem;
-    margin-top: 7rem;
-    color:rgb(56, 56, 56);
-    font-size: 1rem;
-    margin-top: 0.2rem;
-  }
-  .sexo div{
-    font-size: 1rem;
-    font-weight:3rem;
-    margin-top: 0.2rem;
-    color:rgb(56, 56, 56);
-    display: flex;
-    justify-content: flex-start;
-    padding: 0.5;
-  }
-  .sexo div input{
-    height: 1.5rem;
-    width: 1.5rem;
+.camp1{
+  display:flex;
+  flex-direction: column;
+  width: 18em;
+  margin: 3px 3px ;
   }

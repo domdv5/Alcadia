@@ -109,7 +109,7 @@ router.get('/visitors', (req, res) => {
         res.render('../views/registroVisitantes.ejs', {
           id_cds,
           name,
-          code,
+          code,     
         })
       }
     })
@@ -598,11 +598,9 @@ router.post('/addActivities', async (req, res) => {
   const data = req.body
 
 
-
+console.log(data)
 
   await connection.query('INSERT INTO actividades SET ?', [data], (err, result) => {
-
-
 
     if (result) {
       res.render('../views/registroActividades.ejs', {
@@ -632,19 +630,22 @@ router.post('/addActivities', async (req, res) => {
 })
 
 router.post('/addVisitors', async (req, res) => {
+  
   const data = req.body
 
-  console.log(data);
+  data.enfoque_diferencial = data['enfoque_diferencial[]'].join(', ');
 
+  delete data['enfoque_diferencial[]'];
+  console.log(data)
 
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
-
+    console.log(err)
     if (result === undefined) {
       res.render('../views/registroVisitantes.ejs', {
         alert: true,
         id_cds: result,
         name: result,
-        title: "Identificacion duplicada",
+        title: "Error al registrar",
         icon: 'error',
         showConfirmButton: false,
         timer: 2500,

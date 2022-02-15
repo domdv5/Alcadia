@@ -37,14 +37,15 @@
           <th>Nombre Completo</th>
           <th>Secretarìa</th>
           <th>Ocupaciòn</th>
+          <th>Sexo</th>
           <th>Fecha de nacimiento</th>
           <th>Edad</th>
           <th>Enfoque Diferencial</th>
+          <th>Derechos</th>
           <th>Comuna o Corregimiento</th>
           <th>Correo</th>
           <th>Organizaciòn</th>
           <th>Telèfono</th>
-          <th>Sexo</th>
           <th>lugar</th>
           <th>Acciones</th>
         </tr>
@@ -58,14 +59,15 @@
               <td> <%=registro[i].nombre_completo %> </td>
               <td> <%=registro[i].secretaria_entidad %> </td>
               <td> <%=registro[i].ocupacion %> </td>
+              <td> <%=registro[i].sexo%> </td>
               <td> <%=registro[i].fecha_nacimiento %> </td>
               <td> <%=registro[i].edad %> </td>
               <td> <%=registro[i].enfoque_diferencial %> </td>
+              <td> <%=registro[i].Derechos%> </td>
               <td> <%=registro[i].degradacion_territorial %> </td>
               <td> <%=registro[i].correo_electronico%> </td>
               <td> <%=registro[i].organizacion%> </td>
               <td> <%=registro[i].telefono_celular%> </td>
-              <td> <%=registro[i].sexo%> </td>
               <td> <%=registro[i].concatenar%></td>
               <td>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#modalEliminar<%=registro[i].numero_documento%>" class="btn btn-outline-danger m-1" title="Eliminar Usuario" >❌</button>
@@ -149,6 +151,14 @@
                                <option value ="Campesino" >Campesino</option>
                                <option value ="Discapacidad" >Discapacidad</option>
                                <option value ="Poblacion victima">Población victima</option>
+                             </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="message-text" class="col-form-label">Derechos</label>
+                             <select name ="Derechos" id="tipo" class="select" value="<%=registro[i].Derechos %>" >
+                               <option value ="<%= registro[i].Derechos %>" selected disabled><%= registro[i].Derechos %> </option>
+                               <option value ="Población victima">Población victima</option>
+                               <option value ="">No Aplica</option>
                              </select>
                         </div>
                         <div class="mb-3">
