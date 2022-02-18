@@ -15,12 +15,15 @@ router.get('/users', (req, res) => {
 
   if (req.session.login) {
     connection.query(`SELECT * FROM cds`, (err, result) => {
-
+      const name = result[0].concatenar
       if (err) {
         res.send(err)
       } else {
         res.render("../views/registroUsuario.ejs", {
           data: result,
+          cds: result,
+          rows: result,
+          name,
         })
       }
     })
@@ -37,13 +40,14 @@ router.get('/activities', (req, res) => {
   if (req.session.login) {
     if (key === 1) {
       connection.query("SELECT * FROM cds", [id], (err, result) => {
-
+        const name = result[0].concatenar
         if (err) {
           res.send(err)
         } else {
           res.render("../views/registroActividades.ejs", {
             cds: result,
             rows: result,
+            name,
             key,
           })
         }
@@ -59,6 +63,7 @@ router.get('/activities', (req, res) => {
         } else {
           res.render("../views/registroActividades.ejs", {
             cds: result,
+            rows: result,
             id_cds,
             name,
             key,

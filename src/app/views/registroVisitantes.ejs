@@ -59,12 +59,14 @@
       </ul>
     </div>
   </div>
-    </div>
   </nav>
-
+  <div id="icon-menu">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="container-all" id="move-content">
 <main>
   <h1>REGISTRO DE VISITANTES</h1>
-  <form method="POST" action="addVisitors" >
+  <form method="POST" action="addVisitors" class="container-content">
   <div class= camp>
     <label form="tipo">Tipo de documento</label>
     <select name ="tipo_documento" id="tipo" class="select" required>
@@ -192,9 +194,6 @@
       <input type="submit" class="btn-save" value="Registrar">
     </form>
 </main>
-
-
-
 <a href="/registerTable" class="btn-save1">Tabla 📋</a>
 </div>
 
@@ -228,7 +227,7 @@
   </div>
 </footer>
 
-<script src="/resources/js/nav_activo.js"></script>
+
 <script src="/resources/js/edad.js"></script>
 <script src="/resources/js/script.js"></script>
 <script src="/resources/js/validacion.js"></script>

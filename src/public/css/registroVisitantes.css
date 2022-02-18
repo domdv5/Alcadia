@@ -235,9 +235,7 @@ ul li:hover > ul{
   margin: 3px 3px ;
   }
 
-  .active{
-    background-color: #46a2fd;
-  }
+
 /* responsive */
 #icon-menu{
   width: 50px;
