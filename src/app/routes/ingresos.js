@@ -615,11 +615,14 @@ console.log(data)
 router.post('/addVisitors', async (req, res) => {
   
   const data = req.body
+ 
 
-  data.enfoque_diferencial = data['enfoque_diferencial[]'].join(', ');
+  const enfoque = data['enfoque_diferencial[]'];
+
+  data.enfoque_diferencial = Array.isArray(enfoque) ? enfoque.join(', ') : enfoque;
 
   delete data['enfoque_diferencial[]'];
-  console.log(data)
+  
 
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
     console.log(err)
