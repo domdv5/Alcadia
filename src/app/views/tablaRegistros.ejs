@@ -63,7 +63,7 @@
               <td> <%=registro[i].fecha_nacimiento %> </td>
               <td> <%=registro[i].edad %> </td>
               <td> <%=registro[i].enfoque_diferencial %> </td>
-              <td> <%=registro[i].Derechos%> </td>
+              <td> <%=registro[i].derechos%> </td>
               <td> <%=registro[i].degradacion_territorial %> </td>
               <td> <%=registro[i].correo_electronico%> </td>
               <td> <%=registro[i].organizacion%> </td>
@@ -155,8 +155,8 @@
                         </div>
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label">Derechos</label>
-                             <select name ="Derechos" id="tipo" class="select" value="<%=registro[i].Derechos %>" >
-                               <option value ="<%= registro[i].Derechos %>" selected disabled><%= registro[i].Derechos %> </option>
+                             <select name ="derechos" id="tipo" class="select" value="<%=registro[i].derechos %>" >
+                               <option value ="<%= registro[i].derechos %>" selected disabled><%= registro[i].derechos %> </option>
                                <option value ="Población victima">Población victima</option>
                                <option value ="">No Aplica</option>
                              </select>

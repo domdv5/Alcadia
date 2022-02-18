@@ -41,13 +41,15 @@
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/activities">Actividades</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Usuarios</a>
-            <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/registerCds">1. Crear CDS</a></li>
-            <li><a class="dropdown-item" href="/users">2. Crear Usuario</a></li>
-          </ul>
-        </li>
+        <% if(key === 1) { %> 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Usuarios</a>
+              <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/registerCds">1. Crear CDS</a></li>
+              <li><a class="dropdown-item" href="/users">2. Crear Usuario</a></li>
+            </ul>
+          </li>
+          <% } %> 
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/logout">Salir</a>
         </li>
@@ -60,15 +62,16 @@
   <div class='wrapper'>
     <div class='login'>
       <div class='appTitle'>
-       INGRESO VISITANTES
+        INGRESO VISITANTES
       </div>
       <div class='arrow-down'></div>
       <form action="visitorsEntry" method='POST'>
+<% if(key === 1 ) { %>
         <fieldset>
           <span>
             <i class='fa fa-user'></i>
           </span>
-          <input type="number" for="validationServer"  for="validationServerFeedback" id="identification" name="cedula" placeholder='Ingrese Documento'  onchange="validacion()" required>
+          <input type="number" for="validationServer"  for="validationServerFeedback" id="identification" name="cedula" placeholder='Ingrese Documento' disabled>
           <div id="validationServer" id="validationServerFeedback" class="invalid-feedback" class="valid-feedback">
                La cedula no se encuentra registrada
          </div>
@@ -78,14 +81,14 @@
           <span>
             <i class="fa fa-clock-o"></i>
           </span>
-          <input type="text" name="fecha" id="fecha" onload="getDate()" aria-disabled="true" readonly >
+          <input type="text" name="fecha" id="fecha" disabled >
         </fieldset>
 
         <fieldset>
           <span>
             <i class="fa fa-clock-o"></i>
           </span>
-          <input type="text" id="hour"  onload="getTime()" name="hora" aria-disabled="true" readonly>
+          <input type="text" id="hour"   name="hora" disabled>
         </fieldset>
 
 
@@ -97,11 +100,9 @@
       
           <div class="camp">
             <label  placeholder="actividad"form="tipo" ></label>
-            <select name ="id_actividades" id="tipo" class="select" required >
+            <select name ="id_actividades" id="tipo" class="select" disabled >
               <option value ="" selected disabled>Selecciona una actividad</option>
-              <% for(let i = 0; i < rows.length; i++) { %> 
-              <option value ="<%= rows[i].id_actividades %>"><%= rows[i].fullActivitie %></option>
-              <%  } %> 
+              <option value =""></option>
             </select>
           </div>
           </fieldset>
@@ -113,24 +114,78 @@
             <i class="fa fa-clock-o"></i>
           </span>
         <div class=camp>
-          <select class="select" name="IdCds">
-         <option  value="<%= id %>"> <%= nombre %> </option>
+          <select class="select" name="IdCds" disabled>
+         <option  value="">  </option>
          </select>
         </div>
       </fieldset>
     </div>
-    
-
-
-     
-        <input id='btnLogin' type='submit' value="Ingresar">
-        
-  
+        <input id='btnLogin' type='submit' value="Ingresar" disabled>
       </form>
-      
     </div>
   </div>
-  <a  href="/visitorTable" class="btn-save1">Tabla 📋</a>
+
+
+  <% } else { %>
+    <fieldset>
+      <span>
+        <i class='fa fa-user'></i>
+      </span>
+      <input type="number" for="validationServer"  for="validationServerFeedback" id="identification" name="cedula" placeholder='Ingrese Documento'  onchange="validacion()" required>
+      <div id="validationServer" id="validationServerFeedback" class="invalid-feedback" class="valid-feedback">
+           La cedula no se encuentra registrada
+     </div>
+    </fieldset>
+
+    <fieldset>
+      <span>
+        <i class="fa fa-clock-o"></i>
+      </span>
+      <input type="text" name="fecha" id="fecha" onload="getDate()" aria-disabled="true" readonly >
+    </fieldset>
+
+    <fieldset>
+      <span>
+        <i class="fa fa-clock-o"></i>
+      </span>
+      <input type="text" id="hour"  onload="getTime()" name="hora" aria-disabled="true" readonly>
+    </fieldset>
+
+
+    <div class="mb-3">
+    <fieldset>
+      <span>
+        <i class="fa fa-book fa-fw"></i>
+        </span>
+  
+      <div class="camp">
+        <label  placeholder="actividad"form="tipo" ></label>
+        <select name ="id_actividades" id="tipo" class="select" required >
+          <option value ="" selected disabled>Selecciona una actividad</option>
+          <% for(let i = 0; i < rows.length; i++) { %> 
+          <option value ="<%= rows[i].id_actividades %>"><%= rows[i].fullActivitie %></option>
+          <%  } %> 
+        </select>
+      </div>
+      </fieldset>
+    </div>
+    
+    <div class="my-4">
+    <fieldset>
+      <span>
+        <i class="fa fa-clock-o"></i>
+      </span>
+    <div class=camp>
+      <select class="select" name="IdCds">
+     <option  value="<%= id %>"> <%= nombre %> </option>
+     </select>
+    </div>
+  </fieldset>
+  <input id='btnLogin' type='submit' value="Ingresar">
+</div>
+    <% } %> 
+
+    <a  href="/visitorTable" class="btn-save1">Tabla 📋</a>
 
   
 
