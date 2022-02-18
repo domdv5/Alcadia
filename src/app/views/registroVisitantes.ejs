@@ -44,14 +44,16 @@
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/activities">Actividades</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Usuarios</a>
-          
-          <ul class="dropdown-menu">
+         <% if(key === 1) { %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Usuarios</a>
+              <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/registerCds">1. Crear CDS</a></li>
               <li><a class="dropdown-item" href="/users">2. Crear Usuario</a></li>
-          </ul>
-        </li>
+            </ul>
+          </li>
+          <% } %> 
+
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/logout">Salir</a>
         </li>
@@ -61,19 +63,13 @@
     </div>
   </nav>
 
-<div id="icon-menu">
-  <i class="fas fa-bars"></i>
-</div>
-  </header>
-
-  <div class="container-all" id="move-content">
-  <main>
-
- <h1>REGISTRO DE VISITANTES</h1>
- <form method="POST" action="addVisitors" class="container-content">
+<main>
+  <h1>REGISTRO DE VISITANTES</h1>
+  <form method="POST" action="addVisitors" >
+  <% if(key === 1 ) { %> 
  <div class= camp>
   <label form="tipo">Tipo de documento</label>
-  <select name ="tipo_documento" id="tipo" class="select" required>
+  <select name ="tipo_documento" id="tipo" class="select" disabled>
     <option value ="" selected disabled>Selecciona tipo de documento</option>
     <option value ="cedula de ciudadania" >Cédula de Ciudadanía (CC)</option>
     <option value="cedula de extranjeria"  >Cédula de extrangería (CE)</option>
@@ -87,7 +83,7 @@
 
 <div class= "camp">
   <label form="" for="validationServer" >Número de Documento</label>
-  <input type="text" name="numero_documento" id="validationServer01" placeholder="Ingrese identificación" required onchange="idValidation()">
+  <input  type="number" name="numero_documento" id="validationServer01" placeholder="Ingrese identificación" disabled>
   <div class="invalid-feedback">
     La cedula ya se encuentra registrada
   </div>
@@ -95,22 +91,22 @@
 
 <div class="camp">
     <label form="">Nombre completo</label>
-    <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" required>
+    <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" disabled>
   </div>
    
   <div class= "camp">
     <label form="">Secretaría o Entidad</label>
-    <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" required>
+    <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" disabled>
   </div>
 
    <div class= "camp">
     <label form="">Ocupación</label>
-    <input type="text" name="ocupacion" placeholder="Empleo/Cargo actual"required>
+    <input type="text" name="ocupacion" placeholder="Empleo/Cargo actual" disabled>
   </div>
   
   <div class="camp"  required>
     <label form="" >Seleciona el Sexo</label>
-    <select name="sexo" class="select" required>    
+    <select name="sexo" class="select" disabled>    
       <option value ="" selected disabled>Selecciona el Sexo</option>
       <option value ="Masculino" >Masculino</option>
       <option value="Femenino">Femenino</option>
@@ -119,17 +115,17 @@
 
   <div class= "camp">
     <label form="">Fecha de Nacimiento</label>
-    <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator()" required>
+    <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" disabled>
   </div>
 
   <div class= "camp">
     <label form="">Edad</label>
-    <input type="number" name="edad" id="age" value="" aria-disabled="true" readonly >
+    <input type="number" name="edad" id="age" value="" aria-disabled="true" disabled >
   </div>
 
   <div class= "camp1">
     <label for="">Enfoque diferencial</label>
-    <select id="travel" name ="enfoque_diferencial[]" class="selectpicker" data-width="18em" data-header="Seleccione campos requeridos" data-selected-text-format="count > 3" multiple required>
+    <select id="travel" name ="enfoque_diferencial[]" class="selectpicker" data-width="18em" data-header="Seleccione campos requeridos" data-selected-text-format="count > 3" disabled>
       <option value ="Afrodescendiente" >Afrodescendiente</option>
       <option value="Indigena">Indigena</option>
       <option value ="ROM">ROM</option>
@@ -143,14 +139,14 @@
 
   <div class="camp"  required>
     <label form="" >Derechos</label>
-    <select name="Derechos" class="select" >    
+    <select name="derechos" class="select" disabled >    
       <option value ="" selected disabled>Selecciona el Derecho</option>
       <option value ="Población victima">Población victima</option>
     </select>
   </div>
   <div class= "camp">
     <label form="tipo">Degradación territorial</label>
-    <select name ="degradacion_territorial" id="tipo" class="select" required>
+    <select name ="degradacion_territorial" id="tipo" class="select" disabled>
       <option value ="" selected disabled>Selecciona una comuna</option>
       <option value ="1. Popular" >1. Popular</option>
       <option value="2. Santa cruz"  >2. Santa Cruz</option>
@@ -178,28 +174,158 @@
 
   <div class= "camp">
     <label form="">Correo Electrónico</label>
-    <input type="email" name="correo_electronico" placeholder="Ingrese Correo Electrónico" required>
+    <input type="email" name="correo_electronico" placeholder="Ingrese Correo Electrónico" disabled>
   </div>
   
   <div class= "camp">
     <label form="tipo">Organización</label>
-    <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece">
+    <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece" disabled>
     </div>
     <div class= "camp">
       <label form="">Teléfono o Celular</label>
-      <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"required>
+      <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"disabled>
     </div>
     <div class= "camp">
       <label form="">Lugar </label>
-      <select class="form-select" name="IdCds">
-     <option selected value="<%= id_cds %> "> <%= name %>  </option>
+      <select class="form-select" name="IdCds" disabled>
+     <option selected    </option>
       </select>
     </div>
 
-    <input type="submit" class="btn-save" id="login" value ="Registrar">
-
+    <input type="submit" class="btn-save" id="login" value ="Registrar" disabled>
 </form>
+
+<% } else {%> 
+  <div class= camp>
+    <label form="tipo">Tipo de documento</label>
+    <select name ="tipo_documento" id="tipo" class="select" required>
+      <option value ="" selected disabled>Selecciona tipo de documento</option>
+      <option value ="cedula de ciudadania" >Cédula de Ciudadanía (CC)</option>
+      <option value="cedula de extranjeria"  >Cédula de extrangería (CE)</option>
+      <option value ="tarjeta de identidad" >Tarjeta de Identidad (TI)</option>
+      <option value ="pasaporte" >Pasaporte</option>
+      <option value ="registro civil" >Registro Civil (RC)</option>
+      <option value ="numero unico de identificacion personal" >Número Único de Identificación Personal (NUIP)</option>
+      <option value ="numero de identificacion personal" >Numero de Identificación Personal (NIP)</option>
+    </select>
+  </div>
+  
+  <div class= "camp">
+    <label form="" for="validationServer" >Número de Documento</label>
+    <input type="text" name="numero_documento" id="validationServer01" placeholder="Ingrese identificación" required onchange="idValidation()">
+    <div class="invalid-feedback">
+      La cedula ya se encuentra registrada
+    </div>
+  </div>
+  
+  <div class="camp">
+      <label form="">Nombre completo</label>
+      <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" required>
+    </div>
+     
+    <div class= "camp">
+      <label form="">Secretaría o Entidad</label>
+      <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" required>
+    </div>
+  
+     <div class= "camp">
+      <label form="">Ocupación</label>
+      <input type="text" name="ocupacion" placeholder="Empleo/Cargo actual"required>
+    </div>
+    
+    <div class="camp"  required>
+      <label form="" >Seleciona el Sexo</label>
+      <select name="sexo" class="select" required>    
+        <option value ="" selected disabled>Selecciona el Sexo</option>
+        <option value ="Masculino" >Masculino</option>
+        <option value="Femenino">Femenino</option>
+      </select>
+    </div>
+  
+    <div class= "camp">
+      <label form="">Fecha de Nacimiento</label>
+      <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator()" onload="getTime()" required>
+    </div>
+  
+    <div class= "camp">
+      <label form="">Edad</label>
+      <input type="number" name="edad" id="age" value="" aria-disabled="true" readonly >
+    </div>
+  
+    <div class= "camp1">
+      <label for="">Enfoque diferencial</label>
+      <select id="travel" name ="enfoque_diferencial[]" class="selectpicker" data-width="18em" data-header="Seleccione campos requeridos" data-selected-text-format="count > 3" multiple required>
+        <option value ="Afrodescendiente" >Afrodescendiente</option>
+        <option value="Indigena">Indigena</option>
+        <option value ="ROM">ROM</option>
+        <option value ="LGBTIQ+">LGBTIQ+</option>
+        <option value ="Situacion de calle">Situacion de calle</option>
+        <option value ="Campesino" >Campesino</option>
+        <option value ="Discapacidad" >Discapacidad</option>
+        <option value ="No Aplica">No Aplica</option>
+      </select>
+    </div>
+  
+    <div class="camp"  required>
+      <label form="" >Derechos</label>
+      <select name="derechos" class="select" >    
+        <option value ="" selected disabled>Selecciona el Derecho</option>
+        <option value ="Población victima">Población victima</option>
+      </select>
+    </div>
+    <div class= "camp">
+      <label form="tipo">Degradación territorial</label>
+      <select name ="degradacion_territorial" id="tipo" class="select" required>
+        <option value ="" selected disabled>Selecciona una comuna</option>
+        <option value ="1. Popular" >1. Popular</option>
+        <option value="2. Santa cruz"  >2. Santa Cruz</option>
+        <option value ="3. Manrique" >3. Manrique</option>
+        <option value="4. Aranjuez"  >4. Aranjuez</option>
+        <option value ="5. Castilla" >5. Castilla</option>
+        <option value="6. 12 de octubre"  >6. 12 de Octubre</option>
+        <option value ="7. Robledo" >7. Robledo</option>
+        <option value="8. Villa Hermosa"  >8. Villa Hermosa</option>
+        <option value ="9. Buenos Aires" >9. Buenos Aires</option>
+        <option value="10. la candelaria"  >10. La Candelaria</option>
+        <option value ="11. Laureles" >11. Laureles Estadio</option>
+        <option value="12. La america"  >12. La America</option>
+        <option value ="13. San javier" >13. San javier</option>
+        <option value="14. El poblado"  >14. El Poblado</option>
+        <option value ="15. Guayabal" >15. Guayabal</option>
+        <option value="16. Belen"  >16. Belén</option>
+        <option value ="50. San sebastian de palmitas" >50. San Sebastian de Palmitas</option>
+        <option value="60. San cristobal"  >60. San Cristobal</option>
+        <option value ="70. Alta vista" >70. Alta Vista</option>
+        <option value="80. San antonio de prado"  >80. San Antonio de Prado</option>
+        <option value ="90. Santa elena" >90. Santa Elena</option>
+      </select>
+    </div>
+  
+    <div class= "camp">
+      <label form="">Correo Electrónico</label>
+      <input type="email" name="correo_electronico" placeholder="Ingrese Correo Electrónico" required>
+    </div>
+    
+    <div class= "camp">
+      <label form="tipo">Organización</label>
+      <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece">
+      </div>
+      <div class= "camp">
+        <label form="">Teléfono o Celular</label>
+        <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"required>
+      </div>
+      <div class= "camp">
+        <label form="">Lugar </label>
+        <select class="form-select" name="IdCds">
+       <option selected value="<%= id_cds %> "> <%= name %>  </option>
+        </select>
+      </div>
+
+      <input type="submit" class="btn-save" id="login" value ="Registrar">
+  <% } %> 
 </main>
+
+
 
 <a href="/registerTable" class="btn-save1">Tabla 📋</a>
 </div>

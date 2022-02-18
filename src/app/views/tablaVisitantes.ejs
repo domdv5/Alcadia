@@ -24,7 +24,7 @@
     href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png"
     rel="icon" />
   <script>
-     function GetTypes(){
+/*      function GetTypes(){
           var select = document.getElementById("tipo");
          $.ajax({
            url: location.origin + "/GetVisitorTypes",
@@ -45,7 +45,7 @@
              }
            }
          });
-        }
+        } */
   </script>
 </head>
 <body>
@@ -55,7 +55,20 @@
       <table id="example"  class=" table table-striped table-ligth table-hover table-sm ">
         <thead class="text-center">
         <tr>
+          
+          <th hidden>Tipo Documento</th>
           <th>Cédula</th>
+          <th hidden>Nombre Completo</th>
+          <th hidden>Secretaria o entidad</th>
+          <th hidden>Ocupacion</th>
+          <th hidden>Sexo</th>
+          <th hidden>Edad</th>
+          <th hidden>Enfoque diferencial</th>
+          <th hidden>Derechos</th>
+          <th hidden>Degradacion Territorial</th>
+          <th hidden>Correo electronico</th>
+          <th hidden>organizacion</th>
+          <th hidden>Telefono Celular</th>
           <th>Fecha</th>
           <th>Hora</th>
           <th>Nombre CDS o Telecentro</th>
@@ -67,12 +80,24 @@
           
           <% for(let i = 0; i < visitor.length; i ++ ) {%> 
             <tr>
+              <td hidden> <%=visitor[i].tipo_documento %> </td>
               <td> <%=visitor[i].cedula %> </td>
+              <td hidden> <%= visitor[i].nombre_completo %></td>
+              <td hidden> <%= visitor[i].secretaria_entidad %></td>
+              <td hidden> <%= visitor[i].ocupacion %></td>
+              <td hidden> <%= visitor[i].sexo %></td>
+              <td hidden> <%= visitor[i].edad %></td>
+              <td hidden> <%= visitor[i].enfoque_diferencial %></td>
+              <td hidden> <%= visitor[i].derechos %></td>
+              <td hidden> <%= visitor[i].degradacion_territorial %></td>
+              <td hidden> <%= visitor[i].correo_electronico %></td>
+              <td hidden> <%= visitor[i].organizacion %></td>
+              <td hidden> <%= visitor[i].telefono_celular %></td>
+              
               <td> <%=visitor[i].fecha %> </td>
               <td> <%=visitor[i].hora %> </td>
               <td> <%=visitor[i].concatenar%> </td>
-              <td> <%=visitor[i].actividad %> </td>
-
+              <td> <%=visitor[i].nombre %> </td>
               <td>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#modalEliminar<%=visitor[i].id_visitantes%>" class="btn btn-outline-danger m-1" title="Eliminar Usuario" >❌</button>
   
@@ -97,7 +122,7 @@
                     </div>
                   </div>
                 </div>
-              <button type="button" title="Editar" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=visitor[i].id_visitantes %>" data-bs-whatever="@fat" onclick="GetTypes()"> 🖋</button></td>
+              <button type="button" title="Editar" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=visitor[i].id_visitantes %>" data-bs-whatever="@fat"> 🖋</button></td>
             </tr>
 
             <div class="modal fade" id="exampleModal<%=visitor[i].id_visitantes%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,18 +149,7 @@
                           <input type="time" class="form-control" id="recipient-name" name="hora" value="<%= visitor[i].hora%>">
                         </div>
 
-                        <div class="mb-3">
-                          <label for="message-text" class="col-form-label">Tipo de reunión</label>
-                          <select name ="actividad" id="tipo" class="select" value="<%= visitor[i].actividad %>">
-                            <option value="">Seleccione</option>
-                           <!-- <option value ="<%= visitor[i].actividad %>" selected disabled><%= visitor[i].actividad %></option>
-                            <% for(let i = 0; i < visitor.length; i++) { %>
-                              <option value ="<%= visitor[i].id_actividades %> " ><%= visitor[i].actividad  %> </option>
-                              <% } %>  -->
-                            </select>
-                          </div>
-                     
-
+                
                        <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar</button>
                           <input type="submit" class="btn btn-primary" value ="Aceptar">
@@ -152,9 +166,6 @@
     <script>
       $(document).ready(function() {
          table = $('#example').DataTable({
-          orderCellsTop: true,
-          destroy: true,
-           fixedHeader: true 
         });
        
         //Creamos una fila en el head de la tabla y lo clonamos para cada columna
@@ -179,6 +190,9 @@
     
     $(document).ready(function() {
     $('#example').DataTable({
+      orderCellsTop: true,
+          destroy: true,
+           fixedHeader: true,
             "language": {
               "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
               },

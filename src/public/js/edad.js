@@ -1,9 +1,8 @@
+
+
 function ageGenerator() {
     let date = document.getElementById('fecha').value
     
-
-    
-
 
     let yearBirth = parseInt(date.slice(0, 4))
     let monthBirth = parseInt(date.slice(5, 7))
@@ -21,18 +20,6 @@ function ageGenerator() {
 
 
 
-    console.log(year)
-    console.log(moth);
-    console.log(day)
-
-    console.log(yearBirth);
-    console.log(monthBirth);
-    console.log(dayBirth);
-
-
-    console.log(nextAge)
-    console.log(currentAge);
-
 
     if (dayBirth - day >= 0 && monthBirth - moth <= 0) {
         document.getElementById('age').setAttribute('value', nextAge)
@@ -41,3 +28,6 @@ function ageGenerator() {
     }
 
 }
+
+
+
