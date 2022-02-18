@@ -37,6 +37,7 @@ router.get('/activities', (req, res) => {
   if (req.session.login) {
     if (key === 1) {
       connection.query("SELECT * FROM cds", [id], (err, result) => {
+        const name = result[0].concatenar
 
         if (err) {
           res.send(err)
@@ -45,6 +46,7 @@ router.get('/activities', (req, res) => {
             cds: result,
             rows: result,
             key,
+            name,
           })
         }
       })
@@ -59,6 +61,7 @@ router.get('/activities', (req, res) => {
         } else {
           res.render("../views/registroActividades.ejs", {
             cds: result,
+            rows:result,
             id_cds,
             name,
             key,
