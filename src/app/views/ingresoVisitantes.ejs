@@ -23,7 +23,7 @@
   <title>Ingreso Visitantes</title>
 </head>
 
-<body>
+<body onload="getInputs()">
  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -56,6 +56,7 @@
       </ul>
     </div>
   </nav>
+<<<<<<< HEAD
         
       </div>
     </div>
@@ -67,19 +68,21 @@
 
 <div class="container-all" id="move-content">
   <div class="container-content">
+=======
+      
+>>>>>>> 5dff0bc6ce0ab078b11c16a33a4cf343983692fb
   <div class='wrapper'>
     <div class='login'>
       <div class='appTitle'>
-        INGRESO VISITANTES
+       INGRESO VISITANTES
       </div>
       <div class='arrow-down'></div>
       <form action="visitorsEntry" method='POST'>
-<% if(key === 1 ) { %>
         <fieldset>
           <span>
             <i class='fa fa-user'></i>
           </span>
-          <input type="number" for="validationServer"  for="validationServerFeedback" id="identification" name="cedula" placeholder='Ingrese Documento' disabled>
+          <input type="number" for="validationServer"  for="validationServerFeedback" id="identification" name="cedula" placeholder='Ingrese Documento'  onchange="validacion()" required>
           <div id="validationServer" id="validationServerFeedback" class="invalid-feedback" class="valid-feedback">
                La cedula no se encuentra registrada
          </div>
@@ -89,14 +92,14 @@
           <span>
             <i class="fa fa-clock-o"></i>
           </span>
-          <input type="text" name="fecha" id="fecha" disabled >
+          <input type="text" name="fecha" id="fecha" onload="getDate()" aria-disabled="true" readonly >
         </fieldset>
 
         <fieldset>
           <span>
             <i class="fa fa-clock-o"></i>
           </span>
-          <input type="text" id="hour"   name="hora" disabled>
+          <input type="text" id="hour"  onload="getTime()" name="hora" aria-disabled="true" readonly>
         </fieldset>
 
 
@@ -108,9 +111,11 @@
       
           <div class="camp">
             <label  placeholder="actividad"form="tipo" ></label>
-            <select name ="id_actividades" id="tipo" class="select" disabled >
+            <select name ="id_actividades" id="tipo" class="select" required >
               <option value ="" selected disabled>Selecciona una actividad</option>
-              <option value =""></option>
+              <% for(let i = 0; i < rows.length; i++) { %> 
+              <option value ="<%= rows[i].id_actividades %>"><%= rows[i].fullActivitie %></option>
+              <%  } %> 
             </select>
           </div>
           </fieldset>
@@ -122,78 +127,24 @@
             <i class="fa fa-clock-o"></i>
           </span>
         <div class=camp>
-          <select class="select" name="IdCds" disabled>
-         <option  value="">  </option>
+          <select class="select" name="IdCds">
+         <option  value="<%= id %>"> <%= nombre %> </option>
          </select>
         </div>
       </fieldset>
     </div>
-        <input id='btnLogin' type='submit' value="Ingresar" disabled>
+    
+
+
+     
+        <input id='btnLogin' type='submit' value="Ingresar">
+        
+  
       </form>
+      
     </div>
   </div>
-
-
-  <% } else { %>
-    <fieldset>
-      <span>
-        <i class='fa fa-user'></i>
-      </span>
-      <input type="number" for="validationServer"  for="validationServerFeedback" id="identification" name="cedula" placeholder='Ingrese Documento'  onchange="validacion()" required>
-      <div id="validationServer" id="validationServerFeedback" class="invalid-feedback" class="valid-feedback">
-           La cedula no se encuentra registrada
-     </div>
-    </fieldset>
-
-    <fieldset>
-      <span>
-        <i class="fa fa-clock-o"></i>
-      </span>
-      <input type="text" name="fecha" id="fecha" onload="getDate()" aria-disabled="true" readonly >
-    </fieldset>
-
-    <fieldset>
-      <span>
-        <i class="fa fa-clock-o"></i>
-      </span>
-      <input type="text" id="hour"  onload="getTime()" name="hora" aria-disabled="true" readonly>
-    </fieldset>
-
-
-    <div class="mb-3">
-    <fieldset>
-      <span>
-        <i class="fa fa-book fa-fw"></i>
-        </span>
-  
-      <div class="camp">
-        <label  placeholder="actividad"form="tipo" ></label>
-        <select name ="id_actividades" id="tipo" class="select" required >
-          <option value ="" selected disabled>Selecciona una actividad</option>
-          <% for(let i = 0; i < rows.length; i++) { %> 
-          <option value ="<%= rows[i].id_actividades %>"><%= rows[i].fullActivitie %></option>
-          <%  } %> 
-        </select>
-      </div>
-      </fieldset>
-    </div>
-    
-    <div class="my-4">
-    <fieldset>
-      <span>
-        <i class="fa fa-clock-o"></i>
-      </span>
-    <div class=camp>
-      <select class="select" name="IdCds">
-     <option  value="<%= id %>"> <%= nombre %> </option>
-     </select>
-    </div>
-  </fieldset>
-  <input id='btnLogin' type='submit' value="Ingresar">
-</div>
-    <% } %> 
-
-    <a  href="/visitorTable" class="btn-save1">Tabla 📋</a>
+  <a  href="/visitorTable" class="btn-save1">Tabla 📋</a>
 
   <a  href="/visitorTable" class="btn-save1">Tabla 📋</a>
 </div>
@@ -237,6 +188,7 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="/resources/js/validacion.js"></script>
   <script src="/resources/js/getTime.js"></script>
+  <script src="/resources/js/inputDisabled.js"></script>
   <script src="/resources/js/getCurrentDate.js"></script>
  
 
