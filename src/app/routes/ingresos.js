@@ -15,7 +15,6 @@ router.get('/users', (req, res) => {
 
   if (req.session.login) {
     connection.query(`SELECT * FROM cds`, (err, result) => {
-
       if (err) {
         res.send(err)
       } else {
@@ -38,13 +37,13 @@ router.get('/activities', (req, res) => {
     if (key === 1) {
       connection.query("SELECT * FROM cds", [id], (err, result) => {
         const name = result[0].concatenar
-
         if (err) {
           res.send(err)
         } else {
           res.render("../views/registroActividades.ejs", {
             cds: result,
             rows: result,
+            name,
             key,
             name,
           })
@@ -719,10 +718,14 @@ router.post('/addActivities', async (req, res) => {
 router.post('/addVisitors', async (req, res) => {
 
   const data = req.body
+ 
 
-  data.enfoque_diferencial = data['enfoque_diferencial[]'].join(', ');
+  const enfoque = data['enfoque_diferencial[]'];
+
+  data.enfoque_diferencial = Array.isArray(enfoque) ? enfoque.join(', ') : enfoque;
 
   delete data['enfoque_diferencial[]'];
+  
 
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
     if (result === undefined) {

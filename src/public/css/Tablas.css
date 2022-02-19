@@ -93,3 +93,17 @@ text-align: center;
 #example_wrapper{
   position:revert;
 }
+
+/* responsive */
+@media screen and (max-width: 800px){
+  .btn {
+display: block;
+  }
+  .table-responsive{
+    margin-top: 50px;
+    align-items: center;
+  }
+  .btn-outline-secondary{
+    margin-left: -50px;
+  }
+}

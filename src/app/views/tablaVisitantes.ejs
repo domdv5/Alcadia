@@ -51,8 +51,8 @@
 <body>
   <h2>TABLA <span class="text-muted">INGRESO DE VISITANTES</span> </h2>
   <a href="/visitorLogin" class="btn btn-outline-secondary">Regresar</a>
-
-      <table id="example"  class=" table table-striped table-ligth table-hover ">
+  <div class="table-responsive">
+      <table id="example"  class=" table table-striped table-ligth table-hover table-sm ">
         <thead class="text-center">
         <tr>
           
@@ -162,6 +162,7 @@
             <% } %>
         </tbody>
     </table> 
+    </div>
     <script>
       $(document).ready(function() {
          table = $('#example').DataTable({
