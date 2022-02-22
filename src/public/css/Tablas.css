@@ -1,5 +1,6 @@
 table{
   position: relative;
+  overflow: scroll;
 }
 table.dataTable thead {
  background: linear-gradient(to right,#3e4246, #8d9aa0);
@@ -80,7 +81,6 @@ h3{
 #multiple select{
 height: auto;
 border-radius: 3%;
-pointer-events: painted;
 }
 #multiple select :hover{
   background-color: hsla(160, 39%, 47%, 0.562);
@@ -113,4 +113,14 @@ display: block;
   .btn-outline-secondary{
     margin-left: -50px;
   }
+}
+body::-webkit-scrollbar{
+  width: 12px;
+  background: #ffffff;
+  height: auto;
+}
+body::-webkit-scrollbar-thumb{
+  background: #b4b5b6;
+  border-radius: 10px;
+  border-right: 2px solid #ffffff;
 }

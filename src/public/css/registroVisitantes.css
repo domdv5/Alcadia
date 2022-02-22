@@ -235,7 +235,6 @@ ul li:hover > ul{
   margin: 3px 3px ;
   }
 
-
 /* responsive */
 #icon-menu{
   width: 50px;
@@ -536,5 +535,20 @@ footer{
     justify-content: space-between;
     margin:auto;
   }
+  .select-css{
+    font-size: 15px;
+  }
+  .select-css option{
+    font-size: 10px;
+  }
+  }
+  body::-webkit-scrollbar{
+    width: 12px;
+    background: #d5e6ec;
+  }
+  body::-webkit-scrollbar-thumb{
+    background: #364D5C;
+    border-radius: 10px;
+    border-right: 2px solid #d5e6ec;
   }
   

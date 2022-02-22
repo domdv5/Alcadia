@@ -28,7 +28,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%=  %></strong>
+        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%= name %></strong>
       </a>
       <div class="menu" id="show-menu">
       <ul class="nav nav-tabs">
@@ -172,7 +172,7 @@
         <label form="tipo">Componente</label>
         <input type="text" placeholder="ingrese nombre de la actividad"  name="componente">
       </div>
-            <div id="contenedor" class=camp>
+        <div id="contenedor" class=camp>
         <label form="tipo">Tipo de reunión</label>
         <select name="tipo_reunion" id="myselect" onchange="showInput()" class="select" required>
           <option value="" selected disabled>Selecciona el tipo de Reunion</option>

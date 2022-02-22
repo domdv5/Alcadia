@@ -246,3 +246,12 @@ button#createAccount:hover {
   color: #364D5C;
   text-decoration: none;
 }
+body::-webkit-scrollbar{
+  width: 12px;
+  background: #d5e6ec;
+}
+body::-webkit-scrollbar-thumb{
+  background: #364D5C;
+  border-radius: 10px;
+  border-right: 2px solid #d5e6ec;
+}

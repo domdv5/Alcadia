@@ -8,17 +8,23 @@ router.get('/login', (req, res) => {
   res.render("../views/login.ejs")
 })
 
-
-
-
 router.get('/users', (req, res) => {
+
+  const key = req.session.key
+  const id = req.session.id_cds
+
   if (req.session.login) {
     connection.query(`SELECT * FROM cds`, (err, result) => {
+      const id_cds = result[0].IdCds
+      const name = result[0].concatenar
       if (err) {
         res.send(err)
       } else {
         res.render("../views/registroUsuario.ejs", {
           data: result,
+          id_cds,
+          name,
+          key,
         })
       }
     })
@@ -31,13 +37,15 @@ router.get('/activities', (req, res) => {
 
   const id = req.session.id_cds
   const key = req.session.key
-
+  
 
 
   if (req.session.login) {
     if (key === 1) {
       connection.query("SELECT * FROM cds", (err, result) => {
-        const name = result[0].concatenar
+
+        const name = result[1].concatenar
+
         if (err) {
           res.send(err)
         } else {
@@ -46,7 +54,6 @@ router.get('/activities', (req, res) => {
             rows: result,
             name,
             key,
-            name,
           })
         }
       })
@@ -81,7 +88,6 @@ router.get('/visitorLogin', async (req, res) => {
   const key = req.session.key
   const dato = req.session.codigo
   const id = req.session.id_cds
-
 
   if (req.session.login) {
     if (key === 1) {
@@ -870,7 +876,7 @@ router.post('/singUp', async (req, res) => {
           icon: 'success',
           showConfirmButton: false,
           timer: 4000,
-          ruta: 'visitors',
+          ruta: 'activities',
         })
       }
     })
