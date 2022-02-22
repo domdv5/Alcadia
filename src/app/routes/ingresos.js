@@ -577,6 +577,11 @@ router.post("/edit.registro/:id", async (req, res) => {
 
   const id = req.params.id;
   const data = req.body
+  const enfoque = data['enfoque_diferencial[]'];
+
+  data.enfoque_diferencial = Array.isArray(enfoque) ? enfoque.join(', ') : enfoque;
+
+  delete data['enfoque_diferencial[]'];
 
   await connection.query("UPDATE visitantes SET ? WHERE numero_documento = ?", [data, id], (err, result) => {
     if (result === undefined) {

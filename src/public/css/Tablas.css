@@ -77,7 +77,14 @@ h3{
     border-radius: 5px;
     text-align: center;
   }
-
+#multiple select{
+height: auto;
+border-radius: 3%;
+pointer-events: painted;
+}
+#multiple select :hover{
+  background-color: hsla(160, 39%, 47%, 0.562);
+}
 .modal-title{
 margin-left: initial;
 font-size: 140%;
