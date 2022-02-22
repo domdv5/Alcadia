@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%= name %> </strong>
+          <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%=  %> </strong>
         </a>
         <div class="menu" id="show-menu">
         <ul class="nav nav-tabs">
@@ -74,7 +74,10 @@
       
 
       <label for="">Cedula</label>
-      <input type="text" name="cedula" pattern="[0-9]{7,10}"  title="la cedula debe tener minino 7 digitos o maximo 10" required>
+      <input type="text" for="validationServer"  id="validationServer01" name="cedula" pattern="[0-9]{7,10}"  title="la cedula debe tener minimo 7 digitos o maximo 10" onchange="documentValidation()" required>
+         <div class="invalid-feedback">
+        La cedula ya es un usuario activo, por favor digite otra.
+        </div>
 
       <label for="">Correo</label>
       <input type="text" name="correo" required>
@@ -95,7 +98,7 @@
 
 
     <div style ="display: unline;">
-      <input type="submit" class="btn-save" value ="Guardar">
+      <input type="submit" id="btnLogin" class="btn-save" value ="Guardar">
     </div>
   </form>
 </div>
@@ -152,6 +155,7 @@
     </div>
   </footer>
   <script src="/resources/js/script.js"></script>
+  <script src="/resources/js/document.js"></script>
   <script src="/resources/js/nav_activo.js"></script>
 </body>
 </html>

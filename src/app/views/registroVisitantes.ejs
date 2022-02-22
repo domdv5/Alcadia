@@ -83,7 +83,7 @@
   
   <div class= "camp">
     <label form="" for="validationServer" >Número de Documento</label>
-    <input type="text" name="numero_documento" id="validationServer01" placeholder="Ingrese identificación" required onchange="idValidation()">
+    <input type="text" name="numero_documento" id="validationServer01" placeholder="Ingrese identificación"  pattern="[0-9]{7,10}"  title="la cedula debe tener minimo 7 digitos o maximo 10" onchange="idValidation()" required>
     <div class="invalid-feedback">
       La cedula ya se encuentra registrada
     </div>
@@ -91,17 +91,17 @@
   
   <div class="camp">
       <label form="">Nombre completo</label>
-      <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" required>
+      <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras" required>
     </div>
      
     <div class= "camp">
       <label form="">Secretaría o Entidad</label>
-      <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" required>
+      <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" pattern="[A-Z a-z]{1,70}" title="Solo se permite el ingreso de letras" required>
     </div>
   
      <div class= "camp">
       <label form="">Ocupación</label>
-      <input type="text"   id="prueba" name="ocupacion" placeholder="Empleo/Cargo actual" required>
+      <input type="text"   id="prueba" name="ocupacion" placeholder="Empleo/Cargo actual" pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras" required>
     </div>
     
     <div class="camp"  required>
@@ -179,11 +179,11 @@
     
     <div class= "camp">
       <label form="tipo">Organización</label>
-      <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece">
+      <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece" pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras">
       </div>
       <div class= "camp">
         <label form="">Teléfono o Celular</label>
-        <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"required>
+        <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
       </div>
       <div class= "camp">
         <label form="">Lugar </label>
@@ -193,6 +193,7 @@
       </div>
       <input type="submit" class="btn-save" value="Registrar">
     </form>
+    
 </main>
 <a href="/registerTable" class="btn-save1">Tabla 📋</a>
 </div>

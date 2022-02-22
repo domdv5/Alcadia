@@ -28,7 +28,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%= name %></strong>
+        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%=  %></strong>
       </a>
       <div class="menu" id="show-menu">
       <ul class="nav nav-tabs">
@@ -109,27 +109,32 @@
       <div class=camp>
         <label form="tipo">Comuna o corregimiento</label>
         <select name="comuna_corregimiento" id="tipo" class="select" required>
-          <option value="" selected disabled>Selecciona una comuna</option>
-          <option value="2. Santa Cruz">2. Santa Cruz</option>
-          <option value="3. Manrique">3. Manrique</option>
-          <option value="4. Aranjuez">4. Aranjuez</option>
-          <option value="5. Castilla">5. Castilla</option>
-          <option value="6. 12 de Octubre">6. 12 de Octubre</option>
-          <option value="7. Robledo">7. Robledo</option>
-          <option value="8. Villa Hermosa">8. Villa Hermosa</option>
-          <option value="9. Buenos Aires">9. Buenos Aires</option>
-          <option value="10. La Candelaria">10. La Candelaria</option>
-          <option value="11. Laureles Estadio">11. Laureles Estadio</option>
-          <option value="12. La America">12. La America</option>
-          <option value="13. San javier">13. San javier</option>
-          <option value="14. El Poblado">14. El Poblado</option>
-          <option value="15. Guayabal">15. Guayabal</option>
-          <option value="16. Belén">16. Belén</option>
-          <option value="50. San Sebastian de Palmitas">50. San Sebastian de Palmitas</option>
-          <option value="60. San Cristobal">60. San Cristobal</option>
-          <option value="70. Alta Vista">70. Alta Vista</option>
-          <option value="80. San Antonio de Prado">80. San Antonio de Prado</option>
-          <option value="90. Santa Elena">90. Santa Elena</option>
+            <% if(key === 0 ) { %>
+              <option value="<%= comuna %> "selected><%= comuna %></option>
+              <% } else{ %> 
+                <option value ="" selected disabled>Selecciona una comuna</option>
+                <option value ="1. Popular" >1. Popular</option>
+                <option value="2. Santa cruz"  >2. Santa Cruz</option>
+                <option value ="3. Manrique" >3. Manrique</option>
+                <option value="4. Aranjuez"  >4. Aranjuez</option>
+                <option value ="5. Castilla" >5. Castilla</option>
+                <option value="6. 12 de octubre"  >6. 12 de Octubre</option>
+                <option value ="7. Robledo" >7. Robledo</option>
+                <option value="8. Villa Hermosa"  >8. Villa Hermosa</option>
+                <option value ="9. Buenos Aires" >9. Buenos Aires</option>
+                <option value="10. la candelaria"  >10. La Candelaria</option>
+                <option value ="11. Laureles" >11. Laureles Estadio</option>
+                <option value="12. La america"  >12. La America</option>
+                <option value ="13. San javier" >13. San javier</option>
+                <option value="14. El poblado"  >14. El Poblado</option>
+                <option value ="15. Guayabal" >15. Guayabal</option>
+                <option value="16. Belen"  >16. Belén</option>
+                <option value ="50. San sebastian de palmitas" >50. San Sebastian de Palmitas</option>
+                <option value="60. San cristobal"  >60. San Cristobal</option>
+                <option value ="70. Alta vista" >70. Alta Vista</option>
+                <option value="80. San antonio de prado"  >80. San Antonio de Prado</option>
+                <option value ="90. Santa elena" >90. Santa Elena</option>
+                <% } %> 
         </select>
       </div>
       <div class=camp>
@@ -167,17 +172,17 @@
         <label form="tipo">Componente</label>
         <input type="text" placeholder="ingrese nombre de la actividad"  name="componente">
       </div>
-            <div class=camp>
+            <div id="contenedor" class=camp>
         <label form="tipo">Tipo de reunión</label>
-        <select name="tipo_reunion" id="myselect" onchange="mostrar_control()" class="select" required>
+        <select name="tipo_reunion" id="myselect" onchange="showInput()" class="select" required>
           <option value="" selected disabled>Selecciona el tipo de Reunion</option>
           <option value="Informativa">Informativa</option>
           <option value="Seguimiento">Seguimiento</option>
           <option value="Toma de desiciones">Toma de desiciones</option>
           <option value="Capacitación">Capacitación</option>
           <option value="Formación">Formación</option>
-          <option id="Nuevo" >Otro</option>
-          <input  id="Texto" type="text" style="visibility: hidden" placeholder="Ingresa el tipo de reunion">
+          <option id="option">Otro</option>
+          <!-- <input  id="Texto" type="text" style="visibility: hidden" placeholder="Ingresa el tipo de reunion"> -->
         </select>
       </div>
   
@@ -241,6 +246,8 @@
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700" ;>
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="/resources/js/script.js"></script>
+        <script src="/resources/js/showInput.js"></script>
 
     <% if(typeof alert !="undefined" ){%>
       <script>
@@ -254,18 +261,7 @@
         })
       </script>
       <% } %>
-      <script>
-        function mostrar_control(){
-            var select = document.getElementById("myselect");
-            var inputText = document.getElementById("Texto");
-            if(select.options[select.selectedIndex].id == "Nuevo"){
-                inputText.style.visibility = "visible";
-            }else{
-                inputText.style.visibility = "hidden";
-            }
-        }
-    </script>
-         <script src="/resources/js/script.js"></script>
+         
 </body>
 
 </html>

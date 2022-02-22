@@ -1,6 +1,7 @@
 const connection = require("../../config/db");
 const bcryptjs = require('bcryptjs');
 const express = require('express');
+const { route } = require("express/lib/application");
 const router = express.Router()
 
 router.get('/login', (req, res) => {
@@ -11,8 +12,6 @@ router.get('/login', (req, res) => {
 
 
 router.get('/users', (req, res) => {
-
-
   if (req.session.login) {
     connection.query(`SELECT * FROM cds`, (err, result) => {
       if (err) {
@@ -33,9 +32,11 @@ router.get('/activities', (req, res) => {
   const id = req.session.id_cds
   const key = req.session.key
 
+
+
   if (req.session.login) {
     if (key === 1) {
-      connection.query("SELECT * FROM cds", [id], (err, result) => {
+      connection.query("SELECT * FROM cds", (err, result) => {
         const name = result[0].concatenar
         if (err) {
           res.send(err)
@@ -54,16 +55,18 @@ router.get('/activities', (req, res) => {
 
         const id_cds = result[0].IdCds
         const name = result[0].concatenar
+        const comuna = result[0].Comuna
 
         if (err) {
           res.send(err)
         } else {
           res.render("../views/registroActividades.ejs", {
             cds: result,
-            rows:result,
+            rows: result,
             id_cds,
             name,
             key,
+            comuna,
           })
         }
       })
@@ -168,7 +171,8 @@ router.get('/activitiesTable', (req, res) => {
           res.send(err);
         } else {
           res.render("../views/tablaActividades.ejs", {
-            actividad: result
+            actividad: result,
+            key,
           })
         }
 
@@ -180,7 +184,8 @@ router.get('/activitiesTable', (req, res) => {
           res.send(err);
         } else {
           res.render("../views/tablaActividades.ejs", {
-            actividad: result
+            actividad: result,
+            key,
           })
         }
       })
@@ -235,7 +240,7 @@ router.get('/visitorTable', async (req, res) => {
 
   if (req.session.login) {
     if (key === 1) {
-      connection.query(`SELECT  actividades.nombre ,ingreso_visitantes.id_visitantes, visitantes.*, cedula, fecha, hora, concatenar
+      connection.query(`SELECT  actividades.nombre ,ingreso_visitantes.id_ingresos, visitantes.*, cedula, fecha, hora, concatenar
     FROM ingreso_visitantes 
       JOIN visitantes ON visitantes.numero_documento = ingreso_visitantes.cedula
       JOIN cds ON  ingreso_visitantes.IdCds=cds.IdCds
@@ -243,13 +248,13 @@ router.get('/visitorTable', async (req, res) => {
         if (err) {
           res.send(err);
         } else {
-          res.render("../views/tablaVisitantes.ejs", {
+          res.render("../views/tablaIngresos.ejs", {
             visitor: result
           })
         }
       })
     } else {
-      connection.query(`SELECT  actividades.nombre ,ingreso_visitantes.id_visitantes, visitantes.*, cedula, fecha, hora, concatenar
+      connection.query(`SELECT  actividades.nombre ,ingreso_visitantes.id_ingresos, visitantes.*, cedula, fecha, hora, concatenar
         FROM ingreso_visitantes 
           JOIN visitantes ON visitantes.numero_documento = ingreso_visitantes.cedula
           JOIN cds ON  ingreso_visitantes.IdCds=cds.IdCds
@@ -259,7 +264,7 @@ router.get('/visitorTable', async (req, res) => {
         if (err) {
           res.send(err);
         } else {
-          res.render("../views/tablaVisitantes.ejs", {
+          res.render("../views/tablaIngresos.ejs", {
             visitor: result
           })
         }
@@ -296,7 +301,7 @@ router.get('/registerTable', (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          res.render("../views/tablaRegistros.ejs", {
+          res.render("../views/tablaVisitantes.ejs", {
             registro: result
           })
         }
@@ -307,7 +312,7 @@ router.get('/registerTable', (req, res) => {
         if (err) {
           res.send(err);
         } else {
-          res.render("../views/tablaRegistros.ejs", {
+          res.render("../views/tablaVisitantes.ejs", {
             registro: result
           })
         }
@@ -404,7 +409,7 @@ router.get('/delete.registro/:id', (req, res) => {
   connection.query("DELETE FROM visitantes WHERE numero_documento = ? ", [id], (err, result) => {
 
     if (result) {
-      res.render('../views/tablaRegistros.ejs', {
+      res.render('../views/tablaVisitantes.ejs', {
         alert: true,
         registro: result,
         title: "REGISTRO ELIMINADO",
@@ -414,7 +419,7 @@ router.get('/delete.registro/:id', (req, res) => {
         ruta: 'registerTable'
       })
     } else {
-      res.render('../views/tablaRegistros.ejs', {
+      res.render('../views/tablaVisitantes.ejs', {
         alert: true,
         title: 'Error',
         icon: 'error',
@@ -459,9 +464,9 @@ router.get('/delete.visitante/:id', (req, res) => {
   const id = req.params.id
 
 
-  connection.query("DELETE FROM ingreso_visitantes WHERE id_visitantes = ? ", [id], (err, result) => {
+  connection.query("DELETE FROM ingreso_visitantes WHERE id_ingresos = ? ", [id], (err, result) => {
     if (result) {
-      res.render('../views/tablaVisitantes.ejs', {
+      res.render('../views/tablaIngresos.ejs', {
         alert: true,
         visitor: result,
         title: "REGISTRO ELIMINADO",
@@ -471,7 +476,7 @@ router.get('/delete.visitante/:id', (req, res) => {
         ruta: 'visitorTable'
       })
     } else {
-      res.render('../views/tablaVisitantes.ejs', {
+      res.render('../views/tablaIngresos.ejs', {
         alert: true,
         title: 'Error',
         icon: 'error',
@@ -545,7 +550,7 @@ router.post("/edit.users/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body
 
-
+console.log(data);
 
   await connection.query("UPDATE usuarios SET ? WHERE id_usuarios = ?", [data, id], (err, result) => {
     if (result) {
@@ -577,7 +582,7 @@ router.post("/edit.registro/:id", async (req, res) => {
 
   await connection.query("UPDATE visitantes SET ? WHERE numero_documento = ?", [data, id], (err, result) => {
     if (result === undefined) {
-      res.render('../views/tablaRegistros.ejs', {
+      res.render('../views/tablaVisitantes.ejs', {
         alert: true,
         visitor: result,
         registro: result,
@@ -590,7 +595,7 @@ router.post("/edit.registro/:id", async (req, res) => {
         ruta: 'registerTable'
       })
     } else {
-      res.render('../views/tablaRegistros.ejs', {
+      res.render('../views/tablaVisitantes.ejs', {
         alert: true,
         visitor: result,
         registro: result,
@@ -613,9 +618,9 @@ router.post('/edit.ingreso/:id', async (req, res) => {
 
 
 
-  await connection.query("UPDATE ingreso_visitantes SET ? WHERE id_visitantes  = ?", [data, id], (err, result) => {
+  await connection.query("UPDATE ingreso_visitantes SET ? WHERE id_ingresos  = ?", [data, id], (err, result) => {
     if (result) {
-      res.render('../views/tablaVisitantes.ejs', {
+      res.render('../views/tablaIngresos.ejs', {
         alert: true,
         visitor: result,
         cds: result,
@@ -626,7 +631,7 @@ router.post('/edit.ingreso/:id', async (req, res) => {
         ruta: 'visitorTable'
       })
     } else {
-      res.render('../views/tablaVisitantes.ejs', {
+      res.render('../views/tablaIngresos.ejs', {
         alert: true,
         title: 'Error',
         icon: 'error',
@@ -679,6 +684,7 @@ router.post('/addUsers', async (req, res) => {
 
 router.post('/addActivities', async (req, res) => {
 
+  const key = req.session.key
 
   const data = req.body
 
@@ -694,8 +700,9 @@ router.post('/addActivities', async (req, res) => {
         id: result,
         id_cds: result,
         name: result,
-        key: result,
+        key,
         rows: result,
+        comuna: result,
         title: "Registro Guardado",
         icon: 'success',
         showConfirmButton: false,
@@ -718,14 +725,14 @@ router.post('/addActivities', async (req, res) => {
 router.post('/addVisitors', async (req, res) => {
 
   const data = req.body
- 
+
 
   const enfoque = data['enfoque_diferencial[]'];
 
   data.enfoque_diferencial = Array.isArray(enfoque) ? enfoque.join(', ') : enfoque;
 
   delete data['enfoque_diferencial[]'];
-  
+
 
   await connection.query('INSERT INTO visitantes SET ?', [data], (err, result) => {
     if (result === undefined) {
@@ -814,6 +821,7 @@ router.post('/visitorsEntry', async (req, res) => {
         id: result,
         nombre: result,
         rows: result,
+        key:result,
         title: "Ingreso Exitoso",
         icon: 'success',
         showConfirmButton: false,
@@ -878,19 +886,6 @@ router.post('/idValidation', async (req, res) => {
   })
 })
 
-router.post('/getData', (req, res) => {
-
-  const { numero_documento } = req.body
-
-  connection.query('SELECT * FROM visitantes WHERE numero_documento = ?', [numero_documento], (err, result) => {
-
-    if (result.length === 0) {
-      res.json({ code: 400 })
-    } else {
-      res.jsonp({ data: result })
-    }
-  })
-})
 
 router.get('/inputs', (req, res) => {
 
@@ -907,9 +902,19 @@ router.get('/inputs', (req, res) => {
     }
 
   })
-
 })
 
+router.post('/documentValidation', async (req, res) => {
+  const { cedula } = req.body
+
+  await connection.query('SELECT cedula FROM usuarios WHERE cedula = ?', [cedula], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      res.json({ code: 200 })
+    }
+  })
+})
 
 router.get('/logout', (req, res) => {
   req.session.destroy(() => {
