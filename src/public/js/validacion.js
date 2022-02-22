@@ -4,7 +4,7 @@
 
 const validacion = () => {
 
-    let value = document.getElementById('identification').value
+    let value = document.getElementById('validationServer01').value
     const url = window.origin + '/idValidation'
 
     axios({
@@ -18,11 +18,11 @@ const validacion = () => {
 
 
         if(code === 200){
-            document.getElementById('identification').setAttribute('class', 'form-control is-valid')
+            document.getElementById('validationServer01').setAttribute('class', 'form-control is-valid')
             document.getElementById('btnLogin').removeAttribute('disabled')
             
         } else {
-            document.getElementById('identification').setAttribute('class', 'form-control is-invalid')
+            document.getElementById('validationServer01').setAttribute('class', 'form-control is-invalid')
             document.getElementById('btnLogin').setAttribute('disabled', true)
         }
     })

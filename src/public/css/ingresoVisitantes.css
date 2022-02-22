@@ -29,7 +29,7 @@ body {
   margin-left: -12.5em;
   width: 25em;
   height: 80%;
-  margin-top: 3rem;
+  margin-top: 0%;
 }
 .wrapper .login {
   position: absolute;
@@ -287,7 +287,7 @@ footer{
   height: 4rem;
   padding: 15px;
   margin-left: 44.5%;
-  margin-top: 50%;
+  margin-top: 43%;
   text-align: center;
   background-color:  #364D5C;
   border: 0;
