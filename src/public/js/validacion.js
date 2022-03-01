@@ -28,10 +28,6 @@ const validacion = () => {
     })
 }
 
-
-
-
-
 const idValidation = () => {
 
     let value = document.getElementById('validationServer01').value
@@ -46,8 +42,6 @@ const idValidation = () => {
         }
     }).then(data => {
         const { code } = data.data
-
-        
         if(code === 400){
             document.getElementById('validationServer01').setAttribute('class', 'form-control is-valid')
             document.getElementById('login').removeAttribute('disabled')
