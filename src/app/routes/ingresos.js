@@ -11,6 +11,8 @@ router.get("/login", (req, res) => {
 router.get("/users", (req, res) => {
   if (req.session.login) {
     connection.query(`SELECT * FROM cds`, (err, result) => {
+      const id_cds = result[0].IdCds
+      const name = result[0].concatenar
       if (err) {
         res.send(err);
       } else {
@@ -930,11 +932,7 @@ router.post("/singUp", async (req, res) => {
   const { codigo, pass } = req.body;
 
   if (codigo && pass) {
-    await connection.query(
-      `SELECT usuarios.*, cds.concatenar FROM usuarios
-    INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.cedula = ?`,
-      [codigo],
-      (err, result) => {
+    await connection.query(`SELECT usuarios.*, cds.concatenar FROM usuarios INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.cedula = ?`,[codigo],(err, result) => {
         req.session.nombre = result[0].concatenar;
         req.session.codigo = result[0].cedula;
         req.session.id_cds = result[0].IdCds;
