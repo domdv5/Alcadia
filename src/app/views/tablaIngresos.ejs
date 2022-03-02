@@ -57,7 +57,7 @@
         <tbody>
           
           <% for(let ingresos of visitor) {%> 
-           <%- include('./partials/entrancesForm', {visitor:ingresos}); %> 
+           <%- include('./partials/entrancesRowData.ejs', {visitor:ingresos}); %> 
             <% } %>
         </tbody>
     </table> 
@@ -118,7 +118,7 @@
       </script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="/resources/js/validacion.js"></script>
-        <script src="/resources/js/routesEntrances/deleteEntrance.js"></script>
+        <script src="/resources/js/axiosEntrances/deleteEntrance.js"></script>
        
       
         <% if(typeof alert !="undefined" ){%>

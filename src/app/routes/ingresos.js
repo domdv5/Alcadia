@@ -13,6 +13,7 @@ router.get("/users", (req, res) => {
     connection.query(`SELECT * FROM cds`, (err, result) => {
       const id_cds = result[0].IdCds
       const name = result[0].concatenar
+      
       if (err) {
         res.send(err);
       } else {
@@ -352,15 +353,13 @@ router.get("/registerCds", async (req, res) => {
   }
 });
 
-router.get("/delete.activities/:id", (req, res) => {
+router.delete("/delete.activities/:id", (req, res) => {
   const id = req.params.id;
 
-  connection.query(
-    "DELETE FROM Actividades WHERE id_actividades = ?",
-    [id],
-    (err, result) => {
-      if (result) {
-        res.render("../views/tablaActividades.ejs", {
+  connection.query("DELETE FROM Actividades WHERE id_actividades = ?", [id], (err, result) => {
+      if (result.length === 0) {
+        res.json({code: 400})
+   /*      res.render("../views/tablaActividades.ejs", {
           actividad: result,
           alert: true,
           title: "REGISTRO ELIMINADO",
@@ -368,16 +367,17 @@ router.get("/delete.activities/:id", (req, res) => {
           showConfirmButton: false,
           timer: 2500,
           ruta: "activitiesTable",
-        });
+        }); */
       } else {
-        res.render("../views/tablaActividades.ejs", {
+        res.json({code:200})
+      /*   res.render("../views/tablaActividades.ejs", {
           alert: true,
           title: "Error",
           icon: "error",
           showConfirmButton: false,
           timer: 2500,
           ruta: "activitiesTable",
-        });
+        }); */
       }
     }
   );
@@ -437,7 +437,7 @@ router.get("/delete.cds/:id", (req, res) => {
   );
 }); */
 
- router.get("/delete.registro/:id", (req, res) => {
+ router.delete("/delete.registro/:id", (req, res) => {
   const id = req.params.id;
 
 
@@ -499,7 +499,7 @@ router.get("/delete.data/:id", (req, res) => {
   );
 });
 
-router.get("/delete.visitante/:id", (req, res) => {
+router.delete("/delete.visitante/:id", (req, res) => {
   const id = req.params.id;
 
   connection.query( "DELETE FROM ingreso_visitantes WHERE id_ingresos = ? ",[id],
@@ -530,16 +530,14 @@ router.get("/delete.visitante/:id", (req, res) => {
   );
 });
 
-router.post("/edit.activities/:id", async (req, res) => {
+router.put("/edit.activities/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
 
-  await connection.query(
-    "UPDATE Actividades SET ? WHERE id_actividades = ?",
-    [data, id],
-    (err, result) => {
-      if (result) {
-        res.render("../views/tablaActividades.ejs", {
+  await connection.query("UPDATE Actividades SET ? WHERE id_actividades = ?",[data, id], (err, result) => {
+      if (result.length === 0) {
+        res.json({code: 400})
+      /*   res.render("../views/tablaActividades.ejs", {
           alert: true,
           actividad: result,
           data: result,
@@ -548,20 +546,22 @@ router.post("/edit.activities/:id", async (req, res) => {
           showConfirmButton: false,
           timer: 2500,
           ruta: "activitiesTable",
-        });
+        }); */
       } else {
-        res.render("../views/tablaActividades.ejs", {
+        res.json({code:200})
+    /*     res.render("../views/tablaActividades.ejs", {
           alert: true,
           title: "Error",
           icon: "error",
           showConfirmButton: false,
           timer: 2500,
           ruta: "activitiesTable",
-        });
+        }); */
       }
     }
   );
 });
+
 router.post("/edit.cds/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
@@ -784,12 +784,10 @@ router.post("/addActivities", async (req, res) => {
 
   const data = req.body;
 
-  await connection.query(
-    "INSERT INTO actividades SET ?",
-    [data],
-    (err, result) => {
-      if (result) {
-        res.render("../views/registroActividades.ejs", {
+  await connection.query("INSERT INTO actividades SET ?", [data],(err, result) => {
+      if (result.length === 0) {
+        res.json({code:400})
+/*         res.render("../views/registroActividades.ejs", {
           alert: true,
           cds: result,
           nombre: result,
@@ -804,16 +802,17 @@ router.post("/addActivities", async (req, res) => {
           showConfirmButton: false,
           timer: 2500,
           ruta: "activities ",
-        });
+        }); */
       } else {
-        res.render("../views/registroActividades.ejs", {
+        res.json({code:200})
+     /*    res.render("../views/registroActividades.ejs", {
           alert: true,
           title: "Error",
           icon: "error",
           showConfirmButton: false,
           timer: 2500,
           ruta: "activities",
-        });
+        }); */
       }
     }
   );

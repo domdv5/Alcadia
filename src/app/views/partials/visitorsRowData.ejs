@@ -1,5 +1,6 @@
-<tr>
-  <td hidden>
+
+<tr >
+  <td hidden >
     <%=registro.id_visita%>
   </td>
   <td>
@@ -96,7 +97,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form class="tableForm">
+            <form id="tableForm" class="tableForm">
               <div class="mb-3">
                 <label for="message-text" class="col-form-label"> Tipo de documento</label>
                 <select name="tipo_documento" id="tipo" class="select" value="<%=registro.tipo_documento %>">

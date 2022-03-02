@@ -22,7 +22,7 @@ btnAceptar.forEach(buttons => {
         console.log(url);
 
         axios({
-            method: "GET",
+            method: "DELETE",
             url: url,
         }).then(data => {
             const { code } = data.data

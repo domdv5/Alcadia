@@ -17,6 +17,8 @@
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.5/js/buttons.html5.styles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.5/js/buttons.html5.styles.templates.min.js"></script>
@@ -33,6 +35,7 @@
       <thead class="text-center">
         <tr>
           
+          <th hidden>Id</th>
           <th>Nombre</th>
           <th>Secretaria</th>
           <th>facilitador</th>
@@ -57,187 +60,8 @@
         </tr>
         </thead>
         <tbody>
-        <% for(let i = 0; i < actividad.length;i ++ ) {%> 
-          <tr>
-            <td><%= actividad[i].nombre %></td>
-            <td><%= actividad[i].secretaria %></td>
-            <td><%= actividad[i].facilitador %></td>
-            <td><%= actividad[i].fecha_inicio%> </td>
-            <td><%= actividad[i].fecha_final%> </td>
-            <td><%= actividad[i].hora_apertura %> </td>
-            <td><%= actividad[i].hora_cierre%> </td>
-            <td><%= actividad[i].concatenar%> </td>
-            <td><%= actividad[i].ciudad%> </td>
-            <td><%= actividad[i].comuna_corregimiento %> </td>
-            <td><%= actividad[i].barrio_vereda%> </td>
-            <td><%= actividad[i].direccion %> </td>
-            <td><%= actividad[i].tipo_reunion%> </td>
-            <td><%= actividad[i].nombre_proyecto_inversion%></td>
-            <td><%= actividad[i].codigo_proyecto_inversion%></td>
-            <td><%= actividad[i].nombres_plan_desarrollo%></td>
-            <td><%= actividad[i].codigo_indicadores_pdm_pdi%></td>
-            <td><%= actividad[i].linea %></td>
-            <td><%= actividad[i].componente %></td>
-
-            <td>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#modalEliminar<%=actividad[i].id_actividades%>" class="btn btn-outline-danger m-1" title="Eliminar Usuario" >❌</button>
-
-            <div class="modal fade" id="modalEliminar<%=actividad[i].id_actividades%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <h3>Confirmar Eliminación:</h3>
-                    <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Nombre</label>
-                    <input readonly value="<%= actividad[i].nombre %>">
-                    </div>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Fecha inicial</label>
-                      <input readonly value="<%= actividad[i].fecha_inicio%>">
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <a  href="/delete.activities/<%=actividad[i].id_actividades%>" class="btn btn-primary">Aceptar</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-     
-            <button type="button" title="Editar" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%=actividad[i].id_actividades%>" data-bs-whatever="@fat">🖋</button></td>
-         </tr>
-
-          <div class="modal fade" id="exampleModal<%= actividad[i].id_actividades%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">MODIFICA EL CAMPO REQUERIDO</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form method ="post" action="/edit.activities/<%=actividad[i].id_actividades%>">
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Nombre</label>
-                      <input type="text" class="form-control" id="recipient-name" name="nombre" value="<%= actividad[i].nombre %>">
-                    </div>
-
-  
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Secretaría</label>
-                  <input class="form-control" id="message-text" name="secretaria" value="<%=actividad[i].secretaria %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Facilitador</label>
-                  <input class="form-control" id="message-text" name="facilitador" value="<%=actividad[i].facilitador %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Fecha Inicial</label>
-                  <input class="form-control" id="message-text" type="date" name="fecha_inicio" value="<%=actividad[i].fecha_inicio %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Fecha Final</label>
-                  <input class="form-control" type="date" id="message-text" name="fecha_final" value="<%=actividad[i].fecha_final %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Apertura</label>
-                  <input class="form-control" type="time" id="message-text" name="hora_apertura" value="<%=actividad[i].hora_apertura %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Hora de cierre</label>
-                  <input class="form-control" type="time" id="message-text" name="hora_cierre" value="<%=actividad[i].hora_cierre %>"></input>
-                </div>
-
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Ciudad</label>
-                  <input class="form-control" id="message-text" name="ciudad" value="<%=actividad[i].ciudad %>"></input>
-                </div>
-                <% if(key === 1 ) { %> 
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Comuna o Corregimiento</label>
-                  <select name ="comuna_corregimiento" id="tipo" class="select"  value="<%=actividad[i].comuna_corregimiento %>" >
-                    <option value ="<%=actividad[i].comuna_corregimiento %>" selected disabled><%=actividad[i].comuna_corregimiento %></option>
-                    <option value ="1. Popular" >1. Popular</option>
-                    <option value="2. Santa Cruz"  >2. Santa Cruz</option>
-                    <option value ="3. Manrique" >3. Manrique</option>
-                    <option value="4. Aranjuez"  >4. Aranjuez</option>
-                    <option value ="5. Castilla" >5. Castilla</option>
-                    <option value="6. 12 de Octubre"  >6. 12 de Octubre</option>
-                    <option value ="7. Robledo" >7. Robledo</option>
-                    <option value="8. Villa Hermosa"  >8. Villa Hermosa</option>
-                    <option value ="9. Buenos Aires" >9. Buenos Aires</option>
-                    <option value="10. La Candelaria"  >10. La Candelaria</option>
-                    <option value ="11. Laureles Estadio" >11. Laureles Estadio</option>
-                    <option value="12. La America"  >12. La America</option>
-                    <option value ="13. San javier" >13. San javier</option>
-                    <option value="14. El Poblado"  >14. El Poblado</option>
-                    <option value ="15. Guayabal" >15. Guayabal</option>
-                    <option value="16. Belén"  >16. Belén</option>
-                    <option value ="50. San Sebastian de Palmitas" >50. San Sebastian de Palmitas</option>
-                    <option value="60. San Cristobal"  >60. San Cristobal</option>
-                    <option value ="70. Alta Vista" >70. Alta Vista</option>
-                    <option value="80. San Antonio de Prado"  >80. San Antonio de Prado</option>
-                    <option value ="90. Santa Elena" >90. Santa Elena</option>
-                  </select>
-                </div>
-                <% } %> 
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Barrio o Vereda</label>
-                  <input class="form-control" id="message-text" name="barrio_vereda" value="<%=actividad[i].barrio_vereda %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Dirección</label>
-                  <input class="form-control" id="message-text" name="direccion" value="<%=actividad[i].direccion %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Tipo de reunión</label>
-                  <select name ="tipo_reunion" id="tipo" class="select" value="<%= actividad[i].tipo_reunion %>">
-                    <option value ="<%= actividad[i].tipo_reunion %>" selected disabled><%= actividad[i].tipo_reunion %></option>
-                    <option value ="Informativa" >Informativa</option>
-                    <option value="Seguimiento"  >Seguimiento</option>
-                    <option value ="Toma de desiciones" >Toma de desiciones</option>
-                    <option value ="Capacitación" >Capacitación</option>
-                    <option value ="Formación" >Formación</option>
-                    <option value ="otro" >Otro</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Nombre Proyecto Inversión</label>
-                  <input class="form-control" id="message-text" name="nombre_proyecto_inversion" value="<%=actividad[i].nombre_proyecto_inversion%>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Codigo Proyecto Inversión</label>
-                  <input class="form-control" id="message-text" name="codigo_proyecto_inversion" value="<%=actividad[i].codigo_proyecto_inversion%>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Nombre Indicadores</label>
-                  <input class="form-control" id="message-text" name="nombres_plan_desarrollo" value="<%=actividad[i].nombres_plan_desarrollo%>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Codigos Indicadores PDM y PI</label>
-                  <input class="form-control" id="message-text" name="codigo_indicadores_pdm_pdi" value="<%=actividad[i].codigo_indicadores_pdm_pdi %>"></input>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Linea</label>
-                  <input class="form-control" id="message-text" name="linea" value="<%= actividad[i].linea %>"></input>
-                </div>
-
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Componente</label>
-                <input class="form-control" id="message-text" name="componente" value="<%= actividad[i].componente%>"></input>
-              </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar</button>
-                  <input type="submit" class="btn btn-primary" value ="Aceptar">
-                </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+        <% for(let activities of actividad ) {%> 
+          <%- include('./partials/activitiesRowData.ejs', {actividad:activities}) %> 
           <% } %>
         </tbody>
     </table>
@@ -300,6 +124,8 @@ $('#example').DataTable({
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/resources/js/validacion.js"></script>
+<script src="/resources/js/axiosActivities/updateActivities.js"></script>
+<script src="/resources/js/axiosActivities/deleteActivities.js"></script>
 
 
 <% if(typeof alert !="undefined" ){%>

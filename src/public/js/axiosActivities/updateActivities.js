@@ -1,12 +1,7 @@
 
-
-const form = document.querySelector(".tableForm")
-
-
-
 let id = 0
-const boton = document.querySelectorAll('.btnEdit')
 
+const boton = document.querySelectorAll('.btnEdit')
 boton.forEach(botones => {
     botones.addEventListener("click", (e) => {
         const fila = e.target.parentNode.parentNode
@@ -14,16 +9,13 @@ boton.forEach(botones => {
     })
 })
 
-
-const forms = document.querySelectorAll('.tableForm')
-
-forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
+const forms = document.querySelectorAll('.activitiesForm')
+forms.forEach(form=>{
+    form.addEventListener("submit", (e)=>{
         e.preventDefault()
         const formData = $(form).serialize()
-        const url = location.origin + `/edit.registro/${id}`
-        console.log(url);
-    
+        const url = location.origin + `/edit.activities/${id}`
+
         axios({
             method: "PUT",
             url: url,
@@ -37,10 +29,8 @@ forms.forEach(form => {
                     showConfirmButton: false,
                     timer: 2500,
                 })
+                 
             }
         })
-         setTimeout(()=>{
-            location.reload()
-        }, 600) 
     })
 })

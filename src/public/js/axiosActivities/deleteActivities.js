@@ -1,24 +1,24 @@
+let identificador = 0
 
-
-let id = 0
-
-const boton = document.querySelectorAll('.btnDelete')
-boton.forEach(botones => {
+const botton = document.querySelectorAll('.btnDelete')
+botton.forEach(botones => {
     botones.addEventListener("click", (e) => {
         const fila = e.target.parentNode.parentNode
-        id = fila.firstElementChild.innerHTML
+        identificador = fila.firstElementChild.innerHTML
+        console.log(identificador);
     })
 })
 
-const btnAceptar = document.querySelectorAll(".btnAceptar")
+const btnAceptar = document.querySelectorAll('.btnAceptar')
 btnAceptar.forEach(buttons => {
-    buttons.addEventListener("click", (e) => {
+    buttons.addEventListener('click', (e) => {
         e.preventDefault()
-        const url = location.origin + `/delete.visitante/${id}`
+        const url = location.origin + `/delete.activities/${identificador}`
+
 
         axios({
-            method: "GET",
-            url: url
+            method: "DELETE",
+            url: url,
         }).then(data => {
             const { code } = data.data
             if (code === 200) {
@@ -30,10 +30,8 @@ btnAceptar.forEach(buttons => {
                 })
             }
         })
-        setTimeout(()=>{
-            location.reload()
-        },600)
+          /*  setTimeout(()=>{
+             location.reload()
+         } ,600) */
     })
 })
-
-
