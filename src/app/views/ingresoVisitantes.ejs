@@ -70,7 +70,7 @@
        INGRESO VISITANTES
       </div>
       <div class='arrow-down'></div>
-      <form action="visitorsEntry" method='POST'>
+      <form  id="myForm">
         <fieldset>
           <span>
             <i class='fa fa-user'></i>
@@ -168,6 +168,8 @@
   </footer>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
   <script src="/resources/js/script.js"></script>
   <script src="/resources/js/nav_activo.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -175,20 +177,10 @@
   <script src="/resources/js/getTime.js"></script>
   <script src="/resources/js/inputDisabled.js"></script>
   <script src="/resources/js/getCurrentDate.js"></script>
+  <script src="/resources/js/routesEntrances/visitorEntry.js"></script>
  
 
-  <% if(typeof alert !="undefined" ){%>
-    <script>
-      Swal.fire({
-        title: '<%= title %>',
-        icon: '<%= icon %>',
-        showConfirmButton: '<%= showConfirmButton %>',
-        timer: '<%= timer %>',
-      }).then(() => {
-          window.location = '/<%= ruta %>'
-      })
-    </script>
-    <% } %>
+
 
 </body>
 </html>

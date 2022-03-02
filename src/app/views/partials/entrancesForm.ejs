@@ -1,0 +1,85 @@
+<tr>
+    <td hidden>
+        <%= visitor.id_ingresos %>
+    </td>
+    <td hidden>
+        <%=visitor.tipo_documento %>
+    </td>
+    <td>
+        <%=visitor.cedula %>
+    </td>
+    <td hidden>
+        <%= visitor.nombre_completo %>
+    </td>
+    <td hidden>
+        <%= visitor.secretaria_entidad %>
+    </td>
+    <td hidden>
+        <%= visitor.ocupacion %>
+    </td>
+    <td hidden>
+        <%= visitor.sexo %>
+    </td>
+    <td hidden>
+        <%= visitor.edad %>
+    </td>
+    <td hidden>
+        <%= visitor.enfoque_diferencial %>
+    </td>
+    <td hidden>
+        <%= visitor.derechos %>
+    </td>
+    <td hidden>
+        <%= visitor.degradacion_territorial %>
+    </td>
+    <td hidden>
+        <%= visitor.correo_electronico %>
+    </td>
+    <td hidden>
+        <%= visitor.organizacion %>
+    </td>
+    <td hidden>
+        <%= visitor.telefono_celular %>
+    </td>
+
+    <td>
+        <%=visitor.fecha %>
+    </td>
+    <td>
+        <%=visitor.hora %>
+    </td>
+    <td>
+        <%=visitor.concatenar%>
+    </td>
+    <td>
+        <%=visitor.nombre %>
+    </td>
+    <td>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#modalEliminar<%=visitor.id_ingresos%>"
+            class="btn btn-outline-danger m-1 btnDelete" title="Eliminar Usuario">❌</button>
+
+        <div class="modal fade" id="modalEliminar<%=visitor.id_ingresos%>" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Confirmar Eliminación:</h3>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Nùmero de documento</label>
+                            <input readonly value="<%=visitor.cedula%> ">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <input type="submit" value="aceptar" class="btn btn-primary btnAceptar"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </td>
+</tr>

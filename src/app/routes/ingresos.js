@@ -136,7 +136,6 @@ router.get("/visitors", (req, res) => {
 
   if (req.session.login) {
     connection.query(`SELECT * FROM cds WHERE IdCds = ?`,[id], (err, result) => {
-        console.log(result);
         const id_cds = result[0].IdCds;
         const name = result[0].concatenar;
 
@@ -317,9 +316,8 @@ router.get("/registerTable", (req, res) => {
     } else {
       connection.query(
         `SELECT visitantes.*, cds.* FROM visitantes
-      INNER JOIN cds ON cds.IdCds = visitantes.IdCds WHERE visitantes.IdCds = ?`,
-        [id],
-        (err, result) => {
+      INNER JOIN cds ON cds.IdCds = visitantes.IdCds WHERE visitantes.IdCds = ?`,[id],
+      (err, result) => {
           if (err) {
             res.send(err);
           } else {
@@ -410,7 +408,8 @@ router.get("/delete.cds/:id", (req, res) => {
     }
   });
 });
-router.get("/delete.registro/:id", (req, res) => {
+
+/* router.get("/delete.registro/:id", (req, res) => {
   const id = req.params.id;
 
   connection.query("DELETE FROM visitantes WHERE numero_documento = ? ", [id], (err, result) => {
@@ -436,7 +435,39 @@ router.get("/delete.registro/:id", (req, res) => {
       }
     }
   );
-});
+}); */
+
+ router.get("/delete.registro/:id", (req, res) => {
+  const id = req.params.id;
+
+
+  connection.query("DELETE FROM visitantes WHERE id_visita = ? ", [id], (err, result) => {
+      if (result) {
+        res.json({code: 200})
+        /* res.render("../views/tablaVisitantes.ejs", {
+          alert: true,
+          registro: result,
+          title: "REGISTRO ELIMINADO",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2500,
+          ruta: "registerTable",
+        }); */
+      } else {
+        res.json({code: 400})
+        /* res.render("../views/tablaVisitantes.ejs", {
+          alert: true,
+          title: "Error",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 2500,
+          ruta: "registerTable",
+        }); */
+      }
+    }
+  );
+}); 
+
 router.get("/delete.data/:id", (req, res) => {
   const id = req.params.id;
 
@@ -471,12 +502,11 @@ router.get("/delete.data/:id", (req, res) => {
 router.get("/delete.visitante/:id", (req, res) => {
   const id = req.params.id;
 
-  connection.query(
-    "DELETE FROM ingreso_visitantes WHERE id_ingresos = ? ",
-    [id],
-    (err, result) => {
+  connection.query( "DELETE FROM ingreso_visitantes WHERE id_ingresos = ? ",[id],
+(err, result) => {
       if (result) {
-        res.render("../views/tablaIngresos.ejs", {
+        res.json({code:200})
+     /*    res.render("../views/tablaIngresos.ejs", {
           alert: true,
           visitor: result,
           title: "REGISTRO ELIMINADO",
@@ -484,20 +514,22 @@ router.get("/delete.visitante/:id", (req, res) => {
           showConfirmButton: false,
           timer: 2500,
           ruta: "visitorTable",
-        });
+        }); */
       } else {
-        res.render("../views/tablaIngresos.ejs", {
+        res.json({code:400})
+     /*    res.render("../views/tablaIngresos.ejs", {
           alert: true,
           title: "Error",
           icon: "error",
           showConfirmButton: false,
           timer: 2500,
           ruta: "visitorTable",
-        });
+        }); */
       }
     }
   );
 });
+
 router.post("/edit.activities/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
@@ -566,7 +598,7 @@ router.post("/edit.users/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
 
-  console.log(data);
+
 
   await connection.query(
     "UPDATE usuarios SET ? WHERE id_usuarios = ?",
@@ -905,13 +937,13 @@ router.post("/addCds", async (req, res) => {
 router.post("/visitorsEntry", async (req, res) => {
   const data = req.body;
   const id = req.session.id_cds;
+  console.log(data);
 
-  await connection.query(
-    "INSERT INTO ingreso_visitantes SET ?",
-    [data],
-    (err, result) => {
+  await connection.query( "INSERT INTO ingreso_visitantes SET ?",[data],(err, result) => {
       if (result) {
-        res.render("../views/ingresoVisitantes.ejs", {
+        
+        res.json({code:200})
+   /*      res.render("../views/ingresoVisitantes.ejs", {
           alert: true,
           id: result,
           nombre: result,
@@ -922,7 +954,7 @@ router.post("/visitorsEntry", async (req, res) => {
           showConfirmButton: false,
           timer: 2500,
           ruta: "visitorLogin",
-        });
+        }); */
       }
     }
   );
