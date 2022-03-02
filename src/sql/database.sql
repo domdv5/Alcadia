@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
---
+--  
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2022 a las 22:07:32
+-- Tiempo de generación: 02-03-2022 a las 03:36:47
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.3.28
 
@@ -68,9 +68,15 @@ INSERT INTO `actividades` (`id_actividades`, `nombre`, `linea`, `componente`, `s
 (12, 'Crosfit', 'sdfgsdg', 'dfgdfg', 'sdfsdf', 'sfsdfsfs', '2022-02-09', '2022-02-18', '13:30:00', '02:31:00', 'fsdfsf', '90. Santa Elena', 'fgfdg', 'dfgdfg', 'Seguimiento', 'dfgfgdg', 3456435, 'refgrt', 34564534, 35),
 (13, 'waterpolo', 'sdfsdfsd', 'fsdfsd', 'fsdf', 'sdfsdfsd', '2022-02-09', '2022-02-09', '17:10:00', '17:10:00', 'sdfsdf', '80. San Antonio de Prado', 'sdfdfd', 'sfsdf', 'Capacitación', 'sdfsdf', 345435, 'dfgdf', 234234, 35),
 (14, 'robotica', 'retert', 'erter', 'tert', 'erte', '2022-02-15', '2022-02-15', '07:43:00', '20:44:00', 'fsdfsf', '80. San Antonio de Prado', 'tertertert', 'erte', 'Formación', 'tert', 34534, 'dfgghh', 0, 38),
-(15, 'clase de actulizacion de estados financieron y contables del ano', 'sdf', 'sdfsdfsdf', 'dfsdfsdf', 'sdfsdfsd', '2022-02-17', '2022-02-17', '19:32:00', '19:32:00', 'fsdfsdf', '90. Santa Elena', 'fsdfsd', 'fsdfsd', 'Capacitación', 'fsdf', 0, 'sdfsdf', 0, 35),
-(16, 'conduccion', 'sdfsd', 'sdfds', 'qeweqw', 'eqweqw', '2022-02-18', '2022-02-18', '13:48:00', '13:48:00', 'fsdfsf', '80. San Antonio de Prado', 'sdasd', 'sdfsdfsdf', 'Formación', 'sdfsdf', 343, 'dsfsd', 343, 35),
-(17, 'conduccion', 'sdfsd', 'sdfds', 'qeweqw', 'eqweqw', '2022-02-18', '2022-02-18', '13:48:00', '13:48:00', 'fsdfsf', '80. San Antonio de Prado', 'sdasd', 'sdfsdfsdf', 'Capacitación', 'sdfsdf', 343, 'dsfsd', 343, 35);
+(15, 'clase de actulizacion de estados financieron y contables del ano', 'sdf', 'sdfsdfsdf', 'yyfASSA', 'sdfsdfsd', '2022-02-17', '2022-02-17', '19:32:00', '19:32:00', 'fsdfsdf', '90. Santa Elena', 'fsdfsd', 'fsdfsd', 'Capacitación', 'fsdf', 0, 'sdfsdf', 0, 35),
+(17, 'conduccionNNN', 'sdfsd', 'sdfds', 'qeweqw', 'eqweqw', '2022-02-18', '2022-02-18', '13:48:00', '13:48:00', 'fsdfsf', '80. San Antonio de Prado', 'sdasd', 'sdfsdfsdf', 'Capacitación', 'sdfsdf', 343, 'dsfsd', 343, 35),
+(18, 'wilson', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-02-21', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'Otro', 'sdfsd', 34, 'fsfs', 234234, 35),
+(19, 'wilson', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-12-31', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'Seguimiento', 'dfsdf', 34, 'fsfs', 455, 35),
+(20, 'wilson', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-12-31', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'Seguimiento', 'dfsdf', 34, 'fsfs', 455, 35),
+(21, 'wilson', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-12-31', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'Capacitación', 'dfsdf', 34, 'fsfs', 345345, 35),
+(22, 'wilson', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-12-31', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'Otro', 'dfsdf', 34, 'fsfs', 345345, 35),
+(23, 'EXCEL', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-12-31', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'Informativa', 'dfsdf', 34, 'fsfs', 0, 35),
+(24, 'WORD', 'sdfgsdg', 'dfgdfg', 'dfsdfsdf', 'sdfsdfsd', '2022-12-31', '2022-12-31', '12:59:00', '12:59:00', 'fsdfsf', '90. Santa Elena ', 'sdasd', 'sdfsdfsdf', 'NOOOOOOOOOOOOOOO', '', 34, 'fsfs', 345345, 35);
 
 -- --------------------------------------------------------
 
@@ -112,13 +118,12 @@ INSERT INTO `cds` (`IdCds`, `espacio`, `Comuna`, `Nombre`, `Direccion`, `Horario
 (27, 'cds', '1', 'laurelesssss', 'h', 'h', 0, 'wilson1840@hotmail.com', 'juanfre', 'cds laureles'),
 (28, 'CENTRO DE DESARROLO SOCIAL', '60. San Cristobal', 'LA ESTRELLA', 'H', 'H', 0, 'H', 'H', ''),
 (30, 'CENTRO DE DESARROLO SOCIAL', '3. Manrique', '', 'sdfsdfsdf', 'sdfsd', 1231231231, 'wilson1840@hotmail.com', 'sdfsdf', 'CENTRO DE DESARROLO SOCIAL wilson'),
-(31, 'TELECENTRO', '5. Castilla', '', 'sdfsdfsdf', 'sdfsd', 1231231231, 'wilson1840@hotmail.com', 'sdfsdfsdfsd', 'TELECENTRO MADERA'),
+(31, 'TELECENTRO', '1. Popular', 'TELECENTRO MADERA', 'sdfsdfsdf', 'sdfsd', 1231231231, 'wilson1840@hotmail.com', 'sdfsdfsdfsd', 'TELECENTRO MADERA'),
 (32, 'CENTRO DE DESARROLO SOCIAL', '5. Castilla', 'ARANJUEZ', 'sdfsdfsdf', 'dsfds', 1231231231, 'wilson1840@hotmail.com', 'sdfsdfs', 'CENTRO DE DESARROLO SOCIAL ARANJUEZ'),
 (33, 'CENTRO DE DESARROLO SOCIAL', '3. Manrique', 'CHAGUALO', 'sdfsdfsdf', 'dsfds', 1231231231, 'wilson1840@hotmail.com', 'sdfsdf', 'CENTRO DE DESARROLO SOCIAL CHAGUALO'),
 (34, 'TELECENTRO', '2. Santa Cruz', 'ENVIGADO', 'CR 42 A  77 56', 'sdfsd', 1231231231, 'wilson1840@hotmail.com', 'sdfsdfsdfsd', 'TELECENTRO ENVIGADO'),
 (35, 'CENTRO DE DESARROLO SOCIAL', '90. Santa Elena', 'SINGAPUR', 'sdfsdfsdf', 'dsfds', 1231231231, 'wilson1840@hotmail.com', 'sdfsdf', 'CENTRO DE DESARROLO SOCIAL SINGAPUR'),
 (36, 'CENTRO DE DESARROLO SOCIAL', '2. Santa Cruz', 'ARBOLETES', 'sdfsdfsdf', 'dsfds', 2147483647, 'wilson1840@hotmail.com', 'sdfsdfsdfsd', 'CENTRO DE DESARROLO SOCIAL ARBOLETES'),
-(37, 'CENTRO DE DESARROLO SOCIAL', '1. Popular', 'PICACHO', 'SSSDSS', 'sdfsd', 1231231231, 'wilson1840@hotmail.com', 'sdfsdf', 'CENTRO DE DESARROLO SOCIAL PICACHO'),
 (38, 'CENTRO DE DESARROLO SOCIAL', '80. San Antonio de Prado', 'SABANALARGA', 'DFSDF', 'dsfds', 345435, 'wilson1840@hotmail.com', 'SDFDFD', 'CENTRO DE DESARROLO SOCIAL SABANALARGA'),
 (39, 'ADMINISTRADOR', '14. El Poblado', 'ZONA SUR', 'CR 42 A  77 56', 'sdfsd', 345345, 'wilson1840@hotmail.com', 'sdfgsdfgdf', 'ADMINISTRADOR ZONA SUR');
 
@@ -129,7 +134,7 @@ INSERT INTO `cds` (`IdCds`, `espacio`, `Comuna`, `Nombre`, `Direccion`, `Horario
 --
 
 CREATE TABLE `ingreso_visitantes` (
-  `id_visitantes` int(255) NOT NULL,
+  `id_ingresos` int(255) NOT NULL,
   `cedula` int(50) NOT NULL,
   `fecha` varchar(20) NOT NULL,
   `hora` time NOT NULL,
@@ -141,20 +146,25 @@ CREATE TABLE `ingreso_visitantes` (
 -- Volcado de datos para la tabla `ingreso_visitantes`
 --
 
-INSERT INTO `ingreso_visitantes` (`id_visitantes`, `cedula`, `fecha`, `hora`, `IdCds`, `id_actividades`) VALUES
+INSERT INTO `ingreso_visitantes` (`id_ingresos`, `cedula`, `fecha`, `hora`, `IdCds`, `id_actividades`) VALUES
 (3, 1128459310, '2022', '18:49:00', 35, 1),
 (4, 1128459310, '2022', '07:18:00', 35, 12),
 (5, 1128459310, '2022', '09:06:00', 35, 6),
 (6, 1088258438, '2022', '13:13:00', 35, 1),
-(8, 1128459310, '2022', '11:51:00', 35, 12),
-(9, 1128459310, '2022', '15:03:26', 35, 8),
-(10, 1128459310, '2022', '15:04:28', 35, 12),
 (11, 1128459310, '2022', '15:25:57', 35, 1),
 (12, 1128459310, '2022', '15:27:15', 35, 12),
-(13, 1128459310, '2022', '19:24:38', 35, 8),
 (16, 1128459310, '2022-2-14', '20:31:33', 35, 12),
 (17, 1128459310, '2022-2-15', '07:45:13', 38, 14),
-(18, 1128459310, '2022-2-17', '18:54:37', 35, 12);
+(18, 1128459310, '2022-2-17', '18:54:37', 35, 12),
+(19, 1128459310, '2022-2-21', '13:44:28', 35, 15),
+(20, 1128459310, '2022-2-21', '13:45:11', 35, 15),
+(21, 1128459310, '2022-2-21', '19:11:56', 35, 15),
+(22, 1128452310, '2022-3-1', '17:28:53', 35, 15),
+(23, 1128459310, '2022-3-1', '17:31:22', 35, 15),
+(24, 1128459310, '2022-3-1', '18:23:31', 35, 15),
+(25, 1128459310, '2022-3-1', '18:24:38', 35, 15),
+(26, 1128459310, '2022-3-1', '18:24:59', 35, 15),
+(28, 1128459310, '2022-3-1', '18:27:19', 35, 8);
 
 -- --------------------------------------------------------
 
@@ -196,14 +206,9 @@ INSERT INTO `usuarios` (`id_usuarios`, `cedula`, `correo`, `pass`, `telefono`, `
 (9, 0, 'wilson1840@hotmail.com', '$2a$08$K5P8E55fDrQd0W8upVq6j.8RxwM6UgOKlE9BiWY3BE7Sn2WErhJnO', 1231231231, 0, 30),
 (10, 0, 'wilson1840@hotmail.com', '$2a$08$Q7OxfyPOw3xRtHthcqhMl.VZRIrgGCTK.tNHV.HxJBtNiKcKXm4VO', 1231231231, 0, 36),
 (11, 5555, 'wilson1840@hotmail.com', '$2a$08$KG7OWKZmYlNaZbBGC9DcpuJN4W4zvEbxYno6tL4Y0GnqJxn0uuB..', 1231231231, 0, 36),
-(12, 9898, 'wilson1840@hotmail.com', '$2a$08$dT0XoEh7mnRfsp8lbeGJfe2/cZhzf1PIijpOppCRGHbeQnaMhb3dW', 1231231231, 0, 37),
-(13, 8888, 'wilson1840@hotmail.com', '$2a$08$a4howfX9Pp6PHm6xuKc/OueK4fsScGEqZreCDmFBLmPUT3w25x7eC', 1231231231, 0, 37),
 (14, 8888, 'wilson1840@hotmail.com', '$2a$08$OtVgp47Uy3e9vF28LfVLouH7OZit3XaA5GfzngucKCIPVbdLf8qPy', 1231231231, 0, 38),
-(15, 6666, 'wilson1840@hotmail.com', '$2a$08$ku4IeMxnuJqqkK0UoYFBd.Z4PUBDICVZuEMFHS0Y6VIw7ZsIB8nTK', 1231231231, 0, 38),
 (16, 9999, 'wilson1840@hotmail.com', '$2a$08$wONSJp0sPRzKkYpRuak8ouIGTM9Lmwtm39xTWFBzBlsllZ8PLkEOG', 2147483647, 0, 38),
-(17, 333, 'wilson1840@hotmail.com', '$2a$08$zzydhtpzP6EGTRYe8zMsweNe3LUUo.LmMblo3mRwqLWIcBLXQTfOW', 2147483647, 0, 27),
 (19, 2, 'd', '$2a$08$uX4SsWZmaiANyIM5C.N0auYtsBPiYQv5ZjONgp2yIheTz5bMFz5CS', 2147483647, 0, 27),
-(20, 1111111111, 'wilson1840@hotmail.com', '$2a$08$H1JOpq2W.WlPAiNHxcw1G.f9sz8E9xXCaKMZKQmVJBf9CHtc3w9N.', 1231231231, 0, 27),
 (22, 1128459310, 'wilson1840@hotmail.com', '$2a$08$IHx.uIX9Yq2A7ZOrA8Y/Ze.kYUtIAcB1cw4CoNBtGgb.wCDR8PKeq', 2147483647, 1, 39),
 (26, 8740588, 'wilson1840@hotmail.com', '$2a$08$mHvHGKxlJ5OQLBVxvaXUMu9txuRjwVyIxGMAx5S.QFbPD0IBvgztG', 1231231231, 1, 39);
 
@@ -237,7 +242,6 @@ CREATE TABLE `visitantes` (
 --
 
 INSERT INTO `visitantes` (`id_visita`, `tipo_documento`, `numero_documento`, `nombre_completo`, `secretaria_entidad`, `ocupacion`, `fecha_nacimiento`, `edad`, `enfoque_diferencial`, `derechos`, `degradacion_territorial`, `correo_electronico`, `organizacion`, `telefono_celular`, `sexo`, `IdCds`) VALUES
-(1, 'cedula de ciudadania', 0, 'el cata', 'asdsd', 'adsds', '1994-01-17', 27, 'Afrodescendiente', '', '60. San cristobal', 'wilson1840@hotmail.com', 'JAC', 44444, 'Hombre', 34),
 (2, 'cedula de ciudadania', 1, 'fff', 'ds', 'adsds', '2019-06-02', 0, 'indigena', '', '80.san antonio de prado', 'wilson1840@hotmail.com', 'jal', 44444, 'hombre', 34),
 (3, 'cedula de ciudadania', 666, 'fgvv', 'vvv', 'v', '2021-12-02', 0, 'indigena', '', '16.belen', 'wilson1840@hotmail.com', 'jal', 0, 'mujer', 34),
 (4, 'cedula de ciudadania', 324567, 'uhjjhhjuh', 'ds', 'hh', '1994-01-18', 27, 'Indigena', '', '80. San antonio de prado', 'wilson1840@hotmail.com', 'JAC', 44444, 'Hombre', 34),
@@ -251,16 +255,36 @@ INSERT INTO `visitantes` (`id_visita`, `tipo_documento`, `numero_documento`, `no
 (12, 'cedula de ciudadania', 876776666, 'asdfsadfsd', 'envigado', 'sdffsd', '2010-01-05', 28, 'Afrodescendiente', '', '50. San sebastian de palmitas', 'wilson1840@hotmail.com', 'JAL', 123333, 'mujer', 34),
 (13, 'cedula de ciudadania', 987878978, 'fff', 'hhh', 'adsds', '1994-02-02', 27, 'Afrodescendiente', '', '90. Santa elena', 'wilson1840@hotmail.com', 'JAC', 214748364, 'Hombre', 31),
 (14, 'cedula de ciudadania', 1010101010, 'fdsfsdf', 'sdffsdf', 'hh', '1994-01-18', 27, 'Afrodescendiente', '', '80. San antonio de prado', 'wilson1840@hotmail.com', 'JAC', 44444, 'Hombre', 34),
-(15, 'cedula de ciudadania', 1128459310, 'sebas', 'fff', 'ffff', '2021-12-02', 1, 'indigena', '', '80.san antonio de prado', 'wilson1840@hotmail.com', 'jac', 4343434, 'hombre', 35),
 (16, 'pasaporte', 1223344444, 'hhhh', 'hhh', 'hh', '2017-01-09', 5, 'Indigena', '', '90. Santa elena', 'wilson1840@hotmail.com', 'JAL', 44444, 'Hombre', 36),
-(18, 'cedula de ciudadania', 1088258438, 'jonathan zapata', 'N/Ay', 'profesor', '1988-07-13', 33, 'Poblacion victima', 'dfghfgdhfg', '80. San antonio de prado', 'wilson1840@hotmail.com', 'JAL', 4343434, 'Masculino', 35),
-(19, 'cedula de ciudadania', 2147483647, 'juanfre', 'ds', 'hh', '2021-06-10', 0, 'Campesino, Discapacidad', 'Población victima', '80. San antonio de prado', 'wilson1840@hotmail.com', 'sdfsdf', 0, 'Femenino', 35),
-(20, 'cedula de ciudadania', 2147483647, 'josep', 'sdfsdf', 'sdfsdf', '2022-02-17', 0, 'Campesino, Discapacidad', 'Población victima', '15. Guayabal', 'wilson1840@hotmail.com', 'sdfsdf', 2147483647, 'Masculino', 35),
-(21, 'cedula de ciudadania', 2147483647, 'josep', 'sdfsdf', 'sdfsdf', '2020-02-01', 1, 'Campesino, Discapacidad', 'Población victima', '15. Guayabal', 'wilson1840@hotmail.com', 'sdfsdf', 2147483647, 'Masculino', 35),
-(22, 'cedula de ciudadania', 2147483647, 'sedfsdfsdf', 'sdfsd', 'fsdf', '2020-01-17', 2, 'Campesino, Discapacidad', 'Población victima', '80. San antonio de prado', 'wilson1840@hotmail.com', 'sdfsdf', 0, 'Masculino', 35),
-(23, 'cedula de ciudadania', 2147483647, 'juanfre', 'hhh', 'hh', '2017-02-17', 5, 'Situacion de calle, Campesino, Discapacidad', 'Población victima', '80. San antonio de prado', 'wilson1840@hotmail.com', 'sdfsdf', 4343434, 'Masculino', 35),
-(24, 'cedula de ciudadania', 2147483647, 'juanfre', 'ds', 'adsds', '2015-01-02', 6, 'Campesino, Discapacidad', 'Población victima', '70. Alta vista', 'wilson1840@hotmail.com', 'sdfsdf', 2147483647, 'Masculino', 35),
-(25, 'cedula de ciudadania', 8740588, 'Wilson Calderon', 'n', 'n', '2020-01-17', 2, 'Campesino, Discapacidad', 'Población victima', '70. Alta vista', 'wilson1840@hotmail.com', 'sdfsdf', 0, 'Masculino', 35);
+(60, 'cedula de ciudadania', 1128459318, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(61, 'cedula de ciudadania', 1128459319, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'ROM, Situacion de calle', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(62, 'cedula de ciudadania', 1128349310, 'juanfre', 'ds', 'adsds', '2022-02-24', 0, 'ROM, LGBTIQ+, Situacion de calle', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(63, 'cedula de ciudadania', 1128459345, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'ROM', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(64, 'cedula de extranjeria', 1088223438, 'fff', 'ds', 'adsds', '2022-12-31', -1, 'Situacion de calle', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(65, 'cedula de ciudadania', 8740588, 'juanfre', 'ds', 'adsds', '2021-12-31', 0, 'Indigena, LGBTIQ+, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(66, 'cedula de ciudadania', 8740587, 'juanfre', 'ds', 'adsds', '2021-12-31', 0, 'Indigena, LGBTIQ+, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(67, 'cedula de ciudadania', 8740581, 'juanfre', 'hhh', 'adsds', '2022-02-24', 0, 'Situacion de calle, Discapacidad', 'Población victima', '80. San antonio de prado', 'wilson1840@hotmail.com', 'sdfsdf', 5345345, 'Masculino', 35),
+(68, 'cedula de ciudadania', 8740386, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'Indigena', 'Población victima', '2. Santa cruz', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(69, 'cedula de ciudadania', 8740386, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'Indigena', 'Población victima', '2. Santa cruz', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(70, 'cedula de ciudadania', 8740386, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'Indigena', 'Población victima', '2. Santa cruz', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(71, 'cedula de ciudadania', 1128459346, 'fff', 'ds', 'adsds', '2015-12-31', 6, 'Situacion de calle, Campesino, Discapacidad', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(72, 'cedula de ciudadania', 1128454310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'ROM, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(73, 'cedula de ciudadania', 1128759310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+, Situacion de calle, No Aplica', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Femenino', 35),
+(74, 'cedula de ciudadania', 1128452310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'ROM, LGBTIQ+, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(75, 'cedula de ciudadania', 1124452310, 'juanfre', 'ds', 'adsds', '2022-02-10', -1, 'Indigena', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(76, 'cedula de ciudadania', 1528459310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'Indigena', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(77, 'cedula de ciudadania', 1128452313, 'juanfre', 'hhh', 'adsds', '2022-12-31', -1, 'ROM, LGBTIQ+, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(78, 'cedula de ciudadania', 1128452345, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+, Campesino, No Aplica', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(79, 'cedula de ciudadania', 1128652310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(80, 'cedula de ciudadania', 1088458438, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(81, 'cedula de extranjeria', 1123452310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'Situacion de calle, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(82, 'cedula de ciudadania', 1128662310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'ROM, Campesino', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(83, 'cedula de ciudadania', 1128552310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+, Situacion de calle', 'Población victima', '70. Alta vista', 'wilson1840@hotmail.com', '', 3760193, 'Masculino', 35),
+(84, 'cedula de ciudadania', 4456789, 'juanfre', 'ds', 'adsds', '2005-02-22', 16, 'LGBTIQ+, Situacion de calle', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(85, 'cedula de extranjeria', 1128452312, 'fff', 'ds', 'adsds', '2022-12-31', -1, 'ROM, Situacion de calle, Discapacidad', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Femenino', 35),
+(86, 'cedula de ciudadania', 1122452310, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'LGBTIQ+, Campesino, Discapacidad', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(87, 'cedula de extranjeria', 1128452317, 'juanfre', 'ds', 'adsds', '2022-12-31', -1, 'ROM, LGBTIQ+', 'Población victima', '1. Popular', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35),
+(88, 'cedula de ciudadania', 1128459310, 'wilson andres calderon', 'ds', 'adsds', '1994-06-09', 27, 'Indigena', 'Población victima', '60. San cristobal', 'wilson1840@hotmail.com', 'sdfsdf', 3760193, 'Masculino', 35);
 
 --
 -- Índices para tablas volcadas
@@ -283,7 +307,7 @@ ALTER TABLE `cds`
 -- Indices de la tabla `ingreso_visitantes`
 --
 ALTER TABLE `ingreso_visitantes`
-  ADD PRIMARY KEY (`id_visitantes`) USING BTREE,
+  ADD PRIMARY KEY (`id_ingresos`) USING BTREE,
   ADD KEY `IdCds` (`IdCds`),
   ADD KEY `id_actividades` (`id_actividades`);
 
@@ -315,31 +339,31 @@ ALTER TABLE `visitantes`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_actividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `cds`
 --
 ALTER TABLE `cds`
-  MODIFY `IdCds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `IdCds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso_visitantes`
 --
 ALTER TABLE `ingreso_visitantes`
-  MODIFY `id_visitantes` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_ingresos` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `visitantes`
 --
 ALTER TABLE `visitantes`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- Restricciones para tablas volcadas
@@ -374,6 +398,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
