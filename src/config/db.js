@@ -45,5 +45,6 @@ function handleDisconnect() {
     }
   });
 }
+handleDisconnect(db_config);
 
-handleDisconnect();
+module.exports = connection
