@@ -2,11 +2,11 @@ const mysql = require('mysql');
 /* const connection = mysql.createConnection({
   host: 'us-cdbr-east-05.cleardb.net',
   user: 'bef3b39afd51d3',
-  password:'1f2fd213',
+  password: '1f2fd213',
   database: 'heroku_30cba212e18e6ef',
-});
+}); */
 
-connection.connect((err) => {
+/* connection.connect((err) => {
   if (err) {
     console.log("el error de la conexion a BD es: " + err)
     return;
@@ -14,16 +14,16 @@ connection.connect((err) => {
   console.log("conectado exitosamente a la BD")
 });
 
-module.exports = connection; */
+module.exports = connection */
 
-var db_config = {
+/* var db_config = {
   host: 'us-cdbr-east-05.cleardb.net',
     user: 'bef3b39afd51d3',
     password: '1f2fd213',
     database: 'heroku_30cba212e18e6ef',
 };
 
-var connection;
+ var connection;
 
 function handleDisconnect() {
   connection = mysql.createConnection(db_config); 
@@ -46,5 +46,26 @@ function handleDisconnect() {
   });
 }
 handleDisconnect(db_config);
+ */
 
-module.exports = connection
+const pool = mysql.createPool({
+  connectionLimit: 100,
+  host: 'us-cdbr-east-05.cleardb.net',
+  user: 'bef3b39afd51d3',
+  password: '1f2fd213',
+  database: 'heroku_30cba212e18e6ef',
+})
+
+pool.getConnection((err, connection) => {
+  if (err) {
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      console.error('DATABASE CONNECTION WAS CLOSED')
+    }
+  }
+
+  if (connection) connection.release()
+  console.log('DB IS CONNECTED');
+  return
+})
+ module.exports = pool
+
