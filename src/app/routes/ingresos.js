@@ -266,7 +266,6 @@ router.get("/visitorTable", async (req, res) => {
           WHERE cds.IdCds = ? `,
         [id],
         (err, result) => {
-          res.json(result)
           if (err) {
             res.send(err);
           } else {
@@ -320,7 +319,6 @@ router.get("/registerTable", (req, res) => {
         `SELECT visitantes.*, cds.* FROM visitantes
       INNER JOIN cds ON cds.IdCds = visitantes.IdCds WHERE visitantes.IdCds = ?`, [id],
         (err, result) => {
-          res.json(result)
           if (err) {
             res.send(err);
           } else {
