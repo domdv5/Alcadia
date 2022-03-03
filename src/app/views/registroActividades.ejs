@@ -65,7 +65,7 @@
 <div class="container-all" id="move-content">
  
     <h1>REGISTRO DE ACTIVIDADES</h1>
-    <form action="addActivities" method="POST" class="container-content">
+    <form   id="activitieForm" class="container-content">
       <div class=camp>
         <label form="tipo">Nombre de la actividad</label>
         <input type="text" placeholder="ingrese nombre de la actividad" required name="nombre">
@@ -193,18 +193,7 @@
   </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <% if(typeof alert !=="undefined" ){%>
-      <script>
-        Swal.fire({
-          title: '<%= title %>',
-          icon: '<%= icon %>',
-          showConfirmButton: '<%= showConfirmButton %>',
-          timer: '<%= timer %>',
-        }).then(() => {
-            window.location = '/<%= ruta %>'
-        })
-      </script>
-      <% } %>
+
 
 
 
@@ -244,9 +233,10 @@
 
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" ;>
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700" ;>
-
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="/resources/js/script.js"></script>
+        <script src="/resources/js/axiosActivities/addActivities.js"></script>
         <script src="/resources/js/showInput.js"></script>
 
     <% if(typeof alert !="undefined" ){%>
