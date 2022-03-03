@@ -50,10 +50,10 @@ handleDisconnect(db_config);
 
 const pool = mysql.createPool({
   connectionLimit: 100,
-  host: 'us-cdbr-east-05.cleardb.net',
-  user: 'bef3b39afd51d3',
-  password: '1f2fd213',
-  database: 'heroku_30cba212e18e6ef',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.PASSWORD,
+  database: process.env.DB_DATABASE,
 })
 
 pool.getConnection((err, connection) => {
