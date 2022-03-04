@@ -27,7 +27,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"></strong>
+        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%= name %> </strong>
       </a>
       <div class="menu" id="show-menu">
       <ul class="nav nav-tabs">
@@ -63,7 +63,7 @@
 
   <div class="register-form" id="container-content">
   <h1>REGISTRO DE CDS & TELECENTROS</h1>
-  <form action="addCds" method="POST">
+  <form id="cdsForm">
     <div class= camp>
       <label form="tipo">Seleciona el tipo de espacio para el desarrollo</label>
       <select name ="espacio" id="espacio" class="select-css"  >
@@ -103,7 +103,7 @@
 
 
       <label for="">Nombre</label>
-      <input type="text" name="nombre" pattern="[A-Z/s]+{1,100}" title="El nombre debe ir en mayuscula" required >
+      <input type="text" name="nombre" pattern="[A-Z]{1,100}" title="El nombre debe ir en mayuscula" required >
       <label for="">Dirección</label>
       <input type="text" name="direccion"  required>
         <label for="">Horario</label>
@@ -177,7 +177,9 @@
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
   <link rel="stylesheet" href= "//fonts.googleapis.com/css?family=Roboto:400,700";>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="/resources/js/script.js"></script>
   <script src="/resources/js/nav_activo.js"></script>
+  <script src="/resources/js/axiosCds/addCds.js"></script>
 </body>
 </html>

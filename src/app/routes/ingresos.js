@@ -9,16 +9,16 @@ router.get("/", (req, res) => {
 });
 
 router.get("/users", (req, res) => {
+  const name = req.session.concatenar
+
   if (req.session.login) {
     connection.query(`SELECT * FROM cds`, (err, result) => {
-      const id_cds = result[0].IdCds
-      const name = result[0].concatenar
-
       if (err) {
         res.send(err);
       } else {
         res.render("../views/registroUsuario.ejs", {
           data: result,
+          name,
         });
       }
     });
@@ -30,12 +30,12 @@ router.get("/users", (req, res) => {
 router.get("/activities", (req, res) => {
   const id = req.session.id_cds;
   const key = req.session.key;
+  const name = req.session.concatenar
 
   if (req.session.login) {
     if (key === 1) {
       connection.query("SELECT * FROM cds", (err, result) => {
 
-        const name = result[0].concatenar;
         if (err) {
           res.send(err);
         } else {
@@ -52,7 +52,6 @@ router.get("/activities", (req, res) => {
       connection.query(
         "SELECT * FROM cds WHERE IdCds = ? ", [id], (err, result) => {
           const id_cds = result[0].IdCds;
-          const name = result[0].concatenar;
           const comuna = result[0].Comuna;
 
           if (err) {
@@ -79,6 +78,9 @@ router.get("/visitorLogin", async (req, res) => {
   const key = req.session.key;
   const dato = req.session.codigo;
   const id = req.session.id_cds;
+  const name = req.session.concatenar
+
+
 
   if (req.session.login) {
     if (key === 1) {
@@ -88,14 +90,12 @@ router.get("/visitorLogin", async (req, res) => {
       AS fullActivitie
       FROM actividades,usuarios,cds`,
         (err, result) => {
-          const nombre = result[0].concatenar;
-
           if (err) {
             console.log(err);
           } else {
             res.render("../views/ingresoVisitantes.ejs", {
               id,
-              nombre,
+              name,
               rows: result,
               key,
             });
@@ -111,14 +111,12 @@ router.get("/visitorLogin", async (req, res) => {
       WHERE usuarios.cedula = ? AND actividades.IdCds = ? AND cds.IdCds = ?`,
         [dato, id, id],
         (err, result) => {
-          const nombre = result[0].concatenar;
-
           if (err) {
             console.log(err);
           } else {
             res.render("../views/ingresoVisitantes.ejs", {
               id,
-              nombre,
+              name,
               rows: result,
               key,
             });
@@ -138,7 +136,7 @@ router.get("/visitors", (req, res) => {
   if (req.session.login) {
     connection.query(`SELECT * FROM cds WHERE IdCds = ?`, [id], (err, result) => {
       const id_cds = result[0].IdCds;
-      const name = result[0].concatenar;
+      const name = req.session.concatenar = result[0].concatenar;
 
       if (err) {
         console.log(errr);
@@ -216,9 +214,7 @@ router.get("/cdsTable", (req, res) => {
 
 router.get("/usersTable", (req, res) => {
   if (req.session.login) {
-    connection.query(
-      `SELECT usuarios.*, cds.concatenar FROM usuarios
-    INNER JOIN cds ON usuarios.IdCds = cds.IdCds`,
+    connection.query(`SELECT usuarios.*, cds.concatenar FROM usuarios INNER JOIN cds ON usuarios.IdCds = cds.IdCds`,
       (err, result) => {
         if (err) {
           res.send(err);
@@ -336,6 +332,7 @@ router.get("/registerTable", (req, res) => {
 
 router.get("/registerCds", async (req, res) => {
   const key = req.session.key;
+  const name = req.session.concatenar
 
   if (req.session.login) {
     await connection.query("SELECT * FROM cds", (err, result) => {
@@ -345,6 +342,7 @@ router.get("/registerCds", async (req, res) => {
         res.render("../views/registroCds", {
           cds: result,
           key,
+          name,
         });
       }
     });
@@ -382,29 +380,32 @@ router.delete("/delete.activities/:id", (req, res) => {
   }
   );
 });
-router.get("/delete.cds/:id", (req, res) => {
+
+router.delete("/delete.cds/:id", (req, res) => {
   const id = req.params.id;
 
   connection.query("DELETE FROM cds WHERE IdCds = ? ", [id], (err, result) => {
-    if (result) {
-      res.render("../views/tablaCds.ejs", {
-        alert: true,
-        cds: result,
-        title: "REGISTRO ELIMINADO",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 2500,
-        ruta: "cdsTable",
-      });
+    if (result.length === 0) {
+      res.json({ code: 400 })
+      /*     res.render("../views/tablaCds.ejs", {
+            alert: true,
+            cds: result,
+            title: "REGISTRO ELIMINADO",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2500,
+            ruta: "cdsTable",
+          }); */
     } else {
-      res.render("../views/tablaCds.ejs", {
-        alert: true,
-        title: "Error",
-        icon: "error",
-        showConfirmButton: false,
-        timer: 2500,
-        ruta: "cdsTable",
-      });
+      res.json({ code: 200 })
+      /*       res.render("../views/tablaCds.ejs", {
+              alert: true,
+              title: "Error",
+              icon: "error",
+              showConfirmButton: false,
+              timer: 2500,
+              ruta: "cdsTable",
+            }); */
     }
   });
 });
@@ -468,15 +469,13 @@ router.delete("/delete.registro/:id", (req, res) => {
   );
 });
 
-router.get("/delete.data/:id", (req, res) => {
+router.delete("/delete.users/:id", (req, res) => {
   const id = req.params.id;
 
-  connection.query(
-    "DELETE FROM usuarios WHERE id_usuarios = ? ",
-    [id],
-    (err, result) => {
-      if (result) {
-        res.render("../views/tablaUsuarios.ejs", {
+  connection.query("DELETE FROM usuarios WHERE id_usuarios = ? ",[id],(err, result) => {
+      if (result.length === 0) {
+        res.json({code:400})
+   /*      res.render("../views/tablaUsuarios.ejs", {
           alert: true,
           data: result,
           title: "REGISTRO ELIMINADO",
@@ -484,16 +483,17 @@ router.get("/delete.data/:id", (req, res) => {
           showConfirmButton: false,
           timer: 2500,
           ruta: "usersTable",
-        });
+        }); */
       } else {
-        res.render("../views/tablaUsuarios.ejs", {
+        res.json({code:200})
+       /*  res.render("../views/tablaUsuarios.ejs", {
           alert: true,
           title: "Error",
           icon: "error",
           showConfirmButton: false,
           timer: 2500,
           ruta: "usersTable",
-        });
+        }); */
       }
     }
   );
@@ -562,69 +562,67 @@ router.put("/edit.activities/:id", async (req, res) => {
   );
 });
 
-router.post("/edit.cds/:id", async (req, res) => {
+router.put("/edit.cds/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
 
-  await connection.query(
-    "UPDATE cds SET ? WHERE IdCds = ?",
-    [data, id],
-    (err, result) => {
-      if (result) {
-        res.render("../views/tablaCds.ejs", {
-          alert: true,
-          cds: result,
-          title: "ACTUALIZACIÓN EXITOSA",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2500,
-          ruta: "cdsTable",
-        });
-      } else {
-        res.render("../views/tablaCds.ejs", {
-          alert: true,
-          title: "Error",
-          icon: "error",
-          showConfirmButton: false,
-          timer: 2500,
-          ruta: "cdsTable",
-        });
-      }
+  await connection.query("UPDATE cds SET ? WHERE IdCds = ?", [data, id], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+      /*      res.render("../views/tablaCds.ejs", {
+             alert: true,
+             cds: result,
+             title: "ACTUALIZACIÓN EXITOSA",
+             icon: "success",
+             showConfirmButton: false,
+             timer: 2500,
+             ruta: "cdsTable",
+           }); */
+    } else {
+      res.json({ code: 200 })
+      /*  res.render("../views/tablaCds.ejs", {
+         alert: true,
+         title: "Error",
+         icon: "error",
+         showConfirmButton: false,
+         timer: 2500,
+         ruta: "cdsTable",
+       }); */
     }
+  }
   );
 });
 
-router.post("/edit.users/:id", async (req, res) => {
+router.put("/edit.users/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
 
 
 
-  await connection.query(
-    "UPDATE usuarios SET ? WHERE id_usuarios = ?",
-    [data, id],
-    (err, result) => {
-      if (result) {
-        res.render("../views/tablaUsuarios.ejs", {
-          alert: true,
-          data: result,
-          title: "ACTUALIZACIÓN EXITOSA",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2500,
-          ruta: "usersTable",
-        });
-      } else {
-        res.render("../views/tablaUsuarios.ejs", {
-          alert: true,
-          title: "Error",
-          icon: "error",
-          showConfirmButton: false,
-          timer: 2500,
-          ruta: "usersTable",
-        });
-      }
+  await connection.query("UPDATE usuarios SET ? WHERE id_usuarios = ?", [data, id], (err, result) => {
+    if (result.length === 0) {
+      res.json({code:400})
+  /*     res.render("../views/tablaUsuarios.ejs", {
+        alert: true,
+        data: result,
+        title: "ACTUALIZACIÓN EXITOSA",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: "usersTable",
+      }); */
+    } else {
+      res.json({code:200})
+      /* res.render("../views/tablaUsuarios.ejs", {
+        alert: true,
+        title: "Error",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2500,
+        ruta: "usersTable",
+      }); */
     }
+  }
   );
 });
 
@@ -750,32 +748,31 @@ router.post("/addUsers", async (req, res) => {
     telefono,
     rol,
   };
-  await connection.query(
-    "INSERT INTO Usuarios SET ? ",
-    [newUser],
-    (error, rows) => {
-      if (rows === undefined) {
-        res.render("../views/registroUsuario.ejs", {
-          data: rows,
-          alert: true,
-          title: "Identificacion duplicada",
-          icon: "error",
-          showConfirmButton: false,
-          timer: 2500,
-          ruta: "users",
-        });
-      } else {
-        res.render("../views/registroUsuario.ejs", {
-          data: rows,
-          alert: true,
-          title: "Registro Satisfactorio",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2500,
-          ruta: "users",
-        });
-      }
+  await connection.query("INSERT INTO Usuarios SET ? ", [newUser], (error, rows) => {
+    if (rows.length === 0) {
+      res.json({ code: 400 })
+      /*     res.render("../views/registroUsuario.ejs", {
+            data: rows,
+            alert: true,
+            title: "Identificacion duplicada",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2500,
+            ruta: "users",
+          }); */
+    } else {
+      res.json({ code: 200 })
+      /*    res.render("../views/registroUsuario.ejs", {
+           data: rows,
+           alert: true,
+           title: "Registro Satisfactorio",
+           icon: "success",
+           showConfirmButton: false,
+           timer: 2500,
+           ruta: "users",
+         }); */
     }
+  }
   );
 });
 
@@ -883,19 +880,9 @@ router.post("/addVisitors", async (req, res) => {
 });
 
 router.post("/addCds", async (req, res) => {
-  const {
-    espacio,
-    comuna,
-    nombre,
-    direccion,
-    horario,
-    correo,
-    telefono,
-    nombreCoordinador,
-    concatenar,
-  } = req.body;
+  const { espacio, comuna, nombre, direccion, horario, telefono, correo, nombreCoordinador } = req.body
 
-  const nombreCompleto = espacio.concat(" " + nombre);
+  const nombreCompleto = espacio.concat(" " + nombre)
 
   const newCds = {
     espacio,
@@ -907,28 +894,30 @@ router.post("/addCds", async (req, res) => {
     telefono,
     nombreCoordinador,
     concatenar: nombreCompleto,
-  };
+  }
 
   await connection.query("INSERT INTO cds SET ?", [newCds], (err, result) => {
-    if (result === undefined) {
-      res.render("../views/registroCds.ejs", {
-        nombreCompleto,
-        alert: true,
-        title: "intente de nuevo",
-        icon: "error",
-        showConfirmButton: false,
-        timer: 2500,
-        ruta: "registerCds",
-      });
+    if (result.length === 0) {
+      res.json({ code: 400 })
+      /*       res.render("../views/registroCds.ejs", {
+              nombreCompleto,
+              alert: true,
+              title: "intente de nuevo",
+              icon: "error",
+              showConfirmButton: false,
+              timer: 2500,
+              ruta: "registerCds",
+            }); */
     } else {
-      res.render("../views/registroCds.ejs", {
-        alert: true,
-        title: "Registro Satisfactorio",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 2500,
-        ruta: "registerCds",
-      });
+      res.json({ code: 200 })
+      /*  res.render("../views/registroCds.ejs", {
+         alert: true,
+         title: "Registro Satisfactorio",
+         icon: "success",
+         showConfirmButton: false,
+         timer: 2500,
+         ruta: "registerCds",
+       }); */
     }
   });
 });
@@ -936,11 +925,9 @@ router.post("/addCds", async (req, res) => {
 router.post("/visitorsEntry", async (req, res) => {
   const data = req.body;
   const id = req.session.id_cds;
-  console.log(data);
 
   await connection.query("INSERT INTO ingreso_visitantes SET ?", [data], (err, result) => {
     if (result) {
-
       res.json({ code: 200 })
       /*      res.render("../views/ingresoVisitantes.ejs", {
              alert: true,
