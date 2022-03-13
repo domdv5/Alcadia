@@ -615,10 +615,10 @@ router.post("/singUp", async (req, res) => {
       req.session.id_cds = result[0].IdCds;
       req.session.key = result[0].rol;
 
-      if (result.length === 0 || !bcryptjs.compareSync(pass, result[0].pass)) {
+      if (result.length === 0 || !(bcryptjs.compareSync(pass, result[0].pass))) {
         res.render("../views/login.ejs", {
           alert: true,
-          title: "Nombre de usuario y/o contraseña incorrecto(s))",
+          title: "Nombre de usuario y/o contraseña incorrecto((s))",
           message: "Intente nuevamente",
           icon: "error",
           showConfirmButton: true,
@@ -637,20 +637,19 @@ router.post("/singUp", async (req, res) => {
           ruta: "visitors",
         });
       }
-    }
-    );
+    });
   }
-});
+})
 
 router.post("/idValidation", async (req, res) => {
   const { numero_documento } = req.body
-  await connection.query("SELECT * FROM visitantes WHERE numero_documento = ?",[numero_documento],
+  await connection.query("SELECT * FROM visitantes WHERE numero_documento = ?", [numero_documento],
     (err, result) => {
-        if (result.length === 0) {
-          res.json({ code: 400 });
-        } else {
-          res.json({ code: 200 });
-        }
+      if (result.length === 0) {
+        res.json({ code: 400 });
+      } else {
+        res.json({ code: 200 });
+      }
     }
   );
 });
