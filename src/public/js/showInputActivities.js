@@ -1,13 +1,3 @@
-/* function mostrar_control(){
-    var select = document.getElementById("myselect");
-    var inputText = document.getElementById("Texto");
-    if(select.options[select.selectedIndex].id == "Nuevo"){
-        inputText.style.visibility = "visible";
-    }else{
-        inputText.style.visibility = "hidden";
-    }
-} */
-
 
 const showInput = () => {
     let select = document.getElementById("myselect").value

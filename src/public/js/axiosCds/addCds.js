@@ -20,6 +20,8 @@ form.addEventListener('submit', (e) => {
           icon: 'success',
           showConfirmButton: true,
           timer: 2000
+        }).then(()=>{
+          window.location = '/users'
         })
         form.reset()
       } else {

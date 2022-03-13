@@ -2,81 +2,37 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
+
+    <%- include('./partials/template/header.ejs') %> 
     <link rel="stylesheet" href="/resources/css/registroActividades.css" type="text/css" media="all">
-    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-  
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
-    <link rel="stylesheet" href= "//fonts.googleapis.com/css?family=Roboto:400,700";>
-    
-  
-    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-    <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-  
-    <link type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png" rel="icon" />
-    <title>Registro Actividades</title>
   </head>
 
 <body>
+
    <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="https://fiestadellibroylacultura.com/wp-content/uploads/2020/09/Logo_Alcaldia_2021.png" alt="" width="110" height="55" > <strong id="title"><%= name %></strong>
-      </a>
-      <div class="menu" id="show-menu">
-      <ul class="nav nav-tabs">
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"  href="/visitors">Visitante</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" href="/visitorLogin">Ingreso</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/activities">Actividades</a>
-        </li>
-         <% if(key === 1 ) { %>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Usuarios</a>
-            <ul class="dropdown-menu">
-               <li><a class="dropdown-item" href="/registerCds">1. Crear CDS</a></li>
-                <li><a class="dropdown-item" href="/users">2. Crear Usuario</a></li>
-          </ul>
-         </li>
-         <% } %> 
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" href="/logout">Salir</a>
-        </li>
-      </ul>
-     </div>
-    </div>
-    </nav>
+  <%- include('./partials/template/nav.ejs') %> 
+
   <div id="icon-menu">
     <i class="fas fa-bars"></i>
   </div>
+
     </header>
-    <main>
-<div class="container-all" id="move-content">
+<main>
+   <div class="container-all" id="move-content">
  
     <h1>REGISTRO DE ACTIVIDADES</h1>
     <form   id="activitieForm" class="container-content">
       <div class=camp>
         <label form="tipo">Nombre de la actividad</label>
-        <input type="text" placeholder="ingrese nombre de la actividad" required name="nombre">
+        <input type="text" placeholder="ingrese nombre de la actividad" required name="nombre" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="">Secretaría o entidad organizadora</label>
-        <input type="text" placeholder="Ingrese secretaría" required name="secretaria">
+        <input type="text" placeholder="Ingrese secretaría" required name="secretaria"  pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="">Facilitador Organizador</label>
-        <input type="text" placeholder=" Ingrese Facilitador" required name="facilitador">
+        <input type="text" placeholder=" Ingrese Facilitador" required name="facilitador"  pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="">Fecha inicio</label>
@@ -104,7 +60,7 @@
       </div>
      <div class=camp>
         <label form="">Ciudad</label>
-        <input Id="" type="text" placeholder="Ingrese Ciudad" required name="ciudad">
+        <input Id="" type="text" placeholder="Ingrese Ciudad" required name="ciudad"  pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="tipo">Comuna o corregimiento</label>
@@ -139,38 +95,38 @@
       </div>
       <div class=camp>
         <label form="">Barrio /Vereda /Sector</label>
-        <input name="barrio_vereda" type="text" placeholder="Ingrese Barrio" required>
+        <input name="barrio_vereda" type="text" placeholder="Ingrese Barrio" required pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="">Dirección</label>
-        <input name="direccion" type="text" placeholder="Ingrese Dirección" required>
+        <input name="direccion" type="text" placeholder="Ingrese Dirección" required >
       </div>
 
 
 
       <div class=camp>
         <label form="">Nombre de proyecto de inversión</label>
-        <input name="nombre_proyecto_inversion" type="text" placeholder="Ingrese nombre del proyecto" >
+        <input name="nombre_proyecto_inversion" type="text" placeholder="Ingrese nombre del proyecto" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras" >
       </div>
       <div class=camp>
         <label form="">Codigo de proyecto de inversión</label>
-        <input name="codigo_proyecto_inversion" type="text" placeholder="Ingrese Codigo de proyecto" >
+        <input name="codigo_proyecto_inversion" type="text" placeholder="Ingrese Codigo de proyecto" pattern="[0-9]{1,10}"  title="Solo es permitido el ingreso de numeros" >
       </div>
       <div class=camp>
         <label form="">Nombre de indicadores PDM & PI </label>
-        <input name="nombres_plan_desarrollo" type="text" placeholder="Ingrese Nombre de indicadores" >
+        <input name="nombres_plan_desarrollo" type="text" placeholder="Ingrese Nombre de indicadores" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="">Códigos de indicadores PDM Y PI</label>
-        <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" >
+        <input name="codigo_indicadores_pdm_pdi" type="text" placeholder="Ingrese codigos" pattern="[0-9]{1,10}"  title="Solo es permitido el ingreso de numeros" >
       </div>
       <div class=camp>
         <label form="tipo">Linea</label>
-        <input type="text" placeholder="ingrese nombre de la linea"  name="linea">
+        <input type="text" placeholder="ingrese nombre de la linea"  name="linea" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
         <label form="tipo">Componente</label>
-        <input type="text" placeholder="ingrese nombre de la actividad"  name="componente">
+        <input type="text" placeholder="ingrese nombre de la actividad"  name="componente" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
         <div id="contenedor" class=camp>
         <label form="tipo">Tipo de reunión</label>
@@ -237,7 +193,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="/resources/js/script.js"></script>
         <script src="/resources/js/axiosActivities/addActivities.js"></script>
-        <script src="/resources/js/showInput.js"></script>
+        <script src="/resources/js/showInputActivities.js"></script>
 
     <% if(typeof alert !="undefined" ){%>
       <script>

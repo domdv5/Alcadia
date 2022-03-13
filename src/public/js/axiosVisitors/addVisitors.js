@@ -24,7 +24,7 @@ form.addEventListener('submit', (e) => {
       form.reset()
       document.getElementById('validationServer01').removeAttribute('class')
       document.getElementById('age').removeAttribute('value')
-      document.querySelector("#myForm > div.camp1 > div > button > div > div > div").innerHTML = 'Nothing selected'
+      document.querySelector("#myForm > div:nth-child(9) > div > button").innerHTML = 'Nothing selected'
     } else {
       Swal.fire({
         title: 'Error al registrar',

@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/resources/css/login.css" type="text/css" media="all">
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" ;>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700" ;>
   <script src="https://kit.fontawesome.com/deb5a2be68.js" crossorigin="anonymous"></script>
   <link type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg/1200px-Escudo_de_Medell%C3%ADn_%28versi%C3%B3n_Alcald%C3%ADa%29.svg.png" rel="icon" />
   <title>Login</title>
 </head>
+
+
 <body>
   <div class='wrapper'>
     <div class='login'>
@@ -22,13 +26,13 @@
           <span>
             <i class='fa fa-user'></i>
           </span>
-          <input placeholder='Ingrese cédula' name="codigo">
+          <input placeholder='Ingrese cédula' name="codigo" required>
         </fieldset>
         <fieldset>
           <span>
             <i class='fa fa-lock'></i>
           </span>
-          <input placeholder='Ingrese contraseña' type='password' name="pass" autocomplete="current-password">
+          <input placeholder='Ingrese contraseña' type='password' name="pass" required>
         </fieldset>
       <button id='btnLogin' type='submit'>Login</button>
       
@@ -44,9 +48,11 @@
     </div>
   </div>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/resources/js/test.js"></script>
 
-<!-- esto es lo que tenes que agregar -->
+
 <% if(typeof alert != "undefined"){%>
   <script>
     Swal.fire({
@@ -60,11 +66,9 @@
     })
   </script>
 <% } %>
-<!-- esto es lo que tenes que agregar -->
 
 
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" ;>
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700" ;>
+
 </body>
 
 </html>
