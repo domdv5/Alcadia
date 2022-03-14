@@ -177,6 +177,7 @@ text-align: center;
   margin: 0;
   padding: 0;
 }
+
 .img1{
   width: 170px;
   border-radius: 5%;
@@ -234,6 +235,12 @@ ul li:hover > ul{
   width: 18em;
   margin: 3px 3px ;
   }
+  input:required {
+    border: 0.3px inset rgb(255, 0, 0);
+  }
+  select:required {
+    border: 0.3px inset rgb(255, 0, 0);
+   }
 
 /* responsive */
 #icon-menu{
