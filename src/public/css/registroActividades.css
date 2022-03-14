@@ -235,12 +235,8 @@ ul li:hover > ul{
   width: 18em;
   margin: 3px 3px ;
   }
-  input:required {
-    border: 0.3px inset rgb(255, 0, 0);
-  }
-  select:required {
-    border: 0.3px inset rgb(255, 0, 0);
-   }
+   label.nombre::before {content: '* ';color: red;
+}
 
 /* responsive */
 #icon-menu{
