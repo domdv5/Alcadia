@@ -134,9 +134,9 @@
                 <input type="text" class="form-control" id="recipient-name" name="fecha_nacimiento"
                   value="<%= registro.fecha_nacimiento%>">
               </div>
-              <div class="mb-3">
+              <div id="multiple" class="mb-3">
                 <label for="message-text" class="col-form-label">Enfoque diferencial</label>
-                <select name="enfoque_diferencial" id="tipo" class="select" value="<%=registro.enfoque_diferencial %>">
+                <select multiple  class="selectpicker" name="enfoque_diferencial[]" id="tipo"  value="<%=registro.enfoque_diferencial %>">
                   <option value="<%= registro.enfoque_diferencial %>" selected disabled>
                     <%= registro.enfoque_diferencial %>
                   </option>
