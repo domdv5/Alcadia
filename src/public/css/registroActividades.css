@@ -237,7 +237,7 @@ ul li:hover > ul{
   }
    label.nombre::after {content: ' *';color: red;
 }
-p{
+.p{
 color: #364D5C;
 position: absolute;
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
