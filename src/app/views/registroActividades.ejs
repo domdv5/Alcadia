@@ -23,35 +23,35 @@
     <h1>REGISTRO DE ACTIVIDADES</h1>
     <form   id="activitieForm" class="container-content">
       <div class=camp>
-        <label form="tipo">Nombre de la actividad</label>
+        <label form="tipo">Nombre de la actividad *</label>
         <input type="text" placeholder="ingrese nombre de la actividad" required name="nombre" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
-        <label form="">Secretaría o entidad organizadora</label>
+        <label aria-required="false" form="">Secretaría o entidad organizadora *</label>
         <input type="text" placeholder="Ingrese secretaría" required name="secretaria"  pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
-        <label form="">Facilitador Organizador</label>
+        <label form="">Facilitador Organizador *</label>
         <input type="text" placeholder=" Ingrese Facilitador" required name="facilitador"  pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
-        <label form="">Fecha inicio</label>
+        <label form="">Fecha inicio *</label>
         <input type="date" placeholder="" required name="fecha_inicio">
       </div>
       <div class=camp>
-        <label form="">Fecha final</label>
+        <label form="">Fecha final *</label>
         <input type="date" placeholder="" required name="fecha_final">
       </div>
       <div class=camp>
-        <label form="">Hora apertura</label>
+        <label form="">Hora apertura * </label>
         <input type="time" placeholder="ingrese hora de inicio" required name="hora_apertura">
       </div>
       <div class=camp>
-        <label form="">Hora cierre</label>
+        <label form="">Hora cierre *</label>
         <input type="time" placeholder="ingrese hora de cierre" required name="hora_cierre">
       </div> 
       <div class=camp>
-        <label form="">Lugar </label>
+        <label form="">Lugar *</label>
         <select class="form-select" name="IdCds">
           <% for(let i = 0; i < rows.length; i++){ %> 
             <option selected value="<%= rows[i].IdCds %> "> <%= rows[i].concatenar %>  </option>
@@ -59,11 +59,11 @@
        </select>
       </div>
      <div class=camp>
-        <label form="">Ciudad</label>
+        <label form="">Ciudad *</label>
         <input Id="" type="text" placeholder="Ingrese Ciudad" required name="ciudad"  pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
-        <label form="tipo">Comuna o corregimiento</label>
+        <label form="tipo">Comuna o corregimiento *</label>
         <select name="comuna_corregimiento" id="tipo" class="select" required>
             <% if(key === 0 ) { %>
               <option value="<%= comuna %> "selected><%= comuna %></option>
@@ -94,11 +94,11 @@
         </select>
       </div>
       <div class=camp>
-        <label form="">Barrio /Vereda /Sector</label>
+        <label form="">Barrio /Vereda /Sector *</label>
         <input name="barrio_vereda" type="text" placeholder="Ingrese Barrio" required pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras">
       </div>
       <div class=camp>
-        <label form="">Dirección</label>
+        <label form="">Dirección *</label>
         <input name="direccion" type="text" placeholder="Ingrese Dirección" required >
       </div>
 
@@ -129,7 +129,7 @@
         <input type="text" placeholder="ingrese nombre de la actividad"  name="componente" pattern="[A-Z a-z]{1,150}" title="Solo se permite el ingreso de letras">
       </div>
         <div id="contenedor" class=camp>
-        <label form="tipo">Tipo de reunión</label>
+        <label form="tipo">Tipo de reunión *</label>
         <select name="tipo_reunion" id="myselect" onchange="showInput()" class="select" required>
           <option value="" selected disabled>Selecciona el tipo de Reunion</option>
           <option value="Informativa">Informativa</option>
