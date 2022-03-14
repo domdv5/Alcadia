@@ -235,7 +235,7 @@ ul li:hover > ul{
   width: 18em;
   margin: 3px 3px ;
   }
-   label.nombre::before {content: '* ';color: red;
+   label.nombre::after {content: '* ';color: red;
 }
 
 /* responsive */
