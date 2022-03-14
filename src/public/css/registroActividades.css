@@ -237,7 +237,14 @@ ul li:hover > ul{
   }
    label.nombre::after {content: ' *';color: red;
 }
-
+p{
+color: #364D5C;
+position: absolute;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+margin-left: 190px;
+font-size: smaller;
+font-style: oblique;
+}
 /* responsive */
 #icon-menu{
   width: 50px;
