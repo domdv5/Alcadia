@@ -621,6 +621,7 @@ router.post("/singUp", async (req, res) => {
       req.session.codigo = result[0].cedula;
       req.session.id_cds = result[0].IdCds;
       req.session.key = result[0].rol;
+      
 
       if (result.length === 0 || !(bcryptjs.compareSync(pass, result[0].pass))) {
         res.render("../views/login.ejs", {
