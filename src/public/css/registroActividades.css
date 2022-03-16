@@ -241,9 +241,10 @@ ul li:hover > ul{
 color: #364D5C;
 position: absolute;
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-margin-left: 14%;
+margin-left: 38.5%;
 font-size: smaller;
 font-style: oblique;
+
 }
 /* responsive */
 #icon-menu{
