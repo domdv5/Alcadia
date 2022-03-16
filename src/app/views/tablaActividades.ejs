@@ -98,23 +98,10 @@ $('#example').DataTable({
   </script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="/resources/js/validacion.js"></script>
 <script src="/resources/js/axiosActivities/updateActivities.js"></script>
 <script src="/resources/js/axiosActivities/deleteActivities.js"></script>
 
 
-<% if(typeof alert !="undefined" ){%>
-  <script>
-    Swal.fire({
-      title: '<%= title %>',
-      icon: '<%= icon %>',
-      showConfirmButton: '<%= showConfirmButton %>',
-      timer: '<%= timer %>',
-    }).then(() => {
-        window.location = '/<%= ruta %>'
-    })
-  </script>
-  <% } %>
   </body>
   
   </html>

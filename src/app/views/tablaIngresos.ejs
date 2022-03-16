@@ -94,22 +94,7 @@
       }); 
       </script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="/resources/js/validacion.js"></script>
         <script src="/resources/js/axiosEntrances/deleteEntrance.js"></script>
-       
-      
-        <% if(typeof alert !="undefined" ){%>
-          <script>
-            Swal.fire({
-              title: '<%= title %>',
-              icon: '<%= icon %>',
-              showConfirmButton: '<%= showConfirmButton %>',
-              timer: '<%= timer %>',
-            }).then(() => {
-                window.location = '/<%= ruta %>'
-            })
-          </script>
-          <% } %>
 </body>
 
 </html>
