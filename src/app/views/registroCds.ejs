@@ -23,7 +23,7 @@
   <form id="cdsForm">
     <div class= camp>
       <label form="tipo">Seleciona el tipo de espacio para el desarrollo</label>
-      <select name ="espacio" id="espacio" class="select-css"  >
+      <select name ="espacio" id="espacio" onchange="disabledInput()" class="select-css"  >
         <option value ="" selected disabled>Selecciona un espacio</option>
         <option value ="CENTRO DE DESARROLO SOCIAL">CENTRO DE DESARROLO SOCIAL</option>
         <option value="TELECENTRO">TELECENTRO</option>
@@ -31,10 +31,9 @@
       </select>
       </div>
 
-      <% if(key !== 1 ) { %> 
     <div class= camp>
-      <label form="tipo">Comuna o corregimiento</label>
-      <select name ="comuna" id="tipo" class="select-css"  >
+      <label form="tipo" class="inputs">Comuna o corregimiento</label>
+      <select name ="comuna" id="tipo" class="select-css inputs"  >
         <option value ="" selected disabled>Selecciona una comuna</option>
         <option value ="1. Popular" >1. Popular</option>
         <option value="2. Santa Cruz"  >2. Santa Cruz</option>
@@ -59,17 +58,16 @@
         <option value ="90. Santa Elena" >90. Santa Elena</option>
       </select>
     </div>
-    <% } %> 
+
 
 
       <label for="">Nombre</label>
       <input type="text" name="nombre" pattern="[A- Z]{1,100}" title="El nombre debe ir en mayuscula" required >
       <label for="">Dirección</label>
       <input type="text" name="direccion"  required>
-      <% if(key !== 1 ) { %> 
+
         <label for="">Horario</label>
-        <input type="text" name= "horario" required>
-        <% } %> 
+        <input type="text" id="horario" class="inputs" name= "horario" required>
         <label for="">Correo</label>
         <input type="text" name= "correo" required >
         <label for="">Teléfono</label>
@@ -89,23 +87,9 @@
 </main>
   <a href="/cdsTable" class="btn-save1">Tabla 📋</a>
   </div>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-  <% if(typeof alert != "undefined"){%>
-  <script>
-    Swal.fire({
-      title:'<%= title %>',
-      icon:'<%= icon %>',
-      showConfirmButton:'<%= showConfirmButton %>',
-      timer: '<%= timer %>'
-    }).then(() =>{
-      window.location='/<%= ruta %>'
-    })
-  </script>
-<% } %>
-
-<footer class="container-footer">
-  <div class="container_footer">
+  
+  <footer class="container-footer">
+    <div class="container_footer">
     <div class="box_footer">
       <div class="logo">
         <img class="img1" src="https://www.museocasadelamemoria.gov.co/wp-content/uploads/2016/10/PNG_LOGO_ALCALDIA_MEDELLIN_FONDOS_OSCUROS.png" alt="">
@@ -115,12 +99,12 @@
           Edificio Plaza de la Libertad – Piso 14 A Carrera 53 A # 42-101<br>
           ➮ Línea única de atención ciudadana: (574) 44 44 144<br>
           ➮ Línea gratuita nacional: 01 8000 411 144</p>
+        </div>
       </div>
-    </div>
    
 
-    <div class="box_footer">
-      <h2>Entérese</h2>
+      <div class="box_footer">
+        <h2>Entérese</h2>
       <a class="a1" href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl://557131b191a8cae1e393328c6971a2d0">Telecentros</a>
       <a class="a1" href="https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=contenido/6694-Centros-de-Desarrollo-Social">CDS</a>
       <a class="a1" href="https://www.medellin.gov.co/irj/portal/medellin">Alcaldía de Medellín</a>
@@ -136,11 +120,13 @@
 
 
 
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
-  <link rel="stylesheet" href= "//fonts.googleapis.com/css?family=Roboto:400,700";>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script src="/resources/js/script.js"></script>
-  <script src="/resources/js/axiosCds/addCds.js"></script>
-  <script src="/resources/js/tagDisabled.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
+<link rel="stylesheet" href= "//fonts.googleapis.com/css?family=Roboto:400,700";>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="/resources/js/script.js"></script>
+<script src="/resources/js/axiosCds/addCds.js"></script>
+<script src="/resources/js/tagDisabled.js"></script>
+<script src="/resources/js/inputsCdsDisabled.js"></script>
 </body>
 </html>
