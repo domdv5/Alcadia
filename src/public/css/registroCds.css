@@ -257,6 +257,16 @@ body {
   text-align: center !important;
 }
 
+.select-css1{
+  font-size: 22px;
+  border: none;
+  width: 700px;
+  padding: .4em 1.4em .3em .4em;
+  height: 52px;
+  margin: 0;
+  max-width: 100%;
+}
+
 
 footer{
   width: 100%;

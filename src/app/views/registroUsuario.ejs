@@ -38,7 +38,7 @@
         </div>
 
       <label for="">Correo</label>
-      <input type="text" name="correo" required>
+      <input type="email"  class="select-css1" name="correo" required>
 
 
       <label for="">Teléfono</label>
@@ -64,21 +64,6 @@
 <a href="/usersTable" class="btn-save1">Tabla 📋</a>
 </div>
 </main>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-  <% if(typeof alert != "undefined"){%>
-  <script>
-    Swal.fire({
-      title:'<%= title %>',
-      icon:'<%= icon %>',
-      showConfirmButton:'<%= showConfirmButton %>',
-      timer: '<%= timer %>'
-    }).then(() =>{
-      window.location='/<%= ruta %>'
-    })
-  </script>
-<% } %>
 
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css";>
@@ -112,6 +97,7 @@
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="/resources/js/script.js"></script>
   <script src="/resources/js/documentValidationUsers.js"></script>
   <script src="/resources/js/axiosUsers/addUsers.js"></script>

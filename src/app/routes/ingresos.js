@@ -36,8 +36,7 @@ router.get("/activities", (req, res) => {
 
   if (req.session.login) {
     if (key === 1) {
-      connection.query("SELECT * FROM cds", (err, result) => {
-
+      connection.query("SELECT * FROM cds WHERE concatenar NOT LIKE 'ADMINISTRADOR%'", (err, result) => {
         if (err) {
           res.send(err);
         } else {
@@ -617,24 +616,23 @@ router.post("/singUp", async (req, res) => {
 
   if (codigo && pass) {
     await connection.query(`SELECT usuarios.*, cds.concatenar FROM usuarios INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.cedula = ?`, [codigo], (err, result) => {
-      req.session.nombre = result[0].concatenar;
-      req.session.codigo = result[0].cedula;
-      req.session.id_cds = result[0].IdCds;
-      req.session.key = result[0].rol;
-      
 
       if (result.length === 0 || !(bcryptjs.compareSync(pass, result[0].pass))) {
         res.render("../views/login.ejs", {
           alert: true,
-          title: "Nombre de usuario y/o contraseña incorrecto((s))",
+          title: "Cedula y/o contraseña incorrecta",
           message: "Intente nuevamente",
-          icon: "error",
+          icon: "warning",
           showConfirmButton: true,
           timer: 4000,
           ruta: "/",
         });
       } else {
         req.session.login = true;
+        req.session.nombre = result[0].concatenar;
+        req.session.codigo = result[0].cedula;
+        req.session.id_cds = result[0].IdCds;
+        req.session.key = result[0].rol;
         res.render("../views/login.ejs", {
           alert: true,
           title: "Inicio de sesion satisfactorio",
@@ -734,7 +732,19 @@ router.get('/getInfoActivities', (req, res) => {
   })
 })
 
+router.post('/test', (req,res)=>{
+  const {codigo} = req.body
 
+  console.log(codigo);
+
+  connection.query('SELECT Cedula FROM usuarios WHERE cedula = ?', [codigo], (err,result)=>{
+    if(result.length === 0){
+      res.json({code:400})
+    } else{
+      res.json({code:200})
+    }
+  })
+})
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {

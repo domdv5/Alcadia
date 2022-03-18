@@ -195,18 +195,6 @@
         <script src="/resources/js/axiosActivities/addActivities.js"></script>
         <script src="/resources/js/showInputActivities.js"></script>
 
-    <% if(typeof alert !="undefined" ){%>
-      <script>
-        Swal.fire({
-          title: '<%= title %>',
-          icon: '<%= icon %>',
-          showConfirmButton: '<%= showConfirmButton %>',
-          timer: '<%= timer %>',
-        }).then(() => {
-            window.location = '/<%= ruta %>'
-        })
-      </script>
-      <% } %>
          
 </body>
 

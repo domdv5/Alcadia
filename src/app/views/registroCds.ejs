@@ -62,14 +62,14 @@
 
 
       <label for="">Nombre</label>
-      <input type="text" name="nombre" pattern="[A- Z]{1,100}" title="El nombre debe ir en mayuscula" required >
+      <input type="text" id="nombre" onkeyup="getValue()" name="nombre" pattern="[A- Z]{1,100}" title="El nombre debe ir en mayuscula" required >
       <label for="">Dirección</label>
       <input type="text" name="direccion"  required>
 
         <label for="">Horario</label>
         <input type="text" id="horario" class="inputs" name= "horario" required>
         <label for="">Correo</label>
-        <input type="text" name= "correo" required >
+        <input type="email" class="select-css1" name= "correo" required >
         <label for="">Teléfono</label>
         <input type="text" name= "telefono"  required>
         <label for="">Nombre Coordinador</label>
@@ -78,7 +78,7 @@
         <input type="text" name= "concatenar" hidden>
 
     <div style ="display: unline;">
-      <input type="submit" class="btn-save" value ="Guardar">
+      <input type="submit" id="btnCds" class="btn-save" value ="Guardar">
     </div>
   </div>
   </form>
@@ -128,5 +128,6 @@
 <script src="/resources/js/axiosCds/addCds.js"></script>
 <script src="/resources/js/tagDisabled.js"></script>
 <script src="/resources/js/inputsCdsDisabled.js"></script>
+<script src="/resources/js/getInputValue.js"></script>
 </body>
 </html>
