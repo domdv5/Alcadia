@@ -27,16 +27,19 @@
       </div>
       <div class='arrow-down'></div>
       <form  id="myForm">
+
         <fieldset>
           <span>
             <i class='fa fa-user'></i>
           </span>
-          <input type="" for="validationServer"  id="validationServer01" name="cedula" placeholder='Ingrese Documento'  onchange="validacion()" required>
-          <div class="invalid-feedback">
-               El documento no se encuentra registrado
-         </div>
+          <input type="" for="validationServer01 "  id="validationServer01" name="cedula" placeholder='Ingrese Documento'  onchange="validacion(),showDocument()" required>
         </fieldset>
 
+
+
+         <input type="text" id="item" aria-disabled="true" value=""  hidden  onchange="getDocument()"  > 
+         <input type="number" id="item2" aria-disabled="true" value="" hidden  onchange="getAge()" > 
+    
         <fieldset>
           <span>
             <i class="fa fa-clock-o"></i>
@@ -126,18 +129,19 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
   <script src="/resources/js/script.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="/resources/js/entrancesVisitorValidation.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/resources/js/routeRedirect.js"></script>
-  <script src="/resources/js/getTime.js"></script>
+  <script src="/resources/js/showTime.js"></script>
   <script src="/resources/js/inputDisabled.js"></script>
-  <script src="/resources/js/getCurrentDate.js"></script>
+  <script src="/resources/js/showCurrentDate.js"></script>
+  <script src="/resources/js/visitorEntryValidation.js"></script>
   <script src="/resources/js/axiosEntrances/visitorEntry.js"></script>
   <script src="/resources/js/redirectToVisitors.js"></script>
   <script src="/resources/js/redirectToActivities.js"></script>
+  <script src="/resources/js/getDateOfBirth.js"></script>
+  <script src="/resources/js/getCurrentAge.js"></script>
+  <script src="/resources/js/updateAge.js"></script>
  
-
-
 
 </body>
 </html>

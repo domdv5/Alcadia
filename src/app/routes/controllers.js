@@ -36,8 +36,7 @@ router.get("/activities", (req, res) => {
 
   if (req.session.login) {
     if (key === 1) {
-      connection.query("SELECT * FROM cds", (err, result) => {
-
+      connection.query("SELECT * FROM cds WHERE concatenar NOT LIKE 'ADMINISTRADOR%'", (err, result) => {
         if (err) {
           res.send(err);
         } else {
@@ -519,6 +518,7 @@ router.post("/edit.ingreso/:id", async (req, res) => {
 
 router.post("/addUsers", async (req, res) => {
   const { IdCds, cedula, correo, pass, telefono, rol } = req.body;
+
   let passwordHaash = await bcryptjs.hash(pass, 8);
 
   const newUser = {
@@ -617,24 +617,23 @@ router.post("/singUp", async (req, res) => {
 
   if (codigo && pass) {
     await connection.query(`SELECT usuarios.*, cds.concatenar FROM usuarios INNER JOIN cds ON usuarios.IdCds = cds.IdCds WHERE usuarios.cedula = ?`, [codigo], (err, result) => {
-      req.session.nombre = result[0].concatenar;
-      req.session.codigo = result[0].cedula;
-      req.session.id_cds = result[0].IdCds;
-      req.session.key = result[0].rol;
-      
 
       if (result.length === 0 || !(bcryptjs.compareSync(pass, result[0].pass))) {
         res.render("../views/login.ejs", {
           alert: true,
-          title: "Nombre de usuario y/o contraseña incorrecto((s))",
+          title: "Cedula y/o contraseña incorrecta",
           message: "Intente nuevamente",
-          icon: "error",
+          icon: "warning",
           showConfirmButton: true,
           timer: 4000,
           ruta: "/",
         });
       } else {
         req.session.login = true;
+        req.session.nombre = result[0].concatenar;
+        req.session.codigo = result[0].cedula;
+        req.session.id_cds = result[0].IdCds;
+        req.session.key = result[0].rol;
         res.render("../views/login.ejs", {
           alert: true,
           title: "Inicio de sesion satisfactorio",
@@ -664,6 +663,7 @@ router.post("/idValidation", async (req, res) => {
 
 router.get("/inputs", (req, res) => {
   const id = req.session.id_cds;
+
 
   connection.query("SELECT rol FROM usuarios WHERE IdCds = ?", [id], (err, result) => {
     const rol = result[0].rol;
@@ -734,6 +734,42 @@ router.get('/getInfoActivities', (req, res) => {
   })
 })
 
+router.post('/test', (req, res) => {
+  const { codigo } = req.body
+
+
+  connection.query('SELECT Cedula FROM usuarios WHERE cedula = ?', [codigo], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      res.json({ code: 200 })
+    }
+  })
+})
+
+router.post('/getDateOFbirth', (req, res) => {
+  const { cedula } = req.body
+
+  connection.query('SELECT fecha_nacimiento FROM visitantes WHERE numero_documento = ?', [cedula], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      req.session.fechaNacimiento = result[0].fecha_nacimiento
+      res.json({ fecha: req.session.fechaNacimiento })
+    }
+  })
+})
+
+router.put('/updateAge', (req, res) => {
+  const { value, valor } = req.body
+  connection.query('UPDATE visitantes SET edad = ? WHERE numero_documento = ? ', [value,valor], (err, result) => {
+    if (result) {
+      res.json({ code: 200 })
+    } else {
+      res.json({ code: 400 })
+    }
+  })
+})
 
 
 router.get("/logout", (req, res) => {

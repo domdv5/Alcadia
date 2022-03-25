@@ -1,14 +1,7 @@
  const getTime = () => {
 
-
     const time = new Date()
-
-    const hours = time.getHours()
-    const minute = time.getMinutes()
-    const seconds = time.getSeconds()
-
-    const fullHour = `${hours}:${minute}:${seconds}`
-
+    const fullHour = time.toLocaleTimeString()
 
     return fullHour
 

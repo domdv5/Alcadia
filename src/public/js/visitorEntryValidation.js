@@ -13,20 +13,25 @@ const validacion = () => {
     }).then(data => {
         const { code } = data.data
 
-        if(code === 200){
+
+        if (code === 200) {
             document.getElementById('validationServer01').setAttribute('class', 'form-control is-valid')
             document.getElementById('btnLogin').removeAttribute('disabled')
-            
-        } else  {
-            document.getElementById('validationServer01').setAttribute('class', 'form-control is-invalid')
-            document.getElementById('btnLogin').setAttribute('disabled', true)
 
-            setTimeout(() => {
+        } else {
+            swal.fire({
+                title: 'El usuario no se encuentra registrado, Por favor registrelo',
+                icon: 'warning',
+                showConfirmButton: false,
+                timer: 3000
+            }).then(() => {
                 window.location = '/visitors'
-            },2000)
-        }     
+            })
+        }
     })
 }
+
+
 
 
 

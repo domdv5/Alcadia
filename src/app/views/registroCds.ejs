@@ -35,50 +35,50 @@
       <label form="tipo" class="inputs">Comuna o corregimiento</label>
       <select name ="comuna" id="tipo" class="select-css inputs"  >
         <option value ="" selected disabled>Selecciona una comuna</option>
-        <option value ="1. Popular" >1. Popular</option>
-        <option value="2. Santa Cruz"  >2. Santa Cruz</option>
-        <option value ="3. Manrique" >3. Manrique</option>
-        <option value="4. Aranjuez"  >4. Aranjuez</option>
-        <option value ="5. Castilla" >5. Castilla</option>
-        <option value="6. 12 de Octubre"  >6. 12 de Octubre</option>
-        <option value ="7. Robledo" >7. Robledo</option>
-        <option value="8. Villa Hermosa"  >8. Villa Hermosa</option>
-        <option value ="9. Buenos Aires" >9. Buenos Aires</option>
-        <option value="10. La Candelaria"  >10. La Candelaria</option>
-        <option value ="11. Laureles Estadio" >11. Laureles Estadio</option>
-        <option value="12. La America"  >12. La America</option>
-        <option value ="13. San javier" >13. San javier</option>
-        <option value="14. El Poblado"  >14. El Poblado</option>
-        <option value ="15. Guayabal" >15. Guayabal</option>
-        <option value="16. Belén"  >16. Belén</option>
-        <option value ="50. San Sebastian de Palmitas" >50. San Sebastian de Palmitas</option>
-        <option value="60. San Cristobal"  >60. San Cristobal</option>
-        <option value ="70. Alta Vista" >70. Alta Vista</option>
-        <option value="80. San Antonio de Prado"  >80. San Antonio de Prado</option>
-        <option value ="90. Santa Elena" >90. Santa Elena</option>
+        <option value ="1. Popular" >1. POPULAR</option>
+        <option value="2. Santa cruz"  >2. SANTA CRUZ</option>
+        <option value ="3. Manrique" >3. MANRIQUE</option>
+        <option value="4. Aranjuez"  >4. ARANJUEZ</option>
+        <option value ="5. Castilla" >5. CASTILLA</option>
+        <option value="6. 12 de octubre"  >6. 12 DE OCTUBRE</option>
+        <option value ="7. Robledo" >7. ROBLEDO</option>
+        <option value="8. Villa Hermosa"  >8. VILLA HERMOSA</option>
+        <option value ="9. Buenos Aires" >9. BUENOS AIRES</option>
+        <option value="10. la candelaria"  >10. LA CANDELARIA</option>
+        <option value ="11. Laureles" >11. LAURELES ESTADIO</option>
+        <option value="12. La america"  >12. LA AMERICA</option>
+        <option value ="13. San javier" >13. SAN JAVIER</option>
+        <option value="14. El poblado"  >14. EL POBLADO</option>
+        <option value ="15. Guayabal" >15. GUAYABAL</option>
+        <option value="16. Belen"  >16. BELEN</option>
+        <option value ="50. San sebastian de palmitas" >50. SAN SEBASTIAN DE PALMITAS</option>
+        <option value="60. San cristobal"  >60. SAN CRISTOBAL</option>
+        <option value ="70. Alta vista" >70. ALTA VISTA</option>
+        <option value="80. San antonio de prado"  >80. SAN ANTONIO DE PRADO</option>
+        <option value ="90. Santa elena" >90. SANTA ELENA</option>
       </select>
     </div>
 
 
 
       <label for="">Nombre</label>
-      <input type="text" name="nombre" pattern="[A- Z]{1,100}" title="El nombre debe ir en mayuscula" required >
+      <input type="text" id="nombre" onkeyup="getValue()" name="nombre" placeholder="EL NOMBRE EN MAYUSCULA" pattern="[Á- Z]{1,100}" title="El nombre debe ir en mayuscula" required >
       <label for="">Dirección</label>
       <input type="text" name="direccion"  required>
 
         <label for="">Horario</label>
         <input type="text" id="horario" class="inputs" name= "horario" required>
         <label for="">Correo</label>
-        <input class="select-css1" type="email" name= "correo" required >
+        <input type="email" class="select-css1" name= "correo" required >
         <label for="">Teléfono</label>
-        <input type="text" name= "telefono" required>
+        <input type="text" name= "telefono" pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"  required>
         <label for="">Nombre Coordinador</label>
         <input type="text" name= "nombreCoordinador" required>
         <label for=""></label>
         <input type="text" name= "concatenar" hidden>
 
     <div style ="display: unline;">
-      <input type="submit" class="btn-save" value ="Guardar">
+      <input type="submit" id="btnCds" class="btn-save" value ="Guardar">
     </div>
   </div>
   </form>
@@ -128,5 +128,6 @@
 <script src="/resources/js/axiosCds/addCds.js"></script>
 <script src="/resources/js/tagDisabled.js"></script>
 <script src="/resources/js/inputsCdsDisabled.js"></script>
+<script src="/resources/js/getInputValue.js"></script>
 </body>
 </html>

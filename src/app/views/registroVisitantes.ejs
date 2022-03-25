@@ -23,7 +23,6 @@
       <option value ="cedula de ciudadania" >Cédula de Ciudadanía (CC)</option>
       <option value="cedula de extranjeria"  >Cédula de extrangería (CE)</option>
       <option value ="tarjeta de identidad" >Tarjeta de Identidad (TI)</option>
-      <option value ="pasaporte" >Pasaporte</option>
       <option value ="registro civil" >Registro Civil (RC)</option>
       <option value ="numero unico de identificacion personal" >Número Único de Identificación Personal (NUIP)</option>
       <option value ="numero de identificacion personal" >Número de Identificación Personal (NIP)</option>
@@ -32,7 +31,7 @@
   
   <div class= "camp">
     <label form="" for="validationServer" >Número de Documento</label>
-    <input type="text"  name="numero_documento" id="validationServer01" class="numberId" placeholder="Ingrese identificación"  pattern="[0-9]{7,10}"  title="la cedula debe tener minimo 7 digitos o maximo 10" onchange="idValidation()" required>
+    <input type="text"  name="numero_documento" id="validationServer01" class="numberId" placeholder="Ingrese identificación"  pattern="[0-9]{5,15}"  title="la cedula debe tener minimo 5 digitos " onchange="idValidation()" required>
     <div class="invalid-feedback">
       El documento ya se encuentra registrado
     </div>
@@ -40,17 +39,17 @@
   </div>
   <div class="camp">
       <label form="">Nombre completo</label>
-      <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras" required>
+      <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" pattern="[Á-Z á-z]{1,50}" title="Solo se permite el ingreso de letras" required>
     </div>
      
     <div class= "camp">
       <label form="">Secretaría o Entidad</label>
-      <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" pattern="[A-Z a-z]{1,70}" title="Solo se permite el ingreso de letras" required>
+      <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" pattern="[Á-Z/ á-z]{1,70}" title="Solo se permite el ingreso de letras" required>
     </div>
   
      <div class= "camp">
       <label form="">Ocupación</label>
-      <input type="text"    id="prueba" name="ocupacion" placeholder="Empleo/Cargo actual" pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras" required>
+      <input type="text"    id="prueba" name="ocupacion" placeholder="Empleo/Cargo actual" pattern="[Á-Z á-z]{1,50}" title="Solo se permite el ingreso de letras" required>
     </div>
     
     <div class="camp"  required>
@@ -74,7 +73,7 @@
   
     <div class= "camp">
       <label for="">Enfoque diferencial</label>
-      <select name ="enfoque_diferencial[]" class="selectpicker" data-width="18em" data-header="Seleccione campos requeridos" data-selected-text-format="count > 3" multiple required>
+      <select name ="enfoque_diferencial[]" class="selectpicker" id="SelectVisitors" data-width="18em" data-header="Seleccione campos requeridos" data-selected-text-format="count > 3" onchange="getValue()" multiple required>
         <option value ="Afrodescendiente" >Afrodescendiente</option>
         <option value="Indigena">Indigena</option>
         <option value ="ROM">ROM</option>
@@ -82,42 +81,43 @@
         <option value ="Situacion de calle">Situacion de calle</option>
         <option value ="Campesino" >Campesino</option>
         <option value ="Discapacidad" >Discapacidad</option>
-        <option value ="No Aplica">No Aplica</option>
+        <option value ="No Aplica" id="NoAplica">No Aplica</option>
       </select>
     </div>
   
     <div class="camp"  required>
       <label form="" >Derechos</label>
       <select name="derechos" class="select" >    
-        <option value ="" selected disabled>Selecciona el Derecho</option>
+        <option value ="" selected disabled>Seleccione el enfoque de Derechos</option>
         <option value ="Población victima">Población victima</option>
+        <option value ="Población victima">No Aplica</option>
       </select>
     </div>
     <div class= "camp">
       <label form="tipo">Comuna o corregimiento</label>
       <select name ="degradacion_territorial" id="tipo" class="select" required>
         <option value ="" selected disabled>Selecciona una comuna</option>
-        <option value ="1. Popular" >1. Popular</option>
-        <option value="2. Santa cruz"  >2. Santa Cruz</option>
-        <option value ="3. Manrique" >3. Manrique</option>
-        <option value="4. Aranjuez"  >4. Aranjuez</option>
-        <option value ="5. Castilla" >5. Castilla</option>
-        <option value="6. 12 de octubre"  >6. 12 de Octubre</option>
-        <option value ="7. Robledo" >7. Robledo</option>
-        <option value="8. Villa Hermosa"  >8. Villa Hermosa</option>
-        <option value ="9. Buenos Aires" >9. Buenos Aires</option>
-        <option value="10. la candelaria"  >10. La Candelaria</option>
-        <option value ="11. Laureles" >11. Laureles Estadio</option>
-        <option value="12. La america"  >12. La America</option>
-        <option value ="13. San javier" >13. San javier</option>
-        <option value="14. El poblado"  >14. El Poblado</option>
-        <option value ="15. Guayabal" >15. Guayabal</option>
-        <option value="16. Belen"  >16. Belén</option>
-        <option value ="50. San sebastian de palmitas" >50. San Sebastian de Palmitas</option>
-        <option value="60. San cristobal"  >60. San Cristobal</option>
-        <option value ="70. Alta vista" >70. Alta Vista</option>
-        <option value="80. San antonio de prado"  >80. San Antonio de Prado</option>
-        <option value ="90. Santa elena" >90. Santa Elena</option>
+        <option value ="1. Popular" >1. POPULAR</option>
+        <option value="2. Santa cruz"  >2. SANTA CRUZ</option>
+        <option value ="3. Manrique" >3. MANRIQUE</option>
+        <option value="4. Aranjuez"  >4. ARANJUEZ</option>
+        <option value ="5. Castilla" >5. CASTILLA</option>
+        <option value="6. 12 de octubre"  >6. 12 DE OCTUBRE</option>
+        <option value ="7. Robledo" >7. ROBLEDO</option>
+        <option value="8. Villa Hermosa"  >8. VILLA HERMOSA</option>
+        <option value ="9. Buenos Aires" >9. BUENOS AIRES</option>
+        <option value="10. la candelaria"  >10. LA CANDELARIA</option>
+        <option value ="11. Laureles" >11. LAURELES ESTADIO</option>
+        <option value="12. La america"  >12. LA AMERICA</option>
+        <option value ="13. San javier" >13. SAN JAVIER</option>
+        <option value="14. El poblado"  >14. EL POBLADO</option>
+        <option value ="15. Guayabal" >15. GUAYABAL</option>
+        <option value="16. Belen"  >16. BELEN</option>
+        <option value ="50. San sebastian de palmitas" >50. SAN SEBASTIAN DE PALMITAS</option>
+        <option value="60. San cristobal"  >60. SAN CRISTOBAL</option>
+        <option value ="70. Alta vista" >70. ALTA VISTA</option>
+        <option value="80. San antonio de prado"  >80. SAN ANTONIO DE PRADO</option>
+        <option value ="90. Santa elena" >90. SANTA ELENA</option>
       </select>
     </div>
   
@@ -128,7 +128,7 @@
     
     <div class= "camp">
       <label form="tipo">Organización</label>
-      <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece" pattern="[A-Z a-z]{1,50}" title="Solo se permite el ingreso de letras">
+      <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece" pattern="[Á-Z á-z 0-9]{1,150}">
       </div>
       <div class= "camp">
         <label form="">Teléfono o Celular</label>
@@ -183,6 +183,7 @@
 <script src="/resources/js/axiosVisitors/addVisitors.js"></script>
 <script src="/resources/js/inputDisabled.js"></script>
 <script src="/resources/js/redirect.js"></script>
+<script src="/resources/js/selectTagVisitors.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

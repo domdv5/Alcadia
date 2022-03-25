@@ -10,17 +10,16 @@ function ageGenerator() {
 
 
     let currentTime = new Date();
-
     let year = currentTime.getFullYear()
     let moth = currentTime.getMonth() + 1
     let day = currentTime.getDate()
     let nextAge = year - yearBirth 
-    let currentAge = year - yearBirth - 1
+    let currentAge = nextAge - 1
 
 
 
 
-    if (dayBirth - day >= 0 && monthBirth - moth <= 0) {
+    if (day >= dayBirth  && moth>= monthBirth ) {
         document.getElementById('age').setAttribute('value', nextAge)
     } else {
          document.getElementById('age').setAttribute('value', currentAge)
