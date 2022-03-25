@@ -518,6 +518,7 @@ router.post("/edit.ingreso/:id", async (req, res) => {
 
 router.post("/addUsers", async (req, res) => {
   const { IdCds, cedula, correo, pass, telefono, rol } = req.body;
+
   let passwordHaash = await bcryptjs.hash(pass, 8);
 
   const newUser = {
@@ -663,6 +664,7 @@ router.post("/idValidation", async (req, res) => {
 router.get("/inputs", (req, res) => {
   const id = req.session.id_cds;
 
+
   connection.query("SELECT rol FROM usuarios WHERE IdCds = ?", [id], (err, result) => {
     const rol = result[0].rol;
 
@@ -732,19 +734,43 @@ router.get('/getInfoActivities', (req, res) => {
   })
 })
 
-router.post('/test', (req,res)=>{
-  const {codigo} = req.body
+router.post('/test', (req, res) => {
+  const { codigo } = req.body
 
-  console.log(codigo);
 
-  connection.query('SELECT Cedula FROM usuarios WHERE cedula = ?', [codigo], (err,result)=>{
-    if(result.length === 0){
-      res.json({code:400})
-    } else{
-      res.json({code:200})
+  connection.query('SELECT Cedula FROM usuarios WHERE cedula = ?', [codigo], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      res.json({ code: 200 })
     }
   })
 })
+
+router.post('/getDateOFbirth', (req, res) => {
+  const { cedula } = req.body
+
+  connection.query('SELECT fecha_nacimiento FROM visitantes WHERE numero_documento = ?', [cedula], (err, result) => {
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      req.session.fechaNacimiento = result[0].fecha_nacimiento
+      res.json({ fecha: req.session.fechaNacimiento })
+    }
+  })
+})
+
+router.put('/updateAge', (req, res) => {
+  const { value, valor } = req.body
+  connection.query('UPDATE visitantes SET edad = ? WHERE numero_documento = ? ', [value,valor], (err, result) => {
+    if (result) {
+      res.json({ code: 200 })
+    } else {
+      res.json({ code: 400 })
+    }
+  })
+})
+
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {

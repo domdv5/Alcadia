@@ -27,16 +27,22 @@
       </div>
       <div class='arrow-down'></div>
       <form  id="myForm">
+
         <fieldset>
           <span>
             <i class='fa fa-user'></i>
           </span>
-          <input type="" for="validationServer"  id="validationServer01" name="cedula" placeholder='Ingrese Documento'  onchange="validacion(), redirect(), getValue()" required>
+          <input type="" for="validationServer01 "  id="validationServer01" name="cedula" placeholder='Ingrese Documento'  onchange="validacion(),showDocument()" required>
           <div class="invalid-feedback">
                El documento no se encuentra registrado
          </div>
         </fieldset>
 
+
+
+         <input type="text" id="item" aria-disabled="true" value="" hidden  onchange="getDocument()"  > 
+         <input type="number" id="item2" aria-disabled="true" value=""  hidden onchange="getAge()" > 
+    
         <fieldset>
           <span>
             <i class="fa fa-clock-o"></i>
@@ -129,15 +135,16 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="/resources/js/entrancesVisitorValidation.js"></script>
   <script src="/resources/js/routeRedirect.js"></script>
-  <script src="/resources/js/getTime.js"></script>
+  <script src="/resources/js/showTime.js"></script>
   <script src="/resources/js/inputDisabled.js"></script>
-  <script src="/resources/js/getCurrentDate.js"></script>
+  <script src="/resources/js/showCurrentDate.js"></script>
   <script src="/resources/js/axiosEntrances/visitorEntry.js"></script>
   <script src="/resources/js/redirectToVisitors.js"></script>
   <script src="/resources/js/redirectToActivities.js"></script>
+  <script src="/resources/js/getDateOfBirth.js"></script>
+  <script src="/resources/js/getCurrentAge.js"></script>
+  <script src="/resources/js/updateAge.js"></script>
  
-
-
 
 </body>
 </html>

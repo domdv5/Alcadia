@@ -32,7 +32,7 @@
       
 
       <label for="">Cédula</label>
-      <input type="text" for="validationServer"  id="validationServer01" name="cedula" pattern="[0-9]{7,10}"  title="la cedula debe tener minimo 7 digitos o maximo 10" onchange="documentValidation()" required>
+      <input type="text" for="validationServer"  id="validationServer01" name="cedula" pattern="[0-9]{5,15}"  title="la cedula debe tener minimo 5 digitos" onchange="documentValidation()" required>
          <div class="invalid-feedback">
         La cedula ya es un usuario activo, por favor digite otra.
         </div>
@@ -41,8 +41,8 @@
       <input type="email"  class="select-css1" name="correo" required>
 
 
-      <label for="">Teléfono</label>
-      <input type="text" name= "telefono" required>
+      <label for="">Teléfono/Celular</label>
+      <input type="text" name= "telefono"  pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
 
     <label for="rol">Rol</label>
     <select name ="rol" id="rol" class="select-css"  required>
@@ -60,6 +60,7 @@
     </div>
   </form>
 </div>
+
 
 <a href="/usersTable" class="btn-save1">Tabla 📋</a>
 </div>
