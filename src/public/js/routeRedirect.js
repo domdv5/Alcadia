@@ -1,11 +1,11 @@
-const redirect = () => {
+/* const redirect = () => {
     const className = document.getElementById('validationServer01').className
-
-    if (className === 'form-control is-valid') {
+ console.log(className)
+    if (className === 'form-control is-invalid') {
         setTimeout(() => {
             window.location = '/visitors'
         },2000)
 
     }
-}
+} */
 

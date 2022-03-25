@@ -250,6 +250,15 @@ body {
   background-color: #f5f5f5;
   text-align: center !important;
 }
+.select-css1{
+  font-size: 22px;
+  border: none;
+  width: 700px;
+  padding: .50em 1.4em .40em .8em;
+  height: 52px;
+  margin: 0%;
+  max-width: 100%;
+}
 *{
   margin: 0;
   padding: 0;

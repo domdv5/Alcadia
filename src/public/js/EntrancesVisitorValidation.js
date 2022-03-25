@@ -1,7 +1,4 @@
 
-
-
-
 const validacion = () => {
 
     let value = document.getElementById('validationServer01').value
@@ -16,15 +13,18 @@ const validacion = () => {
     }).then(data => {
         const { code } = data.data
 
-
         if(code === 200){
             document.getElementById('validationServer01').setAttribute('class', 'form-control is-valid')
             document.getElementById('btnLogin').removeAttribute('disabled')
             
-        } else {
+        } else  {
             document.getElementById('validationServer01').setAttribute('class', 'form-control is-invalid')
             document.getElementById('btnLogin').setAttribute('disabled', true)
-        }
+
+            setTimeout(() => {
+                window.location = '/visitors'
+            },2000)
+        }     
     })
 }
 
