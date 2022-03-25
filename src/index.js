@@ -1,5 +1,5 @@
 const app = require ('./config/server');
-app.use(require('./app/routes/controllers'))
+app.use(require('./app/routes/controllers.js'))
 
 
 
