@@ -20,9 +20,9 @@
 <div class="register-form" id="container-content">
   <h1>REGISTRO DE USUARIOS</h1>
 
-  <form id="usersForm">
+  <form id="usersForm" >
     <label for="">Nombre CDS o TELECENTRO</label>
-    <select  name="IdCds" id="tipo"  class="select-css" required>
+    <select  name="IdCds" id="tipo"  class="select-css" onchange="getSelectValue()" required>
       <option value ="" selected disabled>Selecciona un cds o telecentro</option>
       <% for(let i = 0; i < data.length; i++) { %> 
         <option value ="<%= data[i].IdCds %>" ><%= data[i].concatenar %> </option>
@@ -45,18 +45,17 @@
       <input type="text" name= "telefono"  pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
 
     <label for="rol">Rol</label>
-    <select name ="rol" id="rol" class="select-css"  required>
-      <option value="0" selected>General</option>
-      <option value ="1" selected>Administrador</option>
+    <select name ="rol" id="rol" class="select-css"   required>
+      <option value="" id="item1" selected></option>
     </select>
 
     <label for="pass">Contraseña</label>
-    <input type="password" name="pass" required>
+    <input type="password"  name="pass" required>
 
 
 
     <div style ="display: unline;">
-      <input type="submit" id="btnLogin" class="btn-save" value ="Guardar">
+      <input type="submit" id="btnLogin" class="btn-save"  value ="Guardar">
     </div>
   </form>
 </div>
@@ -102,5 +101,6 @@
   <script src="/resources/js/script.js"></script>
   <script src="/resources/js/documentValidationUsers.js"></script>
   <script src="/resources/js/axiosUsers/addUsers.js"></script>
+  <script src="/resources/js/putValueToRol.js"></script>
 </body>
 </html>

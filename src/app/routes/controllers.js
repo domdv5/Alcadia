@@ -762,7 +762,7 @@ router.post('/getDateOFbirth', (req, res) => {
 
 router.put('/updateAge', (req, res) => {
   const { value, valor } = req.body
-  connection.query('UPDATE visitantes SET edad = ? WHERE numero_documento = ? ', [value,valor], (err, result) => {
+  connection.query('UPDATE visitantes SET edad = ? WHERE numero_documento = ? ', [value, valor], (err, result) => {
     if (result) {
       res.json({ code: 200 })
     } else {
