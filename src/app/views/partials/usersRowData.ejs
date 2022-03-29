@@ -1,26 +1,15 @@
 <tr>
-    <td hidden>
-      <%= data.id_usuarios%>
-    </td>
-    <td>
-      <%= data.concatenar%>
-    </td>
-    <td>
-      <%= data.cedula%>
-    </td>
-    <td>
-      <%= data.correo%>
-    </td>
-    <td>
-      <%= data.telefono%>
-    </td>
+    <td hidden > <%= data.id_usuarios%> </td>
+    <td> <%= data.concatenar%> </td>
+    <td> <%= data.cedula%> </td>
+    <td> <%= data.nombre_coordinador%> </td>
+    <td> <%= data.correo%> </td>
+    <td> <%= data.telefono%> </td>
     <% if (data.rol===1) { %>
       <td>Administrador</td>
       <% } else { %>
         <td>General</td>
         <% } %>
-
-
           <td>
             <button type="button" data-bs-toggle="modal" data-bs-target="#modalEliminar<%=data.id_usuarios%>"
               class="btn btn-outline-danger m-1 btnDelete" title="Eliminar Usuario">❌</button>
@@ -63,19 +52,14 @@
         <div class="modal-body">
           <form class="usersForm">
 
-            <!-- pendiente -->
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label"> CDS o Telecentro</label>
-              <select name="IdCds" id="tipo" >
-                
-                <option value="<%= data.id_usuarios%>"><%= data.concatenar%></option>
-              </select>
-            </div>
-            <!-- pendiente -->
-
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Cedula</label>
               <input type="text" name="cedula" value="<%= data.cedula%>">
+            </div>
+            
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nombre Coordinador</label>
+              <input type="text" name="nombre_coordinador" value="<%= data.nombre_coordinador%>">
             </div>
 
             <div class="mb-3">
@@ -85,13 +69,6 @@
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">télefono</label>
               <input type="number" name="telefono" value="<%= data.telefono%>">
-            </div>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Rol</label>
-              <select name="rol" id="rol" class="select-css" value="<%= data.rol%>">>
-                <option value="1" selected>Administrador</option>
-                <option value="0" selected>General</option>
-              </select>
             </div>
 
             <div class="modal-footer">

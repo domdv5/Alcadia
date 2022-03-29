@@ -16,6 +16,7 @@ forms.forEach(form => {
         e.preventDefault()
         const formData = $(form).serialize()
         const url = location.origin + `/edit.users/${id}`
+        console.log(url);
         axios({
             method: "PUT",
             url: url,

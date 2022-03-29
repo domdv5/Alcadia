@@ -21,7 +21,7 @@
     <select name ="tipo_documento" id="tipo" class="select" required>
       <option value ="" selected disabled>Selecciona tipo de documento</option>
       <option value ="cedula de ciudadania" >Cédula de Ciudadanía (CC)</option>
-      <option value="cedula de extranjeria"  >Cédula de extrangería (CE)</option>
+      <option value="cedula de extranjeria"  >Cédula de extranjería (CE)</option>
       <option value ="tarjeta de identidad" >Tarjeta de Identidad (TI)</option>
       <option value ="registro civil" >Registro Civil (RC)</option>
       <option value ="numero unico de identificacion personal" >Número Único de Identificación Personal (NUIP)</option>
@@ -31,7 +31,7 @@
   
   <div class= "camp">
     <label form="" for="validationServer" >Número de Documento</label>
-    <input type="text"  name="numero_documento" id="validationServer01" class="numberId" placeholder="Ingrese identificación"  pattern="[0-9]{5,15}"  title="la cedula debe tener minimo 5 digitos " onchange="idValidation()" required>
+    <input type="text"  name="numero_documento" id="validationServer01" class="numberId" placeholder="Ingrese identificación"  pattern="[0-9]{5,15}"  title="la cedula debe tener minimo 5 digitos" onchange="idValidation()" required>
     <div class="invalid-feedback">
       El documento ya se encuentra registrado
     </div>
@@ -63,7 +63,7 @@
   
     <div class= "camp">
       <label form="">Fecha de Nacimiento</label>
-      <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator()" onload="getTime()" required>
+      <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator(), takeValue()" onload="getTime()" required>
     </div>
   
     <div class= "camp">
@@ -183,7 +183,9 @@
 <script src="/resources/js/axiosVisitors/addVisitors.js"></script>
 <script src="/resources/js/inputDisabled.js"></script>
 <script src="/resources/js/redirect.js"></script>
+<script src="/resources/js/getValueDateAtVisitors.js"></script>
 <script src="/resources/js/selectTagVisitors.js"></script>
+<script src="/resources/js/readLocalStorageAtVisitors.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

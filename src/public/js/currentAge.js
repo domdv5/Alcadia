@@ -19,7 +19,6 @@ function ageGenerator() {
 
 
 
-
     if (day >= dayBirth  && moth>= monthBirth ) {
         document.getElementById('age').setAttribute('value', nextAge)
     } else {
