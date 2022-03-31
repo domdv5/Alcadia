@@ -31,7 +31,8 @@ body {
   
 }
 .login-form input[type="password"],
-.login-form input[type="text"] {
+.login-form input[type="text"]
+.login-form input[type="email"] {
   width: 100%;
   padding: 15px;
   border: 1px solid #ced4da;
@@ -255,6 +256,15 @@ body {
   margin: 0;
   background-color: #f5f5f5;
   text-align: center !important;
+}
+.select-css1{
+  font-size: 22px;
+  border: none;
+  width: 700px;
+  padding: .4em 1.4em .3em .100em;
+  height: 52px;
+  margin: 0;
+  max-width: 100%;
 }
 
 .select-css1{

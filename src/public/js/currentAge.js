@@ -1,5 +1,4 @@
 
-
 function ageGenerator() {
     let date = document.getElementById('fecha').value
     
