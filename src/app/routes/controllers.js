@@ -578,7 +578,7 @@ router.post("/addVisitors", async (req, res) => {
 });
 
 router.post("/addCds", async (req, res) => {
-  const { espacio, comuna, nombre, direccion, horario, telefono, correo, nombreCoordinador } = req.body
+  const { espacio, comuna, nombre, direccion, horario, telefono, correo} = req.body
 
   const nombreCompleto = espacio.concat(" " + nombre)
 
@@ -590,7 +590,6 @@ router.post("/addCds", async (req, res) => {
     horario,
     correo,
     telefono,
-    nombreCoordinador,
     concatenar: nombreCompleto,
   }
 
