@@ -250,28 +250,16 @@ body {
   background-color: #f5f5f5;
   text-align: center !important;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> e49834e7f0f03d0d9c5d2cb084a3730f4e4e3eac
 .select-css1{
   font-size: 22px;
   border: none;
   width: 700px;
-<<<<<<< HEAD
-  padding: .50em 1.4em .40em .8em;
-  height: 52px;
-  margin: 0%;
-  max-width: 100%;
-}
-=======
   padding: .4em 1.4em .3em .4em;
   height: 52px;
   margin: 0;
   max-width: 100%;
 }
 
->>>>>>> e49834e7f0f03d0d9c5d2cb084a3730f4e4e3eac
 *{
   margin: 0;
   padding: 0;
