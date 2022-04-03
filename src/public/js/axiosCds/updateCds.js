@@ -5,7 +5,6 @@ boton.forEach(botones => {
     botones.addEventListener("click", (e) => {
         const fila = e.target.parentNode.parentNode
         id = fila.firstElementChild.innerHTML
-        console.log(id);
     })
 })
 
@@ -14,7 +13,7 @@ const forms = document.querySelectorAll('.cdsForm')
 forms.forEach(form => {
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        const formData = $(form).serialize()
+        const formData = Object.fromEntries(new FormData(form))
         const url = location.origin + `/edit.cds/${id}`
         axios({
             method: "PUT",
