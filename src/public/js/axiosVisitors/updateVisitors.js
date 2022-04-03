@@ -15,9 +15,8 @@ const forms = document.querySelectorAll('.tableForm')
 forms.forEach(form => {
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        const formData = $(form).serialize()
+        const formData = Object.fromEntries(new FormData(form))
         const url = location.origin + `/edit.registro/${id}`
-        this.dataTable = $('#example').DataTable()
         axios({
             method: "PUT",
             url: url,
@@ -25,8 +24,6 @@ forms.forEach(form => {
         }).then(data => {
             const { code } = data.data
             if (code === 200) {
-                console.log(dataTable)
-                dataTable.data  
                 Swal.fire({
                     title: "ACTUALIZACIÓN EXITOSA",
                     icon: "success",
