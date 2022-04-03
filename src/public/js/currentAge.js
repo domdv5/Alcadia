@@ -1,4 +1,5 @@
 
+
 function ageGenerator() {
     let date = document.getElementById('fecha').value
     
@@ -16,15 +17,23 @@ function ageGenerator() {
     let nextAge = year - yearBirth 
     let currentAge = nextAge - 1
 
-
-
+    
     if (day >= dayBirth  && moth>= monthBirth ) {
-        document.getElementById('age').setAttribute('value', nextAge)
+        document.getElementById('age').value = nextAge
+         return document.getElementById('age').value
+       
     } else {
-         document.getElementById('age').setAttribute('value', currentAge)
+         document.getElementById('age').value= currentAge
+         return  document.getElementById('age').value
     }
 
 }
 
 
+ const validarFuncion = ()=>{
+    const edad = ageGenerator()
 
+    console.log(edad);
+}
+
+ 

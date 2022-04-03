@@ -1,6 +1,7 @@
 
 const showDocument = () => {
     const value = document.getElementById('validationServer01').value
+    const item = document.getElementById('item')
     const url = location.origin + '/getDateOFbirth'
 
     axios({
@@ -12,7 +13,9 @@ const showDocument = () => {
     }).then(data => {
         const { fecha } = data.data
 
-        document.getElementById('item').setAttribute('value', fecha)
-        $('#item').change()
+        item.setAttribute('value', fecha)
+        evento = document.createEvent('event')
+        evento.initEvent('change', true, false)
+        item.dispatchEvent(evento)
     })
 }
