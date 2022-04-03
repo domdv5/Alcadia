@@ -1,6 +1,6 @@
 const getDate = ()=>{
     const currentTime = new Date();
-      let fullDate = currentTime.toLocaleDateString("en-CA", {
+      let fullDate = currentTime.toLocaleDateString("en-AU", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
