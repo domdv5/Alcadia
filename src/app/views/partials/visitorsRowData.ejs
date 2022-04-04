@@ -98,7 +98,7 @@
           </div>
           <div class="modal-body">
             <form id="tableForm" class="tableForm">
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="message-text" class="col-form-label"> Tipo de documento</label>
                 <select name="tipo_documento" id="tipo" class="select" value="<%=registro.tipo_documento %>">
                   <option value="cedula de ciudadania">Cédula de Ciudadanía (CC)</option>
@@ -114,27 +114,27 @@
                 </select>
               </div>
 
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="recipient-name" class="col-form-label">Nombre Completo</label>
                 <input type="text" class="form-control" id="recipient-name" name="nombre_completo"
                   value="<%= registro.nombre_completo%>">
               </div>
-              <div class="mb-3">
+              <div  id="mb-3" class="mb-3">
                 <label for="recipient-name" class="col-form-label">Secretarìa o entidad</label>
                 <input type="text" class="form-control" id="recipient-name" name="secretaria_entidad"
                   value="<%= registro.secretaria_entidad%>">
               </div>
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="recipient-name" class="col-form-label">Ocupaciòn</label>
                 <input type="text" class="form-control" id="recipient-name" name="ocupacion"
                   value="<%= registro.ocupacion%>">
               </div>
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="recipient-name" class="col-form-label">Fecha de Nacimiento</label>
                 <input type="text" class="form-control" id="recipient-name" name="fecha_nacimiento"
                   value="<%= registro.fecha_nacimiento%>">
               </div>
-              <div id="multiple" class="mb-3">
+              <div  id="multiple" class="mb-3">
                 <label for="message-text" class="col-form-label">Enfoque diferencial</label>
                 <select multiple  class="selectpicker" name="enfoque_diferencial[]" id="tipo"  value="<%=registro.enfoque_diferencial %>">
                   <option value="<%= registro.enfoque_diferencial %>" selected disabled>
@@ -150,7 +150,7 @@
                   <option value="Poblacion victima">Población victima</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div  id="mb-3" class="mb-3">
                 <label for="message-text" class="col-form-label">Derechos</label>
                 <select name="derechos" id="tipo" class="select" value="<%=registro.derechos %>">
                   <option value="<%= registro.derechos %>" selected disabled>
@@ -160,7 +160,7 @@
                   <option value="">No Aplica</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="message-text" class="col-form-label">Comuna o Corregimiento</label>
                 <select name="degradacion_territorial" id="tipo" class="select"
                   value="<%=registro.degradacion_territorial %>">
@@ -188,13 +188,13 @@
                   <option value="90. Santa Elena">90. Santa Elena</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="message-text" class="col-form-label">Correo</label>
                 <input class="form-control" id="message-text" type="email" name="correo_electronico"
                   value="<%=registro.correo_electronico %>"></input>
               </div>
 
-              <div class="mb-3">
+              <div  id="mb-3" class="mb-3">
                 <label form="tipo">Organización</label>
                 <select name="organizacion" id="tipo" class="select" value="<%=registro.organizacion %>">
                   <option value="" selected disabled>Selecciona el tipo de Organización</option>
@@ -205,12 +205,12 @@
                   <option value="N/A">N/A</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="message-text" class="col-form-label">tèlefono</label>
                 <input class="form-control" type="text" id="message-text" name="telefono_celular"
                   value="<%=registro.telefono_celular %>"></input>
               </div>
-              <div class="mb-3">
+              <div id="mb-3" class="mb-3">
                 <label for="message-text" class="col-form-label">Sexo</label>
                 <input class="form-control" type="text" id="message-text" name="sexo"
                   value="<%=registro.sexo %>"></input>
@@ -220,8 +220,8 @@
               
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar</button>
-                <input type="submit" class="btn btn-primary" value="Aceptar">
+                <button type="button"  id="btn1" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar</button>
+                <input type="submit"  id="btn" class="btn btn-primary" value="Aceptar">
               </div>
 
             </form>

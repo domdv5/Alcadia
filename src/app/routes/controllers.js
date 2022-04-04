@@ -142,7 +142,7 @@ router.get("/visitors", (req, res) => {
       const name = req.session.concatenar = result[0].concatenar;
 
       if (err) {
-        console.log(errr);
+        console.log(err);
       } else {
         res.render("../views/registroVisitantes.ejs", {
           id_cds,
