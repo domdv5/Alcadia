@@ -2,7 +2,6 @@
 
 const getValue = () => {
     const value = document.getElementById("SelectVisitors").value
-    console.log(value);
 
     if (value !== "No Aplica") {
         document.getElementById('bs-select-1-7').setAttribute('hidden', true)

@@ -449,12 +449,14 @@ router.put("/edit.users/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
 
-
-
+  console.log(data);
+  console.log(id);
   await connection.query("UPDATE usuarios SET ? WHERE id_usuarios = ?", [data, id], (err, result) => {
     if (result.length === 0) {
+      console.log('emtro');
       res.json({ code: 400 })
     } else {
+      console.log('entroooo');
       res.json({ code: 200 })
     }
   }
@@ -517,13 +519,14 @@ router.post("/edit.ingreso/:id", async (req, res) => {
 });
 
 router.post("/addUsers", async (req, res) => {
-  const { IdCds, cedula, correo, pass, telefono, rol } = req.body;
+  const { IdCds, cedula, nombre_coordinador, correo, pass, telefono, rol } = req.body;
 
   let passwordHaash = await bcryptjs.hash(pass, 8);
 
   const newUser = {
     IdCds,
     cedula,
+    nombre_coordinador,
     correo,
     pass: passwordHaash,
     telefono,
@@ -575,7 +578,7 @@ router.post("/addVisitors", async (req, res) => {
 });
 
 router.post("/addCds", async (req, res) => {
-  const { espacio, comuna, nombre, direccion, horario, telefono, correo, nombreCoordinador } = req.body
+  const { espacio, comuna, nombre, direccion, horario, telefono, correo} = req.body
 
   const nombreCompleto = espacio.concat(" " + nombre)
 
@@ -587,7 +590,6 @@ router.post("/addCds", async (req, res) => {
     horario,
     correo,
     telefono,
-    nombreCoordinador,
     concatenar: nombreCompleto,
   }
 
@@ -771,6 +773,12 @@ router.put('/updateAge', (req, res) => {
   })
 })
 
+router.post('/test2', (req, res) => {
+  const { value } = req.body
+
+  res.json({ valor: value })
+
+})
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {

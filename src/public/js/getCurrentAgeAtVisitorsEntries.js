@@ -2,8 +2,7 @@
 
 const getDocument = () => {
     let value = document.getElementById('item').value
-    const valor = document.getElementById('validationServer01').value
-
+    const item2 = document.getElementById('item2')
 
     const currentTime = new Date();
 
@@ -23,15 +22,17 @@ const getDocument = () => {
 
 
     if (currentDay >= dayBirth && currentMonth >= monthBirth) {
-        document.getElementById('item2').setAttribute('value', nextAge)
-        $('#item2').change()
+       item2.setAttribute('value', nextAge)
+        evento = document.createEvent('event')
+        evento.initEvent('change', true, false)
+        item2.dispatchEvent(evento)
 
     } else {
-        document.getElementById('item2').setAttribute('value', currentAge)
-        $('#item2').change()
+         item2.setAttribute('value', currentAge)
+        evento = document.createEvent('event')
+        evento.initEvent('change', true, false)
+        item2.dispatchEvent(evento)
     }
-
-    
 
 }
 

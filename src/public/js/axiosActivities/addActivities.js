@@ -4,7 +4,7 @@ const form = document.getElementById('activitieForm')
 form.addEventListener("submit", (e) => {
     e.preventDefault()
 
-    const formData = $(form).serialize()
+    const formData = Object.fromEntries(new FormData(form))
     const url = location.origin + '/addActivities'
 
     axios({

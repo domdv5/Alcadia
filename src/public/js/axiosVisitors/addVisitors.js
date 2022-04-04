@@ -3,7 +3,7 @@ const form = document.getElementById('myForm')
 form.addEventListener('submit', (e) => {
 
   e.preventDefault();
-  const formData = $(form).serialize();
+  const formData = Object.fromEntries(new FormData(form))
   const url = location.origin + '/addVisitors'
 
   axios({
@@ -26,12 +26,12 @@ form.addEventListener('submit', (e) => {
       document.getElementById('validationServer01').removeAttribute('class')
       document.getElementById('age').removeAttribute('value')
       document.querySelector("#myForm > div:nth-child(9) > div > button > div > div > div").setAttribute('title', "Nothing selected")
-      
-      setTimeout(()=>{
+
+      setTimeout(() => {
         window.location = '/ingresoVisitantes'
       }, 2000)
-    
-    
+
+
     } else {
       Swal.fire({
         title: 'Error al registrar',

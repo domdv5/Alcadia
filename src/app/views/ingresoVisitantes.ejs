@@ -32,13 +32,13 @@
           <span>
             <i class='fa fa-user'></i>
           </span>
-          <input type="" for="validationServer01 "  id="validationServer01" name="cedula" placeholder='Ingrese Documento'  onchange="validacion(),showDocument()" required>
+          <input type="" for="validationServer01 "  id="validationServer01" name="cedula" placeholder='Ingrese Documento'  onchange="validacion(),showDocument(), getValue()" required>
         </fieldset>
 
 
 
-         <input type="text" id="item" aria-disabled="true" value=""  hidden  onchange="getDocument()"  > 
-         <input type="number" id="item2" aria-disabled="true" value="" hidden  onchange="getAge()" > 
+         <input type="text" id="item" aria-disabled="true" value="" hidden  onchange="getDocument()"  > 
+         <input type="number" id="item2" aria-disabled="true" value="" hidden onchange="getAge()" > 
     
         <fieldset>
           <span>
@@ -130,18 +130,17 @@
 
   <script src="/resources/js/script.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/resources/js/routeRedirect.js"></script>
-  <script src="/resources/js/showTime.js"></script>
-  <script src="/resources/js/inputDisabled.js"></script>
-  <script src="/resources/js/showCurrentDate.js"></script>
+  <script src="/resources/js/showTimeAtVisitorsEntries.js"></script>
+  <script src="/resources/js/inputDisabledAtVisitors.js"></script>
+  <script src="/resources/js/showCurrentDateAtVisitorsEntries.js"></script>
   <script src="/resources/js/visitorEntryValidation.js"></script>
   <script src="/resources/js/axiosEntrances/visitorEntry.js"></script>
   <script src="/resources/js/redirectToVisitors.js"></script>
   <script src="/resources/js/redirectToActivities.js"></script>
-  <script src="/resources/js/getDateOfBirth.js"></script>
-  <script src="/resources/js/getCurrentAge.js"></script>
-  <script src="/resources/js/updateAge.js"></script>
+  <script src="/resources/js/getDateOfBirthAtVisitorsEntries.js"></script>
+  <script src="/resources/js/getCurrentAgeAtVisitorsEntries.js"></script>
+  <script src="/resources/js/updateAgeAtDatabase.js"></script>
+  <script src="/resources/js/savedToLocalStorageAtUsers.js"></script>
  
-
 </body>
 </html>
