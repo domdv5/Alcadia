@@ -11,5 +11,8 @@ const getDate = ()=>{
 
 const currentDate = getDate()
 
-const fecha = document.getElementById('fecha').setAttribute('value', currentDate)
+setInterval(()=>{
+ document.getElementById('fecha').setAttribute('value', currentDate)
+},1000)
+
 
