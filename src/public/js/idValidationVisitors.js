@@ -12,13 +12,10 @@ const idValidation = () => {
         }
     }).then(data => {
         const { code } = data.data
-        if(code === 400){
-            document.getElementById('validationServer01').setAttribute('class', 'form-control is-valid')
-            document.getElementById('login').removeAttribute('disabled')
-            
-        } else {
-            document.getElementById('validationServer01').setAttribute('class', 'form-control is-invalid')
-            document.getElementById('login').setAttribute('disabled', true)
-        }
+        if(code === 200){
+            document.getElementById('validationServer01').className = 'form-control is-invalid'
+            document.getElementById('numeroDocumento').className = 'invalid-feedback'
+            document.getElementById('numeroDocumento').innerHTML = 'El documento ya se encuentra registrado'
+        } 
     })
 }

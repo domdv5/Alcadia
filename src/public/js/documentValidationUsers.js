@@ -12,12 +12,11 @@ const documentValidation = () => {
     }).then(data => {
         const { code } = data.data
         if(code === 200){
-            document.getElementById('validationServer01').setAttribute('class','form-control is-invalid')
-            document.getElementById('btnLogin').setAttribute('disabled', true)
-        } else{
-            document.getElementById('validationServer01').setAttribute('class','form-control is-valid')
-            document.getElementById('btnLogin').removeAttribute('disabled')
-        }
+            document.getElementById('validationServer01').className ='form-control is-invalid'
+            document.getElementById('divCedula').className ='invalid-feedback'
+            document.getElementById('divCedula').innerHTML = 'La cedula ya es un usuario activo, por favor digite otra.'
+        } 
+        
     })
 
 }
