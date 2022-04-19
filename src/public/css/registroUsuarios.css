@@ -155,13 +155,14 @@ body {
   font-weight: bold;
   font-size:medium;
   color: #ffffff;
-  margin-top: 0px;
+  margin-top: 15px;
   /* Para dar la apariencia de un boton */
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
   text-decoration: none;  
 }
+
 .btn-save:hover,.btn-save:active{
   color:#fff;
   background-color:  #228fd8;;
