@@ -1,44 +1,70 @@
-const form = document.getElementById('myForm')
+const form = document.getElementById(`myForm`)
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
 
-  e.preventDefault();
-  const formData = Object.fromEntries(new FormData(form))
-  const url = location.origin + '/addVisitors'
+  let contador = 0
+  let contadorValor = 0
 
-  axios({
-    method: "POST",
-    url: url,
-    data: formData
-  }).then(data => {
+  e.preventDefault()
 
-    const { code } = data.data
-
-    if (code === 200) {
-      Swal.fire({
-        title: 'Registro Satisfactorio',
-        icon: 'success',
-        showConfirmButton: true,
-        timer: 2000
-      })
-
-      form.reset()
-      document.getElementById('validationServer01').removeAttribute('class')
-      document.getElementById('age').removeAttribute('value')
-      document.querySelector("#myForm > div:nth-child(9) > div > button > div > div > div").setAttribute('title', "Nothing selected")
-
-      setTimeout(() => {
-        window.location = '/ingresoVisitantes'
-      }, 2000)
-
-
-    } else {
-      Swal.fire({
-        title: 'Error al registrar',
-        icon: 'warning',
-        showConfirmButton: true,
-        timer: 2000
-      })
+  document.querySelectorAll("input").forEach((input) => {
+    const className = input.className
+    if (className === `form-control is-valid`) {
+      contador++
     }
   })
+
+
+  document.querySelectorAll("select").forEach((select) => {
+    if (select.value !== '') {
+      contadorValor++
+    }
+  })
+
+  const value = document.getElementById('fecha').value
+  if(value !== ''){
+    contador++
+  }
+
+
+  if (contador === 8 && contadorValor === 6) {
+
+    const formData = Object.fromEntries(new FormData(form))
+    const url = location.origin + '/addVisitors'
+
+    axios({
+      method: "POST",
+      url: url,
+      data: formData
+    }).then(data => {
+
+      const { code } = data.data
+
+      console.log(code);
+
+      if (code === 200) {
+        Swal.fire({
+          title: 'Registro Satisfactorio',
+          icon: 'success',
+          showConfirmButton: true,
+          timer: 2000
+        })
+
+        form.reset()
+        document.querySelectorAll("input").forEach((inputs)=>{
+          inputs.removeAttribute('class')
+        })
+        setTimeout(() => {
+          window.location = '/ingresoVisitantes'
+        }, 2000)
+      }
+    })
+  } else {
+    Swal.fire({
+      title: 'Por favor rellene el formulario correctamente',
+      icon: 'error',
+      showConfirmButton: true,
+      timer: 3000
+    })
+  }
 })
