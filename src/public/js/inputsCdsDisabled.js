@@ -7,6 +7,14 @@ const disabledInput = () => {
             inputs.setAttribute('hidden', true)
             inputs.removeAttribute('required');
         })
+
+        let inputDireccion = document.getElementById('direccion')
+        inputDireccion.setAttribute('hidden', true)
+
+        let inputHorario = document.getElementById('horario')
+        inputHorario.setAttribute('hidden', true)
+
+
     } else {
         document.querySelectorAll('.inputs').forEach(inputs => {
             inputs.removeAttribute('hidden')
