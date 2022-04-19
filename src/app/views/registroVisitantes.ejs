@@ -18,7 +18,7 @@
   <form method="POST" id="myForm"  class="container-content">
   <div class= camp>
     <label form="tipo">Tipo de documento</label>
-    <select name ="tipo_documento" id="tipo" class="select" required>
+q    <select name ="tipo_documento" id="tipoDocumento" class="select">
       <option value ="" selected disabled>Selecciona tipo de documento</option>
       <option value ="cedula de ciudadania" >Cédula de Ciudadanía (CC)</option>
       <option value="cedula de extranjeria"  >Cédula de extranjería (CE)</option>
@@ -31,25 +31,34 @@
   
   <div class= "camp">
     <label form="" for="validationServer" >Número de Documento</label>
-    <input type="text"  name="numero_documento" id="validationServer01" class="numberId" placeholder="Ingrese identificación"  pattern="[0-9]{5,15}"  title="la cedula debe tener minimo 5 digitos" onchange="idValidation()" required>
-    <div class="invalid-feedback">
-      El documento ya se encuentra registrado
+    <input type="text"  name="numero_documento" id="validationServer01" class="numberId" placeholder="Ingrese identificación"  pattern="[0-9]{5,15}"  title="la documento debe tener minimo 7 digitos y maximo 10" onblur="idValidation()" required>
+    <div id="numeroDocumento">
+      
     </div>
 
   </div>
   <div class="camp">
       <label form="">Nombre completo</label>
-      <input type="text" name="nombre_completo" placeholder=" Ingrese Nombre completo" pattern="[Á-Z á-z]{1,50}" title="Solo se permite el ingreso de letras" required>
+      <input type="text" name="nombre_completo"  id="nombre_completo" placeholder=" Ingrese Nombre completo" pattern="[Á-Z á-z]{1,50}" title="Solo se permite el ingreso de letras" required>
+    <div id="nombreCompleto">
+
     </div>
+  </div>
      
     <div class= "camp">
       <label form="">Secretaría o Entidad</label>
-      <input type="text" name="secretaria_entidad" placeholder="Sí no aplica llenar 'N/A'" pattern="[Á-Z/ á-z]{1,70}" title="Solo se permite el ingreso de letras" required>
+      <input type="text" name="secretaria_entidad" id="secretaria_entidad" placeholder="Entidad o secretaria a la que pertenece" pattern="[Á-Z/ á-z]{1,70}" title="Solo se permite el ingreso de letras" required>
+      <div id="secretariaEntidad">
+
+      </div>
     </div>
   
      <div class= "camp">
       <label form="">Ocupación</label>
-      <input type="text"    id="prueba" name="ocupacion" placeholder="Empleo/Cargo actual" pattern="[Á-Z á-z]{1,50}" title="Solo se permite el ingreso de letras" required>
+      <input type="text" id="ocupacion" name="ocupacion" placeholder="Empleo/Cargo actual" pattern="[Á-Z á-z]{1,50}" title="Solo se permite el ingreso de letras" required>
+      <div id="ocupacionn">
+
+      </div>
     </div>
     
     <div class="camp"  required>
@@ -63,7 +72,7 @@
   
     <div class= "camp">
       <label form="">Fecha de Nacimiento</label>
-      <input type="date" name="fecha_nacimiento" id="fecha" placeholder="AAAA-MM-DD" onchange="ageGenerator(), takeValue()" onload="getTime()" required>
+      <input type="date" name="fecha_nacimiento" id="fecha"  placeholder="AAAA-MM-DD" onchange="ageGenerator(), takeValue()" required>
     </div>
   
     <div class= "camp">
@@ -123,24 +132,35 @@
   
     <div class= "camp">
       <label form="">Correo Electrónico</label>
-      <input type="email" name="correo_electronico" placeholder="Ingrese Correo Electrónico" required>
+      <input type="email" id="correo" name="correo_electronico" placeholder="Ingrese Correo Electrónico" required>
+      <div id="email">
+
+      </div>
     </div>
     
     <div class= "camp">
       <label form="tipo">Organización</label>
-      <input name ="organizacion" id="tipo" class="select" placeholder="Red, grupo o sector al que pertenece" pattern="[Á-Z á-z 0-9]{1,150}">
+      <input name ="organizacion" id="organization" class="select" placeholder="Red, grupo o sector al que pertenece" pattern="[Á-Z á-z 0-9]{1,150}">
+      <div id="organizacion">
+
       </div>
+    </div>
+
       <div class= "camp">
         <label form="">Teléfono o Celular</label>
-        <input Id="telNo" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
+        <input Id="telCelular" name="telefono_celular" type="tel"  placeholder="Ingrese Teléfono o Celular"pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
+        <div id="telefonoCelular">
+
+        </div>
       </div>
+
       <div class= "camp">
         <label form="">Lugar </label>
         <select class="form-select" name="IdCds">
        <option selected value="<%= id_cds %> "> <%= name %>  </option>
         </select>
       </div>
-      <input type="submit" id="btnVisitors" onsubmit="addVisitor()" class="btn-save" value="Registrar">
+      <button type="submit" id="btnVisitors" onsubmit="addVisitor()" class="btn-save">Registrar</button>
     </form>
     
 </main>
@@ -183,6 +203,7 @@
 <script src="/resources/js/axiosVisitors/addVisitors.js"></script>
 <script src="/resources/js/inputDisabledAtVisitors.js"></script>
 <script src="/resources/js/redirectToCds.js"></script>
+<script src="/resources/js/validationForrmAtVisitors.js" type="module"></script>
 <script src="/resources/js/getValueDateAtVisitors.js"></script>
 <script src="/resources/js/AddingHiddenAtributteAtVisitors.js"></script>
 <script src="/resources/js/readLocalStorageAtVisitors.js"></script>

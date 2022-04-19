@@ -62,21 +62,40 @@
 
 
       <label for="">Nombre</label>
-      <input type="text" id="nombre" onkeyup="getValue()" name="nombre" placeholder="EL NOMBRE EN MAYUSCULA" pattern="[Á- Z]{1,100}" title="El nombre debe ir en mayuscula" required >
-      <label for="">Dirección</label>
-      <input type="text" name="direccion"  required>
+      <input type="text" id="nombre" onblur="getValue()" name="nombre"  pattern="[Á- Z]{1,150}" title="El nombre debe ir en mayuscula" required >
+      <div id="divNombre">
 
-        <label for="">Horario</label>
-        <input type="text" id="horario" class="inputs" name= "horario" required>
+      </div>
+
+      <label for="" class="inputs">Dirección</label>
+      <input type="text" name="direccion" id="direccion" class="inputs" required>
+      <div id="divDireccion">
+
+      </div>
+
+        <label for="" class="inputs">Horario</label>
+        <input type="text" id="horario" class="inputs" placeholder="lunes a viernes" name= "horario" required>
+        <div id="divHorario">
+
+        </div>
+
         <label for="">Correo</label>
-        <input type="email" class="select-css1" name= "correo" required >
+        <input type="email" class="select-css1" id="correo" name= "correo" required >
+        <div id="divCorreo">
+
+        </div>
+
         <label for="">Teléfono</label>
-        <input type="text" name= "telefono" pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"  required>
+        <input type="text" name= "telefono" id="telefono" pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"  required>
+        <div id="divTelefono">
+
+        </div>
+
         <label for=""></label>
         <input type="text" name= "concatenar" hidden>
 
     <div style ="display: unline;">
-      <input type="submit" id="btnCds" class="btn-save" value ="Guardar">
+      <button type="submit" id="btnCds" class="btn-save" >Registrar</button>
     </div>
   </div>
   </form>
@@ -126,6 +145,7 @@
 <script src="/resources/js/axiosCds/addCds.js"></script>
 <script src="/resources/js/tagDisabledAtCds.js"></script>
 <script src="/resources/js/inputsCdsDisabled.js"></script>
+<script src="/resources/js/validationFormAtCds.js" type="module"></script>
 <script src="/resources/js/getInputValueAtCds.js"></script>
 </body>
 </html>

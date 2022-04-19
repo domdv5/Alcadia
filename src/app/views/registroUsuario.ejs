@@ -32,33 +32,49 @@
       
 
       <label for="">Cédula</label>
-      <input type="text" for="validationServer"  id="validationServer01" name="cedula" pattern="[0-9]{5,15}"  title="la cedula debe tener minimo 5 digitos" onchange="documentValidation()" required>
-         <div class="invalid-feedback">
-        La cedula ya es un usuario activo, por favor digite otra.
+      <input type="text" for="validationServer"  id="validationServer01" name="cedula" pattern="[0-9]{7,10}"  title="la cedula debe tener minimo 5 digitos y maximo 10" onblur="documentValidation()" required>
+         <div id="divCedula">
+        
         </div>
 
         <label for="">Nombre Coordinador</label>
-        <input type="text" name= "nombre_coordinador" pattern="[Á-Z á-z]{1,150}" title="Solo se permite el ingreso de letras" required>
+        <input type="text" id="nombre" name= "nombre_coordinador" pattern="[Á-Z á-z]{1,150}" title="Solo se permite el ingreso de letras" required>
+        <div id="divNombre">
+
+        </div>
 
       <label for="">Correo</label>
-      <input type="email"  class="select-css1" name="correo" required>
+      <input type="email" id="correo" class="select-css1" name="correo" required>
+      <div id="divCorreo">
+        
+      </div>
 
 
       <label for="">Teléfono/Celular</label>
-      <input type="text" name= "telefono"  pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
+      <input type="text" name= "telefono" id="telefono" pattern="[0-9]{7,10}"  title="El telefono debe tener minimo 7 digitos o maximo 10"required>
+      <div id="divTelefono">
+
+      </div>
+
+      <label for="pass">Contraseña</label>
+      <input type="password" id="pass"  onchange="getValuePass()" aria-disabled="true" required>
+  
+      <label for="pass">Repetir Contraseña</label>
+      <input type="password" id="pass1" name="pass" onkeyup="validPass()" required>
+      <div  id="divPass">
+        
+    </div>
+  
 
     <label for="rol">Rol</label>
-    <select name ="rol" id="rol" class="select-css"   required>
+    <select name ="rol" id="rol" class="select-css">
       <option value="" id="item1" selected></option>
     </select>
-
-    <label for="pass">Contraseña</label>
-    <input type="password"  name="pass" required>
 
 
 
     <div style ="display: unline;">
-      <input type="submit" id="btnLogin" class="btn-save"  value ="Guardar">
+      <button type="submit" id="btnLogin" class="btn-save" >Registrar</button>
     </div>
   </form>
 </div>
@@ -105,5 +121,7 @@
   <script src="/resources/js/documentValidationUsers.js"></script>
   <script src="/resources/js/axiosUsers/addUsers.js"></script>
   <script src="/resources/js/putValueToRolAtUsers.js"></script>
+  <script src="/resources/js/validationFormAtUsers.js" type="module"></script>
+  <script src="/resources/js/passwordValidationAtUsers.js"></script>
 </body>
 </html>
