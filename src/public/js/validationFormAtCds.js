@@ -26,6 +26,7 @@ const validarFormulario = (e) => {
         case 'correo':
             validarCampo(expresiones.email, e.target, 'correo')
             document.getElementById(`divCorreo`).setAttribute('class', 'invalid-feedback')
+            document.getElementById(`correo`).classList.add('select-css1')
             document.getElementById(`divCorreo`).innerHTML = 'Ingrese un correo valido'
             break;
 
