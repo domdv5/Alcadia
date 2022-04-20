@@ -578,7 +578,7 @@ router.post("/addVisitors", async (req, res) => {
 });
 
 router.post("/addCds", async (req, res) => {
-  const { espacio, comuna, nombre, direccion, horario, telefono, correo} = req.body
+  const { espacio, comuna, nombre, direccion, horario, telefono, correo } = req.body
 
   const nombreCompleto = espacio.concat(" " + nombre)
 
@@ -739,7 +739,6 @@ router.get('/getInfoActivities', (req, res) => {
 router.post('/test', (req, res) => {
   const { codigo } = req.body
 
-
   connection.query('SELECT Cedula FROM usuarios WHERE cedula = ?', [codigo], (err, result) => {
     if (result.length === 0) {
       res.json({ code: 400 })
@@ -777,6 +776,19 @@ router.post('/test2', (req, res) => {
   const { value } = req.body
 
   res.json({ valor: value })
+
+})
+
+router.post('/getConcatenar', async (req, res) => {
+  const { datos } = req.body
+  await connection.query('SELECT concatenar FROM cds WHERE concatenar = ?', [datos], (err, result) => {
+   console.log(result);
+    if (result.length === 0) {
+      res.json({ code: 400 })
+    } else {
+      res.json({ code: 200 })
+    }
+  })
 
 })
 
