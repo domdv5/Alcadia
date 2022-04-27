@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <%- include('./partials/template/tablesHeader.ejs') %>  
+  <%- include('./partials/template/tablesHeader.ejs') %>
 </head>
 
 <body>
@@ -31,13 +31,13 @@
           <th>ACCIONES</th>
         </tr>
       </thead>
-      <tbody >
+      <tbody>
 
         <% for(let regis of registro) {%>
 
           <%- include('./partials/visitorsRowData.ejs', {registro:regis}); %>
 
-          <% } %>
+            <% } %>
       </tbody>
     </table>
   </div>
@@ -66,8 +66,8 @@
       table.destroy();
 
       $(document).ready(function () {
-      const table =  $('#example').DataTable({
-        
+        const table = $('#example').DataTable({
+
           orderCellsTop: true,
           destroy: true,
           fixedHeader: true,
@@ -97,6 +97,8 @@
     }); 
   </script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AmagiTech/JSLoader/amagiloader.js"></script>
+  <script src="/resources/js/loader.js"></script>
   <script src="/resources/js/axiosVisitors/updateVisitors.js"></script>
   <script src="/resources/js/axiosVisitors/deleteVisitors.js"></script>
 
