@@ -6,7 +6,7 @@ that procces to give entry to visitors it was done manually, each visitor had to
 
 # Credentials
 
-In order to prove the app you must get the next field:
+In order to prove the app you must get the next fields:
 * Cedula: 1234567
 * Password: 0000
 
