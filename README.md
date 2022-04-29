@@ -20,9 +20,17 @@ with its respective names.
 ![](https://github.com/domdv5/Alcadia/blob/main/src/public/img/users.PNG)
 
 
-Each CDS and TELECENTRO can access and manipulate to its own information related to the multiple stored data in its respectives tables except Admins that can manage all global data 
+Each CDS and TELECENTRO can access and manipulate to its own information related to the multiple stored data in its respectives boards except Admins that can manage all global data 
 independently about profile and clearly with those data it's posible to do the basic actions (CRUD).
 
+# Customer Requirement
+
+One of the issues we had to deal with, is customer needed that each time a visitor will get into either a TELECENTRO or CDS to assist to an activity his age will update respect to his birthday this due to it was neccesary for analyze reports that the Alcaldia export to Excel, the problem was before to allow an entry to a CDS or TELECENTRO the person have to be register and that registration just occur once in time (at visitor view) and in that moment of registration the app will provide age automatically according to his/her date of birth provide by the visitor, so I proposed that at visitors entry view when the person fill the first field that correspond to his/her id (cedula) through axios I bring his/her date of birth and with two inputs that are actually hidden and with its logic behind the app manage to update their ages, and it will refleted either at visitors board or visitors entry board.
+
+![](https://github.com/domdv5/Alcadia/blob/main/src/public/img/Ingresos.PNG)
+
+
+# Entities
 Its important to point out how many entities are anf how they work: 
 
 1. ***Visitors(Visitantes)***: This entitie is going to store all visitors that have to be register by CDS or TELECENTRO (except admins) **BEFORE** get into a CDS or TELECENTRO.
