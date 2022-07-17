@@ -25,7 +25,7 @@ form.addEventListener('submit', (e) => {
   if (value !== 'ADMINISTRADOR') {
     document.querySelectorAll("input").forEach((input) => {
       const className = input.className
-      if (className === `form-control is-valid`) {
+      if (className.includes(`form-control is-valid`)) {
         contador1++
       }
     })
@@ -37,8 +37,7 @@ form.addEventListener('submit', (e) => {
     }
   })
 
-  console.log(contador, contador1, contador2);
-
+  console.log(contador1);
 
 
   if ((contador === 3 && contador2 === 2) || (contador1 === 5 && contador2 === 2) || (contador === 3 && contador2 === 1)) {
